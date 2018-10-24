@@ -1,32 +1,32 @@
 import java.util.Hashtable;
 import java.util.Scanner;
-public class Item{
-	private String primaryName;
-	private int weight;
-	private Hashtable<String, String> messages;
 
-	Item(Scanner s){
-		Scanner in = new Scanner(System.in);
-	}
+public class Item {
+  private String primaryName;
+  private int weight;
+  private Hashtable<String, String> messages;
 
-	boolean goesBy(String name){
-	if(name == primaryName){		
-		return true;		
-	}
-	else{
-		return false;
-	}	
-	}
+  Item(Scanner s) { //Scanner
+    Scanner in = new Scanner(System.in);
+  }
 
-	String getPrimaryName(){
-		return primaryName;	
-	}
+  boolean goesBy(String name) { //Name of iter
+    if (name == primaryName) {  
+      return true;
+    } else {
+      return false;
+    }  
+  }
 
-	String getMessageForVerb(String verb){
-		return verb;	
-	}
+  String getPrimaryName() { //gets true name
+    return primaryName;
+  }
 
-	public String toString(){
-		return "messages";
-	}
+  String getMessageForVerb(String verb) { //get the message
+    return verb;
+  }
+
+  public String toString() { 
+    return "messages";
+  }
 }
