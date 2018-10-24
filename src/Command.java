@@ -1,3 +1,8 @@
+/* TODO (From Nick)
+*Make command class abstract
+*Make subclasses
+*Have the "LookCommand" made to set beenHere to false
+*/
 
 // For now, only direction commands and "save". If the "direction" is bogus,
 // then this effectively doubles as an UnknownCommand (to be a subclass
