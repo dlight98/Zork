@@ -7,21 +7,16 @@ public class Item{
 	private int weight;
 	private Hashtable<String, String> messages;
 
-public class Item {
-  private String primaryName;
-  private int weight;
-  private Hashtable<String, String> messages;
-
   Item(Scanner s) { //Scanner
     Scanner in = new Scanner(System.in);
   }
 
   boolean goesBy(String name) { //Name of iter
-    if (name == primaryName) {  
+    if (name == primaryName) {
       return true;
     } else {
       return false;
-    }  
+    }
   }
 
   String getPrimaryName() { //gets true name
@@ -32,13 +27,12 @@ public class Item {
 		return "messages";
 	}
 
-	public static void main(String args[]){
-	  try{	
-		  Scanner in = new Scanner(new FileReader (args[0]));
-	  }	
-	  catch(Exception e){
-		  System.out.println("File not found.");
-	  }
-	}
-}
+	// public static void main(String args[]){
+	//   try{
+	// 	  Scanner in = new Scanner(new FileReader (args[0]));
+	//   }
+	//   catch(Exception e){
+	// 	  System.out.println("File not found.");
+	//   }
+	// }
 }
