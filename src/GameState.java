@@ -1,5 +1,6 @@
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileReader;
@@ -23,6 +24,7 @@ public class GameState {
     private static GameState theInstance;
     private Dungeon dungeon;
     private Room adventurersCurrentRoom;
+    private ArrayList<String> inventory;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -90,4 +92,25 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+    
+    String getInventoryNames(ArrayList inventory){ 
+       return ArrayList<inventory>;
+    } 
+
+    String addToInventory(Item item){ 
+       inventory.add(item); 
+    } 
+
+    String removeFromInventory(Item item){ 
+       inventory.remove(item); 
+    } 
+    
+    String getItemInVicinityNamed(String name){ 
+       return Item(name); 
+    } 
+    
+    String getItemFromInventoryNamed(String name){ 
+       return Item(name); 
+    }
+ 
 }
