@@ -10,74 +10,58 @@ import java.io.PrintWriter;
 
 public class GameState() throws NoItemException { 
 
-    public static class IllegalSaveFormatException extends Exception {
-        public IllegalSaveFormatException(String e) {
-            super(e);
-        }
+  public static class IllegalSaveFormatException extends Exception {
+    public IllegalSaveFormatException(String e) {
+      super(e);
     }
+  }
 
-    static String DEFAULT_SAVE_FILE = "zork_save";
-    static String SAVE_FILE_EXTENSION = ".sav";
-    static String SAVE_FILE_VERSION = "Zork II save data";
+  static String DEFAULT_SAVE_FILE = "zork_save";
+  static String SAVE_FILE_EXTENSION = ".sav";
+  static String SAVE_FILE_VERSION = "Zork II save data";
 
-    static String CURRENT_ROOM_LEADER = "Current room: ";
+  static String CURRENT_ROOM_LEADER = "Current room: ";
 
+<<<<<<< HEAD
     private static GameState theInstance;
     private Dungeon dungeon;
     private Room adventurersCurrentRoom;
     public ArrayList<Item> item;
     public GameState inventory;
+=======
+  private static GameState theInstance;
+  private Dungeon dungeon;
+  private Room adventurersCurrentRoom;
+>>>>>>> efd8ab7a87849bebfec2428ed56ed96e3979ce4e
 
-    static synchronized GameState instance() {
-        if (theInstance == null) {
-            theInstance = new GameState();
-        }
-        return theInstance;
+  static synchronized GameState instance() {
+    if (theInstance == null) {
+      theInstance = new GameState();
+    }
+    return theInstance;
+  }
+
+  private GameState() {
+  }
+
+  void restore(String filename) throws FileNotFoundException,
+    IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
+
+    Scanner s = new Scanner(new FileReader(filename));
+
+    if (!s.nextLine().equals(SAVE_FILE_VERSION)) {
+      throw new IllegalSaveFormatException("Save file not compatible.");
     }
 
-    private GameState() {
+    String dungeonFileLine = s.nextLine();
+
+    if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
+      throw new IllegalSaveFormatException("No '" +
+          Dungeon.FILENAME_LEADER + 
+          "' after version indicator.");
     }
 
-    void restore(String filename) throws FileNotFoundException,
-        IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
-
-        Scanner s = new Scanner(new FileReader(filename));
-
-        if (!s.nextLine().equals(SAVE_FILE_VERSION)) {
-            throw new IllegalSaveFormatException("Save file not compatible.");
-        }
-
-        String dungeonFileLine = s.nextLine();
-
-        if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
-            throw new IllegalSaveFormatException("No '" +
-                Dungeon.FILENAME_LEADER + 
-                "' after version indicator.");
-        }
-
-        dungeon = new Dungeon(dungeonFileLine.substring(
-            Dungeon.FILENAME_LEADER.length()));
-        dungeon.restoreState(s);
-
-        String currentRoomLine = s.nextLine();
-        adventurersCurrentRoom = dungeon.getRoom(
-            currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
-    }
-
-    void store() throws IOException {
-        store(DEFAULT_SAVE_FILE);
-    }
-
-    void store(String saveName) throws IOException {
-        String filename = saveName + SAVE_FILE_EXTENSION;
-        PrintWriter w = new PrintWriter(new FileWriter(filename));
-        w.println(SAVE_FILE_VERSION);
-        dungeon.storeState(w);
-        w.println(CURRENT_ROOM_LEADER + 
-            getAdventurersCurrentRoom().getTitle());
-        w.close();
-    }
-
+<<<<<<< HEAD
     public static class NoItemException(item) {
 	   if(item == null){
 		  System.out.println("Item not found.");
@@ -88,11 +72,18 @@ public class GameState() throws NoItemException {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
     }
+=======
+    dungeon = new Dungeon(dungeonFileLine.substring(
+          Dungeon.FILENAME_LEADER.length()));
+    dungeon.restoreState(s);
+>>>>>>> efd8ab7a87849bebfec2428ed56ed96e3979ce4e
 
-    Room getAdventurersCurrentRoom() {
-        return adventurersCurrentRoom;
+    String currentRoomLine = s.nextLine();
+    adventurersCurrentRoom = dungeon.getRoom(
+        currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
     }
 
+<<<<<<< HEAD
     void setAdventurersCurrentRoom(Room room) {
         adventurersCurrentRoom = room;
     }
@@ -122,4 +113,36 @@ public class GameState() throws NoItemException {
        return name; 
     }
  
+=======
+  void store() throws IOException {
+    store(DEFAULT_SAVE_FILE);
+  }
+
+  void store(String saveName) throws IOException {
+    String filename = saveName + SAVE_FILE_EXTENSION;
+    PrintWriter w = new PrintWriter(new FileWriter(filename));
+    w.println(SAVE_FILE_VERSION);
+    dungeon.storeState(w);
+    w.println(CURRENT_ROOM_LEADER + 
+        getAdventurersCurrentRoom().getTitle());
+    w.close();
+  }
+
+  void initialize(Dungeon dungeon) {
+    this.dungeon = dungeon;
+    adventurersCurrentRoom = dungeon.getEntry();
+  }
+
+  Room getAdventurersCurrentRoom() {
+    return adventurersCurrentRoom;
+  }
+
+  void setAdventurersCurrentRoom(Room room) {
+    adventurersCurrentRoom = room;
+  }
+
+  Dungeon getDungeon() {
+    return dungeon;
+  }
+>>>>>>> efd8ab7a87849bebfec2428ed56ed96e3979ce4e
 }
