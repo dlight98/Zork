@@ -6,109 +6,113 @@ import java.io.PrintWriter;
 
 public class Room {
 
-    class NoRoomException extends Exception {}
+  class NoRoomException extends Exception {}
 
-    private String title;
-    private String desc;
-    private boolean beenHere;
-    private ArrayList<Exit> exits;
+  private String title;
+  private String desc;
+  private boolean beenHere;
+  private ArrayList<Exit> exits;
 
-    Room(String title) {
-        init();
-        this.title = title;
+  Room(String title) {
+    init();
+    this.title = title;
+  }
+
+  /** Given a Scanner object positioned at the beginning of a "room" file
+    entry, read and return a Room object representing it. 
+    @throws NoRoomException The reader object is not positioned at the
+    start of a room entry. A side effect of this is the reader's cursor
+    is now positioned one line past where it was.
+    @throws IllegalDungeonFormatException A structural problem with the
+    dungeon file itself, detected when trying to read this room.
+   */
+  Room(Scanner s) throws NoRoomException,
+    Dungeon.IllegalDungeonFormatException {
+
+      init();
+      title = s.nextLine();
+      desc = "";
+      if (title.equals(Dungeon.TOP_LEVEL_DELIM)) {
+        throw new NoRoomException();
+      }
+
+      String lineOfDesc = s.nextLine();
+      while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
+          !lineOfDesc.equals(Dungeon.TOP_LEVEL_DELIM)) {
+        desc += lineOfDesc + "\n";
+        lineOfDesc = s.nextLine();
+      }
+
+      // throw away delimiter
+      if (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)) {
+        throw new Dungeon.IllegalDungeonFormatException("No '" +
+            Dungeon.SECOND_LEVEL_DELIM + "' after room.");
+      }
     }
 
-    /** Given a Scanner object positioned at the beginning of a "room" file
-        entry, read and return a Room object representing it. 
-        @throws NoRoomException The reader object is not positioned at the
-        start of a room entry. A side effect of this is the reader's cursor
-        is now positioned one line past where it was.
-        @throws IllegalDungeonFormatException A structural problem with the
-        dungeon file itself, detected when trying to read this room.
-     */
-    Room(Scanner s) throws NoRoomException,
-        Dungeon.IllegalDungeonFormatException {
+  // Common object initialization tasks.
+  private void init() {
+    exits = new ArrayList<Exit>();
+    beenHere = false;
+  }
 
-        init();
-        title = s.nextLine();
-        desc = "";
-        if (title.equals(Dungeon.TOP_LEVEL_DELIM)) {
-            throw new NoRoomException();
-        }
-        
-        String lineOfDesc = s.nextLine();
-        while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
-               !lineOfDesc.equals(Dungeon.TOP_LEVEL_DELIM)) {
-            desc += lineOfDesc + "\n";
-            lineOfDesc = s.nextLine();
-        }
+  String getTitle() { return title; }
 
-        // throw away delimiter
-        if (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)) {
-            throw new Dungeon.IllegalDungeonFormatException("No '" +
-                Dungeon.SECOND_LEVEL_DELIM + "' after room.");
-        }
+  void setDesc(String desc) { this.desc = desc; }
+
+  /*
+   * Store the current (changeable) state of this room to the writer
+   * passed.
+   */
+  void storeState(PrintWriter w) throws IOException {
+    // At this point, nothing to save for this room if the user hasn't
+    // visited it.
+    if (beenHere) {
+      w.println(title + ":");
+      w.println("beenHere=true");
+      w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
+  }
 
-    // Common object initialization tasks.
-    private void init() {
-        exits = new ArrayList<Exit>();
-        beenHere = false;
+  void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
+
+    String line = s.nextLine();
+    if (!line.startsWith("beenHere")) {
+      throw new GameState.IllegalSaveFormatException("No beenHere.");
     }
+    beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
 
-    String getTitle() { return title; }
+    s.nextLine();   // consume end-of-room delimiter
+  }
 
-    void setDesc(String desc) { this.desc = desc; }
-
-    /*
-     * Store the current (changeable) state of this room to the writer
-     * passed.
-     */
-    void storeState(PrintWriter w) throws IOException {
-        // At this point, nothing to save for this room if the user hasn't
-        // visited it.
-        if (beenHere) {
-            w.println(title + ":");
-            w.println("beenHere=true");
-            w.println(Dungeon.SECOND_LEVEL_DELIM);
-        }
+  public String describe() {
+    String description;
+    if (beenHere) {
+      description = title;
+    } else {
+      description = title + "\n" + desc;
     }
-
-    void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
-
-        String line = s.nextLine();
-        if (!line.startsWith("beenHere")) {
-            throw new GameState.IllegalSaveFormatException("No beenHere.");
-        }
-        beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
-
-        s.nextLine();   // consume end-of-room delimiter
+    for (Exit exit : exits) {
+      description += "\n" + exit.describe();
     }
+    beenHere = true;
+    return description;
+  }
 
-    public String describe() {
-        String description;
-        if (beenHere) {
-            description = title;
-        } else {
-            description = title + "\n" + desc;
-        }
-        for (Exit exit : exits) {
-            description += "\n" + exit.describe();
-        }
-        beenHere = true;
-        return description;
+  public Room leaveBy(String dir) {
+    for (Exit exit : exits) {
+      if (exit.getDir().equals(dir)) {
+        return exit.getDest();
+      }
     }
-    
-    public Room leaveBy(String dir) {
-        for (Exit exit : exits) {
-            if (exit.getDir().equals(dir)) {
-                return exit.getDest();
-            }
-        }
-        return null;
-    }
+    return null;
+  }
 
-    void addExit(Exit exit) {
-        exits.add(exit);
-    }
+  void addExit(Exit exit) {
+    exits.add(exit);
+  }
+
+  void setBeenHere(boolean beenHere ) {
+    this.beenHere = beenHere;
+  }
 }

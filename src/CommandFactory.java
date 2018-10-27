@@ -23,6 +23,8 @@ public class CommandFactory {
             return new MovementCommand(command);
         } else if(command.equals("save")) {
           return new SaveCommand();
+        } else if(command.equals("look")) {
+          return new LookCommand();
         } else {
             // For now, only one type of command object, to move and to save.
             return new UnknownCommand(command);
