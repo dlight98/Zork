@@ -3,11 +3,12 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.NoItemException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-public class GameState {
+public class GameState() throws NoItemException { 
 
     public static class IllegalSaveFormatException extends Exception {
         public IllegalSaveFormatException(String e) {
@@ -24,7 +25,8 @@ public class GameState {
     private static GameState theInstance;
     private Dungeon dungeon;
     private Room adventurersCurrentRoom;
-    private ArrayList<String> inventory;
+    public ArrayList<Item> item;
+    public GameState inventory;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -76,6 +78,12 @@ public class GameState {
         w.close();
     }
 
+    public static class NoItemException(item) {
+	   if(item == null){
+		  System.out.println("Item not found.");
+	   }
+    } 
+
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
@@ -93,8 +101,9 @@ public class GameState {
         return dungeon;
     }
     
-    String getInventoryNames(ArrayList inventory){ 
-       return ArrayList<inventory>;
+    String getInventoryNames(){ 
+       inventory = ArrayList<Item> item; 
+       return inventory;
     } 
 
     String addToInventory(Item item){ 
@@ -106,11 +115,11 @@ public class GameState {
     } 
     
     String getItemInVicinityNamed(String name){ 
-       return Item(name); 
+       return name; 
     } 
     
     String getItemFromInventoryNamed(String name){ 
-       return Item(name); 
+       return name; 
     }
  
 }
