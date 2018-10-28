@@ -38,14 +38,19 @@ postcard
 10
 pickup
 write: You are writing a letter.
+send: You are sending a letter.
+read: You are reading a letter.
 ---
 hat
 20
 wear: A fashion statement.
+hold
 ---
 boarding pass
 10
+look
 scan: You may proceed.
+print: Your pass is printing.
 ---
 ===
 Rooms:
