@@ -22,17 +22,16 @@ public class GameState() throws NoItemException {
 
   static String CURRENT_ROOM_LEADER = "Current room: ";
 
-<<<<<<< HEAD
     private static GameState theInstance;
     private Dungeon dungeon;
     private Room adventurersCurrentRoom;
     public ArrayList<Item> item;
     public GameState inventory;
-=======
+
   private static GameState theInstance;
   private Dungeon dungeon;
   private Room adventurersCurrentRoom;
->>>>>>> efd8ab7a87849bebfec2428ed56ed96e3979ce4e
+
 
   static synchronized GameState instance() {
     if (theInstance == null) {
@@ -61,7 +60,7 @@ public class GameState() throws NoItemException {
           "' after version indicator.");
     }
 
-<<<<<<< HEAD
+
     public static class NoItemException(item) {
 	   if(item == null){
 		  System.out.println("Item not found.");
@@ -72,18 +71,18 @@ public class GameState() throws NoItemException {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
     }
-=======
+
     dungeon = new Dungeon(dungeonFileLine.substring(
           Dungeon.FILENAME_LEADER.length()));
     dungeon.restoreState(s);
->>>>>>> efd8ab7a87849bebfec2428ed56ed96e3979ce4e
+
 
     String currentRoomLine = s.nextLine();
     adventurersCurrentRoom = dungeon.getRoom(
         currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
     }
 
-<<<<<<< HEAD
+
     void setAdventurersCurrentRoom(Room room) {
         adventurersCurrentRoom = room;
     }
@@ -113,7 +112,7 @@ public class GameState() throws NoItemException {
        return name; 
     }
  
-=======
+
   void store() throws IOException {
     store(DEFAULT_SAVE_FILE);
   }
@@ -144,5 +143,5 @@ public class GameState() throws NoItemException {
   Dungeon getDungeon() {
     return dungeon;
   }
->>>>>>> efd8ab7a87849bebfec2428ed56ed96e3979ce4e
+
 }
