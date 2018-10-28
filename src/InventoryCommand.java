@@ -1,7 +1,7 @@
 //Temporary class
 
-class InventoryCommand {
+class InventoryCommand extends Command {
   String execute(){
-    return null; //temoprary 
+    return null; //temoprary
   }
 }

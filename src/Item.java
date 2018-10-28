@@ -2,6 +2,7 @@ import java.util.Hashtable;
 import java.util.Scanner;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
+
 public class Item{
 	private String primaryName;
 	private int weight;
