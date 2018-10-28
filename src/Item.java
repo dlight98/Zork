@@ -28,12 +28,12 @@ public class Item{
 		return "messages";
 	}
 
-	// public static void main(String args[]){
-	//   try{
-	// 	  Scanner in = new Scanner(new FileReader (args[0]));
-	//   }
-	//   catch(Exception e){
-	// 	  System.out.println("File not found.");
-	//   }
-	// }
+	public static void main(String args[]){
+	   try{
+	 	  Scanner in = new Scanner(new FileReader (args[0]));
+	   }
+	   catch(Exception e){
+	 	  System.out.println("File not found.");
+	   }
+	 }
 }
