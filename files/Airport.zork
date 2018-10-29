@@ -1,0 +1,96 @@
+Airport
+Zork III
+===
+Items:
+burger
+5
+pickup
+eat: It is in your belly.
+---
+water bottle
+10
+pickup
+drink: You don't feel thirsty.
+---
+seat
+20
+sit: You are sitting down.
+stand: You are standing up.
+---
+plane
+100
+takeoff: You are ascending.
+flight: You are flying.
+landing: You are landing.
+---
+suitcase
+50
+roll: It is rolling on the ground.
+carry: You are carrying your luggage.
+---
+keys
+5
+pickup
+ignite: You are starting the car.
+drive: You are driving the car.
+---
+postcard
+10
+pickup
+write: You are writing a letter.
+send: You are sending a letter.
+read: You are reading a letter.
+---
+hat
+20
+wear: A fashion statement.
+hold
+---
+boarding pass
+10
+look
+scan: You may proceed.
+print: Your pass is printing.
+---
+===
+Rooms:
+Front Desk
+This is where you check in for your flight.
+---
+Moving Walkway
+Contents: suitcase
+A faster method of travel.
+---
+Shop
+Contents: postcard, hat
+Where you can buy souvenirs
+---
+Restaurant
+Contents: burger, water bottle
+Where you can grab a bite to eat before your flight
+---
+Security
+Contents: boarding pass
+You must pass this before you can proceed to your gate.
+---
+Gate
+Contents: seat, boarding pass
+Where you go to board your flight.
+---
+Tarmac
+Contents: plane
+Where your plane takes off and lands
+---
+Baggage Claim
+Contents: suitcase
+Where you pick up your bags after a long flight.
+---
+Car Rental
+Contents: keys
+Additional ground transportation
+---
+Parking Garage
+Contents: keys
+Where you pick up your car
+---
+===

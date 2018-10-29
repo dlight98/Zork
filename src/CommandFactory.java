@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class CommandFactory {
 
     private static CommandFactory theInstance;
-    public static List<String> MOVEMENT_COMMANDS = 
+    public static List<String> MOVEMENT_COMMANDS =
         Arrays.asList("n","w","e","s","u","d" );
 
     public static synchronized CommandFactory instance() {
@@ -18,12 +18,16 @@ public class CommandFactory {
     private CommandFactory() {
     }
 
-    public Command parse(String command) {
+    public Command parse(String command) {  //might need to return Command
         if (MOVEMENT_COMMANDS.contains(command)) {
-            return new Command(command);
+            return new MovementCommand(command);
+        } else if(command.equals("save")) {
+          return new SaveCommand();
+        } else if(command.equals("look")) {
+          return new LookCommand();
         } else {
             // For now, only one type of command object, to move and to save.
-            return new Command(command);
+            return new UnknownCommand(command);
         }
     }
 
