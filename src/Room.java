@@ -12,7 +12,7 @@ public class Room {
     private String desc;
     private boolean beenHere;
     private ArrayList<Exit> exits;
-
+    private 
     Room(String title) {
         init();
         this.title = title;
@@ -49,6 +49,10 @@ public class Room {
                 Dungeon.SECOND_LEVEL_DELIM + "' after room.");
         }
     }
+    Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException, Dungeon.IllegalDungeonFormatException{
+	    		
+	}
+
 
     // Common object initialization tasks.
     private void init() {

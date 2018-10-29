@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 
 public class Dungeon {
 
+
     public static class IllegalDungeonFormatException extends Exception {
         public IllegalDungeonFormatException(String e) {
             super(e);
@@ -30,6 +31,7 @@ public class Dungeon {
     private Room entry;
     private Hashtable<String,Room> rooms;
     private String filename;
+    private Hashtable<String,Item> items;
 
     Dungeon(String name, Room entry) {
         init();
@@ -38,15 +40,20 @@ public class Dungeon {
         this.entry = entry;
         rooms = new Hashtable<String,Room>();
     }
+    Dungeon(String filename, boolean initState){
+	    this.filename = filename;
+	}
+    public Item getItem(String primaryName){
+	   return  items.get(primaryName);
+     }
 
     /**
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it.
      */
-    public Dungeon(String filename) throws FileNotFoundException,
-        IllegalDungeonFormatException {
+    public Dungeon(String filename) throws FileNotFoundException, Dungeon.IllegalDungeonFormatException {
 
-        init();
+  
         this.filename = filename;
 
         Scanner s = new Scanner(new FileReader(filename));
