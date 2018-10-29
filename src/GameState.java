@@ -3,7 +3,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.NoItemException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
@@ -34,12 +33,7 @@ class GameState {
   private Dungeon dungeon;
   private Room adventurersCurrentRoom;
   public ArrayList<Item> item;
-  public GameState inventory;
-
-  // private static GameState theInstance;
-  // private Dungeon dungeon;
-  // private Room adventurersCurrentRoom;
-
+  public ArrayList<Item> inventory;
 
   static synchronized GameState instance() {
     if (theInstance == null) {
@@ -71,9 +65,6 @@ class GameState {
     s.close();
   }
 
-
-
-
   void initialize(Dungeon dungeon, Scanner s) {
     this.dungeon = dungeon;
     adventurersCurrentRoom = dungeon.getEntry();
@@ -97,7 +88,7 @@ class GameState {
   }
 
   ArrayList<Item> getInventory(){
-    inventory = ArrayList<Item> item;
+    inventory = this.inventory;
     return inventory;
   }
 
@@ -132,21 +123,11 @@ class GameState {
     w.close();
   }
 
-  // void initialize(Dungeon dungeon) {
-  //   this.dungeon = dungeon;
-  //   adventurersCurrentRoom = dungeon.getEntry();
-  // }
+  
 
   Room getAdventurersCurrentRoom() {
     return adventurersCurrentRoom;
   }
 
-  // void setAdventurersCurrentRoom(Room room) {
-  //   adventurersCurrentRoom = room;
-  // }
-  //
-  // Dungeon getDungeon() {
-  //   return dungeon;
-  // }
-
+  
 }
