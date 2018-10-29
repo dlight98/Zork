@@ -61,7 +61,7 @@ public class GameState() throws NoItemException {
     }
 
 
-    public static class NoItemException(item) {
+    static class NoItemException(item) extends Exception {
 	   if(item == null){
 		  System.out.println("Item not found.");
 	   }
@@ -111,37 +111,5 @@ public class GameState() throws NoItemException {
     String getItemFromInventoryNamed(String name){ 
        return name; 
     }
- 
-
-  void store() throws IOException {
-    store(DEFAULT_SAVE_FILE);
-  }
-
-  void store(String saveName) throws IOException {
-    String filename = saveName + SAVE_FILE_EXTENSION;
-    PrintWriter w = new PrintWriter(new FileWriter(filename));
-    w.println(SAVE_FILE_VERSION);
-    dungeon.storeState(w);
-    w.println(CURRENT_ROOM_LEADER + 
-        getAdventurersCurrentRoom().getTitle());
-    w.close();
-  }
-
-  void initialize(Dungeon dungeon) {
-    this.dungeon = dungeon;
-    adventurersCurrentRoom = dungeon.getEntry();
-  }
-
-  Room getAdventurersCurrentRoom() {
-    return adventurersCurrentRoom;
-  }
-
-  void setAdventurersCurrentRoom(Room room) {
-    adventurersCurrentRoom = room;
-  }
-
-  Dungeon getDungeon() {
-    return dungeon;
-  }
-
+  
 }
