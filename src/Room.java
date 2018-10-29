@@ -26,6 +26,12 @@ public class Room {
     @throws IllegalDungeonFormatException A structural problem with the
     dungeon file itself, detected when trying to read this room.
    */
+
+  Room(Scanner s, Dungeon d) throws NoRoomException, Dungeon.IllegalDungeonFormatException {
+    //from #3 on Stephen's instructions
+    this(s, d, true);
+  }
+
   Room(Scanner s) throws NoRoomException,
     Dungeon.IllegalDungeonFormatException {
 

@@ -17,31 +17,7 @@ abstract class Command {
     //     this.dir = dir;
     // }
 
-    abstract String execute(); //{
-      //commenting everything out in case I need it later - Nick
+    abstract String execute(); //
 
-    //     if (dir.equals("save")) {
-    //         try {
-    //             GameState.instance().store();
-    //             return "Data saved to " + GameState.DEFAULT_SAVE_FILE +
-    //                 GameState.SAVE_FILE_EXTENSION + ".\n";
-    //         } catch (Exception e) {
-    //             System.err.println("Couldn't save!");
-    //             e.printStackTrace();
-    //             return "";
-    //         }
-    //     } else if (CommandFactory.MOVEMENT_COMMANDS.contains(dir)) {
-    //         Room currentRoom =
-    //             GameState.instance().getAdventurersCurrentRoom();
-    //         Room nextRoom = currentRoom.leaveBy(dir);
-    //         if (nextRoom != null) {  // could try/catch here.
-    //             GameState.instance().setAdventurersCurrentRoom(nextRoom);
-    //             return "\n" + nextRoom.describe() + "\n";
-    //         } else {
-    //             return "Sorry, you can't go " + dir + " from " +
-    //                 currentRoom.getTitle() + ".\n";
-    //         }
-    //     }
-    //     return "I'm sorry, I don't understand the command '" + dir + "'.\n";
-    //}
+
 }
