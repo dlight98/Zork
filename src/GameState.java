@@ -16,9 +16,9 @@ class GameState {
 
   public class NoItemException extends Exception {
     public NoItemException(String e){
-      if(item == null){
+     /* if(item == null){
         System.out.println("Item not found.");
-      }
+      }*/
     }
   }
 
@@ -61,7 +61,14 @@ class GameState {
       "' after version indicator.");
     }
 
-    s.close();
+    dungeon = new Dungeon(dungeonFileLine.substring(
+    Dungeon.FILENAME_LEADER.length()));
+    this.dungeon.restoreState(s);
+
+    String currentRoomLine = s.nextLine();
+    adventurersCurrentRoom = dungeon.getRoom(
+    currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+    
   }
 
   void initialize(Dungeon d) {
@@ -73,13 +80,13 @@ class GameState {
     this.dungeon = dungeon;
     adventurersCurrentRoom = dungeon.getEntry();
 
-    dungeon = new Dungeon(dungeonFileLine.substring(
+   /* dungeon = new Dungeon(dungeonFileLine.substring(
     Dungeon.FILENAME_LEADER.length()));
     this.dungeon.restoreState(s);
 
     String currentRoomLine = s.nextLine();
     adventurersCurrentRoom = dungeon.getRoom(
-    currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+    currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));*/
   }
 
 
@@ -96,19 +103,30 @@ class GameState {
     return inventory;
   }
 
-  String addToInventory(Item item){
+  void addToInventory(Item item){
     inventory.add(item);
   }
 
-  String removeFromInventory(Item item){
+  void removeFromInventory(Item item){
     inventory.remove(item);
   }
 
-  String getItemInVicinityNamed(String name){
+  Item getItemInVicinityNamed(String name){
+    //need to get the item named from the room
+
+    //should be like:
+    //getAdventurerCurrentRoom then get items in room
+    //add do something with that item
     return name;
   }
 
-  String getItemFromInventoryNamed(String name){
+  Item getItemFromInventoryNamed(String name){
+    //need to get the item name this from inventory
+    
+
+    //should be like:
+    //get inventory and cycles thru items
+    //do something with that item
     return name;
   }
 
