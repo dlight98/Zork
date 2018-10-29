@@ -14,7 +14,7 @@ class GameState {
     }
   }
 
-  class NoItemException extends Exception {
+  public class NoItemException extends Exception {
     public NoItemException(String e){
       if(item == null){
         System.out.println("Item not found.");
@@ -62,6 +62,11 @@ class GameState {
     }
 
     s.close();
+  }
+
+  void initialize(Dungeon d) {
+    this.dungeon = d;
+    adventurersCurrentRoom = dungeon.getEntry();
   }
 
   void initialize(Dungeon dungeon, Scanner s) {
