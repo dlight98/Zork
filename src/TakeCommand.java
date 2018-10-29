@@ -1,7 +1,11 @@
 //temporary class
 
-class TakeCommand {
-  private String itemName;
+class TakeCommand extends Command {
+  String itemName;
+
+  TakeCommand(String item){
+    this.itemName = item;
+  }
 
   String execute() {
     return null; //temporary

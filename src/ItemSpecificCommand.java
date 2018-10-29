@@ -1,6 +1,6 @@
 //Temporary version of class
 
-class ItemSpecificCommand {
+class ItemSpecificCommand extends Command {
   private String verb;
   private String noun;
 
