@@ -15,13 +15,13 @@ class GameState {
     }
   }
 
-  public class NoItemException extends Exception {
+ /* public class NoItemException extends Exception {
     public NoItemException(String e){
-     /* if(item == null){
+      if(item == null){
         System.out.println("Item not found.");
-      }*/
+      }
     }
-  }
+  }*/
 
   static String DEFAULT_SAVE_FILE = "zork_save";
   static String SAVE_FILE_EXTENSION = ".sav";
@@ -81,13 +81,6 @@ class GameState {
     this.dungeon = dungeon;
     adventurersCurrentRoom = dungeon.getEntry();
 
-   /* dungeon = new Dungeon(dungeonFileLine.substring(
-    Dungeon.FILENAME_LEADER.length()));
-    this.dungeon.restoreState(s);
-
-    String currentRoomLine = s.nextLine();
-    adventurersCurrentRoom = dungeon.getRoom(
-    currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));*/
   }
 
 
@@ -154,3 +147,5 @@ class GameState {
 
   
 }
+
+

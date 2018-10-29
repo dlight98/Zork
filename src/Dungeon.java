@@ -29,9 +29,14 @@ public class Dungeon {
     private String name;
     private Room entry;
     private Hashtable<String,Room> rooms;
+    private Hashtable<String,Item> items; //primary name and item. used for hydration
     private String filename;
+    
+    public Dungeon(String filename, boolean initState){
+      //TODO not sure how to use this yet
+    }
 
-    Dungeon(String name, Room entry) {
+    Dungeon(String name, Room entry) throws FileNotFoundException, IllegalDungeonFormatException {
         init();
         this.filename = null;    // null indicates not hydrated from file.
         this.name = name;
@@ -133,6 +138,16 @@ public class Dungeon {
             getRoom(roomName.substring(0,roomName.length()-1)).restoreState(s);
             roomName = s.nextLine();
         }
+    }
+
+    public Item getItem(String primaryName) throws NoItemException {
+      //TODO working on this
+      return null;
+    }
+
+    public void add(Item item) throws NoItemException {
+      //TODO working on this too
+      return null;
     }
 
     public Room getEntry() { return entry; }
