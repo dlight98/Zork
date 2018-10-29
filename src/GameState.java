@@ -3,24 +3,15 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.NoItemException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-class GameState {
+public class GameState() throws NoItemException { 
 
   public static class IllegalSaveFormatException extends Exception {
     public IllegalSaveFormatException(String e) {
       super(e);
-    }
-  }
-
-  class NoItemException extends Exception {
-    public NoItemException(String e){
-      if(item == null){
-        System.out.println("Item not found.");
-      }
     }
   }
 
@@ -30,15 +21,15 @@ class GameState {
 
   static String CURRENT_ROOM_LEADER = "Current room: ";
 
+    private static GameState theInstance;
+    private Dungeon dungeon;
+    private Room adventurersCurrentRoom;
+    public ArrayList<Item> item;
+    public GameState inventory;
+
   private static GameState theInstance;
   private Dungeon dungeon;
   private Room adventurersCurrentRoom;
-  public ArrayList<Item> item;
-  public GameState inventory;
-
-  // private static GameState theInstance;
-  // private Dungeon dungeon;
-  // private Room adventurersCurrentRoom;
 
 
   static synchronized GameState instance() {
@@ -52,7 +43,7 @@ class GameState {
   }
 
   void restore(String filename) throws FileNotFoundException,
-  IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
+    IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
     Scanner s = new Scanner(new FileReader(filename));
 
@@ -64,59 +55,62 @@ class GameState {
 
     if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
       throw new IllegalSaveFormatException("No '" +
-      Dungeon.FILENAME_LEADER +
-      "' after version indicator.");
+          Dungeon.FILENAME_LEADER + 
+          "' after version indicator.");
     }
 
-    s.close();
-  }
 
+    public static class NoItemException(item) {
+	   if(item == null){
+		  System.out.println("Item not found.");
+	   }
+    } 
 
-
-
-  void initialize(Dungeon dungeon, Scanner s) {
-    this.dungeon = dungeon;
-    adventurersCurrentRoom = dungeon.getEntry();
+    void initialize(Dungeon dungeon) {
+        this.dungeon = dungeon;
+        adventurersCurrentRoom = dungeon.getEntry();
+    }
 
     dungeon = new Dungeon(dungeonFileLine.substring(
-    Dungeon.FILENAME_LEADER.length()));
-    this.dungeon.restoreState(s);
+          Dungeon.FILENAME_LEADER.length()));
+    dungeon.restoreState(s);
+
 
     String currentRoomLine = s.nextLine();
     adventurersCurrentRoom = dungeon.getRoom(
-    currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
-  }
+        currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+    }
 
 
-  void setAdventurersCurrentRoom(Room room) {
-    this.adventurersCurrentRoom = room;
-  }
+    void setAdventurersCurrentRoom(Room room) {
+        adventurersCurrentRoom = room;
+    }
 
-  Dungeon getDungeon() {
-    return dungeon;
-  }
+    Dungeon getDungeon() {
+        return dungeon;
+    }
+    
+    String getInventoryNames(){ 
+       inventory = ArrayList<Item> item; 
+       return inventory;
+    } 
 
-  ArrayList<Item> getInventory(){
-    inventory = ArrayList<Item> item;
-    return inventory;
-  }
+    String addToInventory(Item item){ 
+       inventory.add(item); 
+    } 
 
-  String addToInventory(Item item){
-    inventory.add(item);
-  }
-
-  String removeFromInventory(Item item){
-    inventory.remove(item);
-  }
-
-  String getItemInVicinityNamed(String name){
-    return name;
-  }
-
-  String getItemFromInventoryNamed(String name){
-    return name;
-  }
-
+    String removeFromInventory(Item item){ 
+       inventory.remove(item); 
+    } 
+    
+    String getItemInVicinityNamed(String name){ 
+       return name; 
+    } 
+    
+    String getItemFromInventoryNamed(String name){ 
+       return name; 
+    }
+ 
 
   void store() throws IOException {
     store(DEFAULT_SAVE_FILE);
@@ -127,26 +121,26 @@ class GameState {
     PrintWriter w = new PrintWriter(new FileWriter(filename));
     w.println(SAVE_FILE_VERSION);
     dungeon.storeState(w);
-    w.println(CURRENT_ROOM_LEADER +
-    getAdventurersCurrentRoom().getTitle());
+    w.println(CURRENT_ROOM_LEADER + 
+        getAdventurersCurrentRoom().getTitle());
     w.close();
   }
 
-  // void initialize(Dungeon dungeon) {
-  //   this.dungeon = dungeon;
-  //   adventurersCurrentRoom = dungeon.getEntry();
-  // }
+  void initialize(Dungeon dungeon) {
+    this.dungeon = dungeon;
+    adventurersCurrentRoom = dungeon.getEntry();
+  }
 
   Room getAdventurersCurrentRoom() {
     return adventurersCurrentRoom;
   }
 
-  // void setAdventurersCurrentRoom(Room room) {
-  //   adventurersCurrentRoom = room;
-  // }
-  //
-  // Dungeon getDungeon() {
-  //   return dungeon;
-  // }
+  void setAdventurersCurrentRoom(Room room) {
+    adventurersCurrentRoom = room;
+  }
+
+  Dungeon getDungeon() {
+    return dungeon;
+  }
 
 }
