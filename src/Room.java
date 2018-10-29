@@ -36,7 +36,7 @@ public class Room {
 
   Room(Scanner s, Dungeon d) throws NoRoomException, Dungeon.IllegalDungeonFormatException {
     //from #3 on Stephen's instructions
-    this(s, d, true);
+    //this(s, d, true);
   }
 
   Room(Scanner s) throws NoRoomException,
