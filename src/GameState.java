@@ -31,7 +31,7 @@ class GameState {
   private static GameState theInstance;
   private Dungeon dungeon;
   private Room adventurersCurrentRoom;
-  private Item vicinity; 
+  private Item vicinity;
   public ArrayList<Item> item;
   public ArrayList<Item> inventory;
 
@@ -69,7 +69,7 @@ class GameState {
     String currentRoomLine = s.nextLine();
     adventurersCurrentRoom = dungeon.getRoom(
     currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
-    
+
   }
 
   void initialize(Dungeon d) {
@@ -116,11 +116,12 @@ class GameState {
 
   ArrayList<Item> getItemFromInventoryNamed(String name){
     //need to get the item name this from inventory
-    
+
 
     //should be like:
     //get inventory and cycles thru items
     //do something with that item
+    inventory = this.inventory;
     return inventory;
   }
 
@@ -139,13 +140,11 @@ class GameState {
     w.close();
   }
 
-  
+
 
   Room getAdventurersCurrentRoom() {
     return adventurersCurrentRoom;
   }
 
-  
+
 }
-
-

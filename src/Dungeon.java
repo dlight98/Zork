@@ -147,7 +147,6 @@ public class Dungeon {
 
     public void add(Item item) throws NoItemException {
       //TODO working on this too
-      return null;
     }
 
     public Room getEntry() { return entry; }
