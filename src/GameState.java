@@ -14,7 +14,7 @@ class GameState {
     }
   }
 
-  public class NoItemException extends Exception {
+  public static class NoItemException extends Exception {
     public NoItemException(String e){
      /* if(item == null){
         System.out.println("Item not found.");
@@ -128,6 +128,7 @@ class GameState {
     //should be like:
     //get inventory and cycles thru items
     //do something with that item
+    inventory = this.inventory; 
     return inventory;
   }
 
