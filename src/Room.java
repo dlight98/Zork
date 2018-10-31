@@ -90,7 +90,7 @@ public class Room {
 			else{
 
 			String sTitle =  s.nextLine();
-			this.title = sTitle.substring(0, sTitle.length() - 2);
+			constuctTitle = sTitle.substring(0, sTitle.length() - 2);
 		        value =  s.nextLine();
 			}
 			if(value.substring(8, value.length() - 1).equals("true")){
@@ -99,6 +99,7 @@ public class Room {
 			else{
 				this.beenHere = false;
 			}
+			
 			 String sContent = s.nextLine();
 			 int Start = 9;
 			 int End = sContent.indexOf(",");
@@ -183,6 +184,7 @@ public static void main(String[]args){
 	catch(Dungeon.IllegalDungeonFormatException e){
 	}
 	catch(NoRoomException e){}
+	
 	try{
              UC = new Dungeon("UC", work);
 	}
