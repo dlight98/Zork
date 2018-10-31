@@ -5,6 +5,7 @@ class DropCommand extends Command {
   DropCommand(String item){
     this.itemName = item;
   }
+  
   String execute() throws NoItemException {
 
     //use search to see if item is in inventory
@@ -12,6 +13,6 @@ class DropCommand extends Command {
     //then remove from inventory
 
 
-    return "Drop command successful\nDropped '" + this.itemName +"'\n";  //temporary
+    return "Drop command successful\nDropped '" + this.itemName +"'\n";  //FIXME DEBUG
   }
 }

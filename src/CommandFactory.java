@@ -24,8 +24,10 @@ public class CommandFactory {
 
     try {
       firstSpace = command.indexOf(" ");
-      firstWord = command.substring(0, firstSpace-1); //gets the first word
-      secondWord = command.substring(firstSpace);
+      System.out.println("firstSpace is: " + firstSpace); //FIXME DEBUG
+      firstWord = command.substring(0, firstSpace); //gets the first word
+      secondWord = command.substring(firstSpace+1);
+      System.out.println("First word is: " + firstWord + "\nsecond word is: " + secondWord); //FIXME DEBUG
     } catch (Exception e) { /* only one word? */}
 
     if (MOVEMENT_COMMANDS.contains(command)) {
@@ -36,9 +38,9 @@ public class CommandFactory {
       return new LookCommand();
     } else if(command.equals("i") || command.equals("inventory")) {
       return new InventoryCommand();
-    } else if(firstWord.equals("take")) {
+    } else if(firstWord.equals("take") || firstWord.equals("take ")) {
       return new TakeCommand(secondWord);
-    } else if(firstWord.equals("drop")) {
+    } else if(firstWord.equals("drop") || firstWord.equals("drop ")) {
       return new DropCommand(secondWord);  
     } else {
       return new UnknownCommand(command);

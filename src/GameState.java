@@ -1,10 +1,10 @@
-import java.util.Scanner;
-import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 class GameState {
 
@@ -15,8 +15,8 @@ class GameState {
   }
 
  /* public class NoItemException extends Exception {
-    public NoItemException(String e){
-      if(item == null){
+    public NoItemException(String e) {
+      if(item == null) {
         System.out.println("Item not found.");
       }
     }
@@ -45,7 +45,7 @@ class GameState {
   private GameState() { }
 
   void restore(String filename) throws FileNotFoundException,
-  IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
+      IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
     Scanner s = new Scanner(new FileReader(filename));
 
@@ -56,9 +56,9 @@ class GameState {
     String dungeonFileLine = s.nextLine();
 
     if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
-      throw new IllegalSaveFormatException("No '" +
-      Dungeon.FILENAME_LEADER +
-      "' after version indicator.");
+      throw new IllegalSaveFormatException("No '"
+      + Dungeon.FILENAME_LEADER
+      + "' after version indicator.");
     }
 
     dungeon = new Dungeon(dungeonFileLine.substring(
@@ -90,20 +90,20 @@ class GameState {
     return dungeon;
   }
 
-  ArrayList<Item> getInventory(){
+  ArrayList<Item> getInventory() {
     inventory = this.inventory;
     return inventory;
   }
 
-  void addToInventory(Item item){
+  void addToInventory(Item item) {
     inventory.add(item);
   }
 
-  void removeFromInventory(Item item){
+  void removeFromInventory(Item item) {
     inventory.remove(item);
   }
 
-  Item getItemInVicinityNamed(String name){
+  Item getItemInVicinityNamed(String name) {
     //need to get the item named from the room
 
     //should be like:
@@ -113,7 +113,7 @@ class GameState {
     return vicinity;
   }
 
-  ArrayList<Item> getItemFromInventoryNamed(String name){
+  ArrayList<Item> getItemFromInventoryNamed(String name) {
     //need to get the item name this from inventory
 
 
@@ -134,8 +134,7 @@ class GameState {
     PrintWriter w = new PrintWriter(new FileWriter(filename));
     w.println(SAVE_FILE_VERSION);
     dungeon.storeState(w);
-    w.println(CURRENT_ROOM_LEADER +
-    getAdventurersCurrentRoom().getTitle());
+    w.println(CURRENT_ROOM_LEADER + getAdventurersCurrentRoom().getTitle());
     w.close();
   }
 
