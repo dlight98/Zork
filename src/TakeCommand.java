@@ -14,6 +14,6 @@ class TakeCommand extends Command {
 
     //if it says "take all" then take the whole room
 
-    return null; //temporary
+    return "Take command sucessful\nTook '" + this.itemName +"'\n"; //temporary
   }
 }

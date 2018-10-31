@@ -1,4 +1,3 @@
-//Temporary version of class
 
 class ItemSpecificCommand extends Command {
   private String verb;
@@ -15,6 +14,9 @@ class ItemSpecificCommand extends Command {
     //check if the item exists
     //if it does check if it has the command
     //if it does then have it say the text in the message
+
+    //if it doesn't exist then say either "verb what?"
+    //or "I don't know how to verb"
 
     return null;  //temporary
   }

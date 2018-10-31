@@ -11,6 +11,7 @@ class DropCommand extends Command {
     //if it is add it to the room
     //then remove from inventory
 
-    return null;  //temporary
+
+    return "Drop command successful\nDropped '" + this.itemName +"'\n";  //temporary
   }
 }
