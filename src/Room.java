@@ -183,7 +183,11 @@ public static void main(String[]args){
 	catch(Dungeon.IllegalDungeonFormatException e){
 	}
 	catch(NoRoomException e){}
+	try{
              UC = new Dungeon("UC", work);
+	}
+	catch(FileNotFoundException e){}
+	catch(Dungeon.IllegalDungeonFormatException e){}
 	System.out.println(work.describe());
 	
 
