@@ -1,4 +1,3 @@
-//temporary class
 
 class DropCommand extends Command {
   private String itemName;
@@ -6,7 +5,12 @@ class DropCommand extends Command {
   DropCommand(String item){
     this.itemName = item;
   }
-  String execute() {
+  String execute() throws NoItemException {
+
+    //use search to see if item is in inventory
+    //if it is add it to the room
+    //then remove from inventory
+
     return null;  //temporary
   }
 }

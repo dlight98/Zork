@@ -42,8 +42,7 @@ class GameState {
     return theInstance;
   }
 
-  private GameState() {
-  }
+  private GameState() { }
 
   void restore(String filename) throws FileNotFoundException,
   IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
@@ -83,7 +82,6 @@ class GameState {
 
   }
 
-
   void setAdventurersCurrentRoom(Room room) {
     this.adventurersCurrentRoom = room;
   }
@@ -111,6 +109,7 @@ class GameState {
     //should be like:
     //getAdventurerCurrentRoom then get items in room
     //add do something with that item
+
     return vicinity;
   }
 
@@ -122,9 +121,9 @@ class GameState {
     //get inventory and cycles thru items
     //do something with that item
     inventory = this.inventory;
+
     return inventory;
   }
-
 
   void store() throws IOException {
     store(DEFAULT_SAVE_FILE);
@@ -140,11 +139,8 @@ class GameState {
     w.close();
   }
 
-
-
   Room getAdventurersCurrentRoom() {
     return adventurersCurrentRoom;
   }
-
 
 }

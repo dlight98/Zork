@@ -21,7 +21,7 @@ public class Dungeon {
     // Variables relating to dungeon file (.zork) storage.
     public static String ROOMS_MARKER = "Rooms:";
     public static String EXITS_MARKER = "Exits:";
-    
+
     // Variables relating to game state (.sav) storage.
     static String FILENAME_LEADER = "Dungeon file: ";
     static String ROOM_STATES_MARKER = "Room states:";
@@ -31,9 +31,13 @@ public class Dungeon {
     private Hashtable<String,Room> rooms;
     private Hashtable<String,Item> items; //primary name and item. used for hydration
     private String filename;
-    
+
     public Dungeon(String filename, boolean initState){
       //TODO not sure how to use this yet
+      if(initState == true){  //no save file
+        //make a new dungeon
+      }
+      //TODO make if there is a save file
     }
 
     Dungeon(String name, Room entry) throws FileNotFoundException, IllegalDungeonFormatException {
@@ -100,7 +104,7 @@ public class Dungeon {
 
         s.close();
     }
-    
+
     // Common object initialization tasks, regardless of which constructor
     // is used.
     private void init() {
@@ -127,7 +131,7 @@ public class Dungeon {
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
         // Note: the filename has already been read at this point.
-        
+
         if (!s.nextLine().equals(ROOM_STATES_MARKER)) {
             throw new GameState.IllegalSaveFormatException("No '" +
                 ROOM_STATES_MARKER + "' after dungeon filename in save file.");
