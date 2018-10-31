@@ -12,17 +12,22 @@ public class Item{
 
     Scanner in = new Scanner(System.in);  //Should we use the Scanner s thats given or this one?
     String name = "";
+    String temp;
     int weight;
 
     //should also set the name, weight, and maybe description
     //name is the first line. the first word before the comma is the primary name and the rest are aliases
     //next line is weight. this line should be put as an int into the weight variable
     //rest is Item-specific commands. should be substring before the colon as first String in HT then message after colon as message
-    
-   name = s.nextLine();
-   //TODO needs to check other names
-   weight = s.nextLine();
-    
+
+    name = s.nextLine();
+    this.primaryName = name;
+    //System.out.println(this.primaryName);  //FIXME debug
+    //TODO needs to check other names
+    weight = s.nextInt();
+    this.weight = weight;
+    //System.out.println(this.weight);  //FIXME debug 
+    //TODO make Commands
   }
 
   public boolean goesBy(String name) { //Name of item
@@ -43,17 +48,15 @@ public class Item{
   }
 
   public static void main(String args[]) {	//temporary
-    try{
-      Scanner in = new Scanner(new FileReader (args[0]));
+    try {
+      Scanner in = new Scanner(new FileReader(args[0]));
+      Item item = new Item(in);
     }
     catch(Exception e) {
       System.out.println("File not found.");
     }
   }
-
-  public static void main(String args[0]){
-    Scanner in = new Scanner(new FileReader(filename);
-    
-    
-  }
 }
+
+
+

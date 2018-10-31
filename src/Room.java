@@ -3,7 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.io.FileReader;
+import java.io.FileNotFoundException;
 public class Room {
 
   class NoRoomException extends Exception {}
@@ -11,12 +12,12 @@ public class Room {
   private String title;
   private String desc;
   private boolean beenHere;
-  private ArrayList<Exit> exits;
-
+  private ArrayList<Exit> exits; 
   Room(String title) {
     init();
     this.title = title;
   }
+  private ArrayList<Item>contents;
 
   /** Given a Scanner object positioned at the beginning of a "room" file
     entry, read and return a Room object representing it. 
@@ -30,7 +31,7 @@ public class Room {
   Room(Scanner s, Dungeon d) throws NoRoomException, Dungeon.IllegalDungeonFormatException {
     //TODO
     //from #3 on Stephen's instructions
-    this(s, d, true);
+    //this(s, d, true);
   }
 
   Room(Scanner s) throws NoRoomException,
@@ -80,6 +81,52 @@ public class Room {
       w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
   }
+  Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException, Dungeon.IllegalDungeonFormatException{
+    if(initState == false){
+      s.nextLine();
+      s.nextLine();
+      String value = "";
+      if(!s.nextLine().equals(Dungeon.ROOM_STATES_MARKER)){
+        throw new Dungeon.IllegalDungeonFormatException( "wrong format");
+      }
+      else{
+
+        String sTitle =  s.nextLine();
+        this.title = sTitle.substring(0, sTitle.length() - 2);
+        value =  s.nextLine();
+      }
+      if(value.substring(8, value.length() - 1).equals("true")){
+        this.beenHere = true;
+      }
+      else{
+        this.beenHere = false;
+      }
+      String sContent = s.nextLine();
+      int Start = 9;
+      int End = sContent.indexOf(",");
+      String inBetween = "";
+      while(true){
+        try{
+          inBetween = sContent.substring(Start, End);
+          contents.add(GameState.instance().getDungeon().getItem(inBetween));
+          Start = End;
+          End = sContent.substring(Start, sContent.length() - 1).indexOf(",");
+        }
+        catch(Exception e){
+          break;
+
+        }
+      }
+    }
+    if(initState = true){
+      s.nextLine();
+      s.nextLine();
+      s.nextLine();
+      if(!s.nextLine().equals("Items:")){
+        throw new Dungeon.IllegalDungeonFormatException("wrong format");
+      }
+    }
+  }
 
   void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
@@ -121,5 +168,26 @@ public class Room {
 
   void setBeenHere(boolean beenHere ) {
     this.beenHere = beenHere;
+  }
+  public static void main(String[]args) throws FileNotFoundException, Dungeon.IllegalDungeonFormatException {
+    Scanner tester = null;
+    Room work = null; 
+    Dungeon UC = null;
+    try{
+      tester = new Scanner(new FileReader(args[0]));
+    }
+    catch(FileNotFoundException e){
+      System.out.println("No file");
+    }
+    try{
+      work = new Room(tester, UC, false);}
+
+    catch(Dungeon.IllegalDungeonFormatException e){
+    }
+    catch(NoRoomException e){}
+    UC = new Dungeon("UC", work);
+    System.out.println(work.describe());
+
+
   }
 }

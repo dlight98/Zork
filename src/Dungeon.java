@@ -1,4 +1,3 @@
-
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.io.IOException;
@@ -163,4 +162,4 @@ public class Dungeon {
   public Room getRoom(String roomTitle) {
     return rooms.get(roomTitle);
   }
-}
+} 
