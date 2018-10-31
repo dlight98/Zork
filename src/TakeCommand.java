@@ -1,4 +1,3 @@
-//temporary class
 
 class TakeCommand extends Command {
   String itemName;
@@ -7,7 +6,14 @@ class TakeCommand extends Command {
     this.itemName = item;
   }
 
-  String execute() {
-    return null; //temporary
+  String execute() throws NoItemException {
+
+    //use the item name to search the room
+    //once you get that, add it to the inventory
+    //then remove from the room
+
+    //if it says "take all" then take the whole room
+
+    return "Take command sucessful\nTook '" + this.itemName +"'\n"; //temporary
   }
 }

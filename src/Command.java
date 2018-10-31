@@ -17,7 +17,7 @@ abstract class Command {
     //     this.dir = dir;
     // }
 
-    abstract String execute(); //
+    abstract String execute() throws NoItemException; //
 
 
 }
