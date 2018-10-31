@@ -169,25 +169,28 @@ public class Room {
   void setBeenHere(boolean beenHere ) {
     this.beenHere = beenHere;
   }
-  public static void main(String[]args) throws FileNotFoundException, Dungeon.IllegalDungeonFormatException {
-    Scanner tester = null;
-    Room work = null; 
-    Dungeon UC = null;
-    try{
-      tester = new Scanner(new FileReader(args[0]));
-    }
-    catch(FileNotFoundException e){
-      System.out.println("No file");
-    }
-    try{
-      work = new Room(tester, UC, false);}
-
-    catch(Dungeon.IllegalDungeonFormatException e){
-    }
-    catch(NoRoomException e){}
-    UC = new Dungeon("UC", work);
-    System.out.println(work.describe());
-
+public static void main(String[]args){
+	Scanner tester = null;
+	Room work = null; 
+	Dungeon UC = null;
+	try{
+		 tester = new Scanner(new FileReader(args[0]));
+	}
+	catch(FileNotFoundException e){
+		System.out.println("No file");
+	}
+	try{
+		work = new Room(tester, UC, false);}
+				
+	catch(Dungeon.IllegalDungeonFormatException e){
+	}
+	catch(NoRoomException e){}
+	try{
+             UC = new Dungeon("UC", work);
+	}
+	catch(FileNotFoundException e){}
+	catch(Dungeon.IllegalDungeonFormatException e){}
+	System.out.println(work.describe());	
 
   }
 }
