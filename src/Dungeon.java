@@ -40,7 +40,7 @@ public class Dungeon {
         this.entry = entry;
         rooms = new Hashtable<String,Room>();
     }
-    Dungeon(String filename, boolean initState){
+    Dungeon(Scanner s, boolean initState){
 	    this.filename = filename;
 	}
     public Item getItem(String primaryName){
