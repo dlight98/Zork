@@ -40,13 +40,16 @@ public class Dungeon {
       read.nextLine();
       read.nextLine();
       read.nextLine();
-      if(!read.nextLine().equals("Items")){
+      if(!read.nextLine().equals("Items:")){
         throw new IllegalDungeonFormatException("Illegal Dungeon; Items not here");
       }
-      else{
-        Item item1 = new Item(read);
+      else {
+        try {
+          Item item1 = new Item(read);
+          this.add(item1);
+        } catch(NoItemException e) { /*done with items*/ }
       }
-      //this = new Dungeon(filename); 
+      //this = new Dungeon(filename);
       //should to original dungeon file
     }
     //TODO make if there is a save file
@@ -61,9 +64,9 @@ public class Dungeon {
   }
 
   /**
-   * Read from the .zork filename passed, and instantiate a Dungeon object
-   * based on it.
-   */
+  * Read from the .zork filename passed, and instantiate a Dungeon object
+  * based on it.
+  */
   public Dungeon(String filename) throws FileNotFoundException,IllegalDungeonFormatException {
 
     init();
@@ -77,15 +80,14 @@ public class Dungeon {
     // Throw away delimiter.
     if (!s.nextLine().equals(TOP_LEVEL_DELIM)) {
       throw new IllegalDungeonFormatException("No '" +
-          TOP_LEVEL_DELIM + "' after version indicator.");
+      TOP_LEVEL_DELIM + "' after version indicator.");
     }
 
     // Throw away Rooms starter.
     if (!s.nextLine().equals(ROOMS_MARKER)) {
       throw new IllegalDungeonFormatException("No '" +
-          ROOMS_MARKER + "' line where expected.");
+      ROOMS_MARKER + "' line where expected.");
     }
-
 
     try {
       // Instantiate and add first room (the entry).
@@ -101,7 +103,7 @@ public class Dungeon {
     // Throw away Exits starter.
     if (!s.nextLine().equals(EXITS_MARKER)) {
       throw new IllegalDungeonFormatException("No '" +
-          EXITS_MARKER + "' line where expected.");
+      EXITS_MARKER + "' line where expected.");
     }
 
     try {
@@ -123,9 +125,9 @@ public class Dungeon {
   }
 
   /*
-   * Store the current (changeable) state of this dungeon to the writer
-   * passed.
-   */
+  * Store the current (changeable) state of this dungeon to the writer
+  * passed.
+  */
   void storeState(PrintWriter w) throws IOException {
     w.println(FILENAME_LEADER + getFilename());
     w.println(ROOM_STATES_MARKER);
@@ -136,16 +138,16 @@ public class Dungeon {
   }
 
   /*
-   * Restore the (changeable) state of this dungeon to that reflected in the
-   * reader passed.
-   */
+  * Restore the (changeable) state of this dungeon to that reflected in the
+  * reader passed.
+  */
   void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
     // Note: the filename has already been read at this point.
 
     if (!s.nextLine().equals(ROOM_STATES_MARKER)) {
       throw new GameState.IllegalSaveFormatException("No '" +
-          ROOM_STATES_MARKER + "' after dungeon filename in save file.");
+      ROOM_STATES_MARKER + "' after dungeon filename in save file.");
     }
 
     String roomName = s.nextLine();
@@ -156,12 +158,12 @@ public class Dungeon {
   }
 
   public Item getItem(String primaryName) throws NoItemException {
-    //TODO working on this
-    return null;
+    return items.get(primaryName);
   }
 
   public void add(Item item) throws NoItemException {
-    //TODO working on this too
+    String name = item.getPrimaryName();
+    items.put(name, item);
   }
 
   public Room getEntry() { return entry; }
@@ -172,4 +174,4 @@ public class Dungeon {
   public Room getRoom(String roomTitle) {
     return rooms.get(roomTitle);
   }
-} 
+}

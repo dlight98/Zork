@@ -12,7 +12,7 @@ public class Room {
   private String title;
   private String desc;
   private boolean beenHere;
-  private ArrayList<Exit> exits; 
+  private ArrayList<Exit> exits;
   Room(String title) {
     init();
     this.title = title;
@@ -20,7 +20,7 @@ public class Room {
   private ArrayList<Item>contents;
 
   /** Given a Scanner object positioned at the beginning of a "room" file
-    entry, read and return a Room object representing it. 
+    entry, read and return a Room object representing it.
     @throws NoRoomException The reader object is not positioned at the
     start of a room entry. A side effect of this is the reader's cursor
     is now positioned one line past where it was.
@@ -31,7 +31,7 @@ public class Room {
   Room(Scanner s, Dungeon d) throws NoRoomException, Dungeon.IllegalDungeonFormatException {
     //TODO
     //from #3 on Stephen's instructions
-    //this(s, d, true);
+    this(s, d, true);
   }
 
   Room(Scanner s) throws NoRoomException,
@@ -78,6 +78,7 @@ public class Room {
     if (beenHere) {
       w.println(title + ":");
       w.println("beenHere=true");
+      //TODO write which items are in this room
       w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
   }
@@ -189,7 +190,7 @@ public class Room {
 
   public static void main(String[]args){
     Scanner tester = null;
-    Room work = null; 
+    Room work = null;
     Dungeon UC = null;
     try{
       tester = new Scanner(new FileReader(args[0]));
@@ -209,7 +210,7 @@ public class Room {
     }
     catch(FileNotFoundException e){}
     catch(Dungeon.IllegalDungeonFormatException e){}
-    System.out.println(work.describe());	
+    System.out.println(work.describe());
 
   }
 }

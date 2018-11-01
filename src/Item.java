@@ -15,11 +15,6 @@ public class Item{
     String temp;
     int weight;
 
-    //should also set the name, weight, and maybe description
-    //name is the first line. the first word before the comma is the primary name and the rest are aliases
-    //next line is weight. this line should be put as an int into the weight variable
-    //rest is Item-specific commands. should be substring before the colon as first String in HT then message after colon as message
-
     name = s.nextLine();
     this.primaryName = name;
     //System.out.println(this.primaryName);  //FIXME debug
@@ -27,9 +22,17 @@ public class Item{
 
     weight = s.nextInt();
     this.weight = weight;
-    //System.out.println(this.weight);  //FIXME debug 
+    //System.out.println(this.weight);  //FIXME debug
 
-    //TODO make Commands
+    //FIXME should do commands
+    temp = s.nextLine();
+    while(!temp.equals("---")){
+      if(!temp.equals("---")){
+        String[] commandParts = temp.split(":");
+        messages.put(commandParts[0], commandParts[1]);
+      }
+      temp = s.nextLine();
+    }
 
   }
 
@@ -62,6 +65,3 @@ public class Item{
     }
   }
 }
-
-
-
