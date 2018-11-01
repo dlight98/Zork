@@ -24,10 +24,10 @@ public class CommandFactory {
 
     try {
       firstSpace = command.indexOf(" ");
-      System.out.println("firstSpace is: " + firstSpace); //FIXME DEBUG
+      //System.out.println("firstSpace is: " + firstSpace); //FIXME DEBUG
       firstWord = command.substring(0, firstSpace); //gets the first word
       secondWord = command.substring(firstSpace+1);
-      System.out.println("First word is: " + firstWord + "\nsecond word is: " + secondWord); //FIXME DEBUG
+      //System.out.println("First word is: " + firstWord + "\nsecond word is: " + secondWord); //FIXME DEBUG
     } catch (Exception e) { /* only one word? */}
 
     if (MOVEMENT_COMMANDS.contains(command)) {

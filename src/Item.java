@@ -24,10 +24,13 @@ public class Item{
     this.primaryName = name;
     //System.out.println(this.primaryName);  //FIXME debug
     //TODO needs to check other names
+
     weight = s.nextInt();
     this.weight = weight;
     //System.out.println(this.weight);  //FIXME debug 
+
     //TODO make Commands
+
   }
 
   public boolean goesBy(String name) { //Name of item
@@ -38,13 +41,15 @@ public class Item{
     }
   }
 
-  public String getPrimaryName() { //gets true name
-    return primaryName;
-  }
+  public String getPrimaryName() { return this.primaryName; }
+
+  public int getWeight() { return this.weight; }
 
   public String toString() {
     //might need to change
-    return "messages";
+    String string = "";
+    string = this.getPrimaryName();
+    return string;
   }
 
   public static void main(String args[]) {	//temporary

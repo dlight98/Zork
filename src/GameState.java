@@ -109,20 +109,24 @@ class GameState {
     //should be like:
     //getAdventurerCurrentRoom then get items in room
     //add do something with that item
+    
+    
 
     return vicinity;
   }
 
-  ArrayList<Item> getItemFromInventoryNamed(String name) {
+  ArrayList<Item> getItemFromInventoryNamed(String name) throws NoItemException {
     //need to get the item name this from inventory
 
 
     //should be like:
     //get inventory and cycles thru items
     //do something with that item
-    inventory = this.inventory;
-
-    return inventory;
+    for(Item item:inventory) {
+      
+    }
+    
+    return null; //FIXME(Item itemOnList : GameState.instance().getAdventurersCurrentRoom().getContents) 
   }
 
   void store() throws IOException {

@@ -81,6 +81,7 @@ public class Room {
       w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
   }
+
   Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException, Dungeon.IllegalDungeonFormatException{
     if(initState == false){
       s.nextLine();
@@ -123,7 +124,7 @@ public class Room {
       s.nextLine();
       s.nextLine();
       if(!s.nextLine().equals("Items:")){
-        throw new Dungeon.IllegalDungeonFormatException("wrong format");
+        throw new Dungeon.IllegalDungeonFormatException("wrong format in room constructor");
       }
     }
   }
@@ -169,28 +170,46 @@ public class Room {
   void setBeenHere(boolean beenHere ) {
     this.beenHere = beenHere;
   }
-public static void main(String[]args){
-	Scanner tester = null;
-	Room work = null; 
-	Dungeon UC = null;
-	try{
-		 tester = new Scanner(new FileReader(args[0]));
-	}
-	catch(FileNotFoundException e){
-		System.out.println("No file");
-	}
-	try{
-		work = new Room(tester, UC, false);}
-				
-	catch(Dungeon.IllegalDungeonFormatException e){
-	}
-	catch(NoRoomException e){}
-	try{
-             UC = new Dungeon("UC", work);
-	}
-	catch(FileNotFoundException e){}
-	catch(Dungeon.IllegalDungeonFormatException e){}
-	System.out.println(work.describe());	
+
+  //From Zork III UML
+  ArrayList<Item> getContents() throws NoItemException { return this.contents; }
+  void remove(Item item) throws NoItemException { this.contents.remove(item); }
+  void add(Item item) throws NoItemException { this.contents.add(item); }
+
+  Item getItemNamed(String name) throws Exception {
+    //try{
+    for (Item item : this.getContents()) {
+      if (name.equals(item.getPrimaryName())) {
+        return item;
+      }
+    }
+    //}catch (NoItemException e) {/*empty*/}
+    throw new NoItemException("No " + name + " found.");
+    //throw NoItemException
+  }
+
+  public static void main(String[]args){
+    Scanner tester = null;
+    Room work = null; 
+    Dungeon UC = null;
+    try{
+      tester = new Scanner(new FileReader(args[0]));
+    }
+    catch(FileNotFoundException e){
+      System.out.println("No file");
+    }
+    try{
+      work = new Room(tester, UC, false);}
+
+    catch(Dungeon.IllegalDungeonFormatException e){
+    }
+    catch(NoRoomException e){}
+    try{
+      UC = new Dungeon("UC", work);
+    }
+    catch(FileNotFoundException e){}
+    catch(Dungeon.IllegalDungeonFormatException e){}
+    System.out.println(work.describe());	
 
   }
 }
