@@ -12,24 +12,33 @@ public class Item{
 
     Scanner in = new Scanner(System.in);  //Should we use the Scanner s thats given or this one?
     String name = "";
-    String temp;
+    String temp1 = "";
+    String temp2 = "";
     int weight;
-
-    //should also set the name, weight, and maybe description
-    //name is the first line. the first word before the comma is the primary name and the rest are aliases
-    //next line is weight. this line should be put as an int into the weight variable
-    //rest is Item-specific commands. should be substring before the colon as first String in HT then message after colon as message
+    int tempI;
 
     name = s.nextLine();
     this.primaryName = name;
-    //System.out.println(this.primaryName);  //FIXME debug
+    System.out.println(this.primaryName);  //FIXME debug
     //TODO needs to check other names
 
     weight = s.nextInt();
     this.weight = weight;
-    //System.out.println(this.weight);  //FIXME debug 
+    System.out.println(this.weight);  //FIXME debug
 
-    //TODO make Commands
+    //FIXME should do commands
+    temp1 = s.nextLine();
+    while(!("---").equals(temp1)){
+      if(!("---").equals(temp1)){
+        System.out.println("temp is: " + temp1); //DEBUG
+        tempI = temp1.indexOf(":");
+        temp1 = temp1.substring(0,tempI);  //might just be tempI
+        temp2 = temp1.substring(tempI);
+        messages.put(temp1, temp2);
+        temp2 ="";
+      }
+      temp1 = s.nextLine();
+    }
 
   }
 
@@ -62,6 +71,3 @@ public class Item{
     }
   }
 }
-
-
-

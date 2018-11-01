@@ -45,7 +45,7 @@ class GameState {
   private GameState() { }
 
   void restore(String filename) throws FileNotFoundException,
-      IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
+      IllegalSaveFormatException,Dungeon.IllegalDungeonFormatException,Exception {
 
     Scanner s = new Scanner(new FileReader(filename));
 
@@ -109,8 +109,8 @@ class GameState {
     //should be like:
     //getAdventurerCurrentRoom then get items in room
     //add do something with that item
-    
-    
+
+
 
     return vicinity;
   }
@@ -123,10 +123,10 @@ class GameState {
     //get inventory and cycles thru items
     //do something with that item
     for(Item item:inventory) {
-      
+
     }
-    
-    return null; //FIXME(Item itemOnList : GameState.instance().getAdventurersCurrentRoom().getContents) 
+
+    return null; //FIXME(Item itemOnList : GameState.instance().getAdventurersCurrentRoom().getContents)
   }
 
   void store() throws IOException {

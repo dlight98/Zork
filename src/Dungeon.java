@@ -36,21 +36,60 @@ public class Dungeon {
     //TODO not sure how to use this yet
     if(initState == true){  //no save file
       //make a new dungeon
+      init();
       Scanner read = new Scanner(new FileReader(filename));
       read.nextLine();
       read.nextLine();
       read.nextLine();
-      if(!read.nextLine().equals("Items")){
+      if(!read.nextLine().equals("Items:")){
         throw new IllegalDungeonFormatException("Illegal Dungeon; Items not here");
       }
-      else{
-        Item item1 = new Item(read);
+      else {
+        try{
+          while(true){
+            Item item1 = new Item(read);
+            items.put(item1.getPrimaryName(), item1);
+          }
+        } catch(Exception e){ }
       }
-      //this = new Dungeon(filename); 
-      //should to original dungeon file
+      if(!read.nextLine().equals("Rooms:")){
+        System.out.println(read.nextLine());
+        throw new IllegalDungeonFormatException("Rooms not here");
+      }
+      try {
+        // Instantiate and add first room (the entry).
+        entry = new Room(read);
+        add(entry);
+
+        // Instantiate and add other rooms.
+        while (true) {
+          add(new Room(read));
+        }
+      } catch (Room.NoRoomException e) {  /* end of rooms */ }
+
+      // Throw away Exits starter.
+      if (!read.nextLine().equals(EXITS_MARKER)) {
+        throw new IllegalDungeonFormatException("No '" +
+        EXITS_MARKER + "' line where expected.");
+      }
+
+      try {
+        // Instantiate exits.
+        while (true) {
+          // (Note that the Exit constructor takes care of adding itself
+          // to its source room.)
+          Exit exit = new Exit(read, this);
+        }
+      } catch (Exit.NoExitException e) {  /* end of exits */ }
+
+      read.close();
     }
-    //TODO make if there is a save file
+
+    //this = new Dungeon(filename);
+    //should to original dungeon file
   }
+  //TODO make if there is a save file
+
 
   Dungeon(String name, Room entry) throws FileNotFoundException, IllegalDungeonFormatException {
     init();
@@ -61,11 +100,12 @@ public class Dungeon {
   }
 
   /**
-   * Read from the .zork filename passed, and instantiate a Dungeon object
-   * based on it.
-   */
-  public Dungeon(String filename) throws FileNotFoundException,IllegalDungeonFormatException {
+  * Read from the .zork filename passed, and instantiate a Dungeon object
+  * based on it.
+  */
+  public Dungeon(String filename) throws Exception,FileNotFoundException,IllegalDungeonFormatException {
 
+    Dungeon dungeon = new Dungeon(filename, true);
     init();
     this.filename = filename;
 
@@ -77,13 +117,13 @@ public class Dungeon {
     // Throw away delimiter.
     if (!s.nextLine().equals(TOP_LEVEL_DELIM)) {
       throw new IllegalDungeonFormatException("No '" +
-          TOP_LEVEL_DELIM + "' after version indicator.");
+      TOP_LEVEL_DELIM + "' after version indicator.");
     }
 
     // Throw away Rooms starter.
     if (!s.nextLine().equals(ROOMS_MARKER)) {
       throw new IllegalDungeonFormatException("No '" +
-          ROOMS_MARKER + "' line where expected.");
+      ROOMS_MARKER + "' line where expected.");
     }
 
 
@@ -101,7 +141,7 @@ public class Dungeon {
     // Throw away Exits starter.
     if (!s.nextLine().equals(EXITS_MARKER)) {
       throw new IllegalDungeonFormatException("No '" +
-          EXITS_MARKER + "' line where expected.");
+      EXITS_MARKER + "' line where expected.");
     }
 
     try {
@@ -123,9 +163,9 @@ public class Dungeon {
   }
 
   /*
-   * Store the current (changeable) state of this dungeon to the writer
-   * passed.
-   */
+  * Store the current (changeable) state of this dungeon to the writer
+  * passed.
+  */
   void storeState(PrintWriter w) throws IOException {
     w.println(FILENAME_LEADER + getFilename());
     w.println(ROOM_STATES_MARKER);
@@ -136,16 +176,16 @@ public class Dungeon {
   }
 
   /*
-   * Restore the (changeable) state of this dungeon to that reflected in the
-   * reader passed.
-   */
+  * Restore the (changeable) state of this dungeon to that reflected in the
+  * reader passed.
+  */
   void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
     // Note: the filename has already been read at this point.
 
     if (!s.nextLine().equals(ROOM_STATES_MARKER)) {
       throw new GameState.IllegalSaveFormatException("No '" +
-          ROOM_STATES_MARKER + "' after dungeon filename in save file.");
+      ROOM_STATES_MARKER + "' after dungeon filename in save file.");
     }
 
     String roomName = s.nextLine();
@@ -172,4 +212,4 @@ public class Dungeon {
   public Room getRoom(String roomTitle) {
     return rooms.get(roomTitle);
   }
-} 
+}
