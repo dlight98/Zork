@@ -32,20 +32,20 @@ public class Dungeon {
   private Hashtable<String,Item> items; //primary name and item. used for hydration
   private String filename;
 
-  public Dungeon(String filename, boolean initState) throws Dungeon.IllegalDungeonFormatException{
+  public Dungeon(String filename, boolean initState) throws Exception {
     //TODO not sure how to use this yet
     if(initState == true){  //no save file
       //make a new dungeon
-        Scanner read = new Scanner(new FileReader(filename));
-        read.nextLine();
-        read.nextLine();
-        read.nextLine();
-        if(!read.nextLine().equals("Items")){
-                throw new IllegalDungeonFormatEception();
-        }
-        else{
-                Item item1 = new Item(read);
-        }
+      Scanner read = new Scanner(new FileReader(filename));
+      read.nextLine();
+      read.nextLine();
+      read.nextLine();
+      if(!read.nextLine().equals("Items")){
+        throw new IllegalDungeonFormatException("Illegal Dungeon; Items not here");
+      }
+      else{
+        Item item1 = new Item(read);
+      }
       //this = new Dungeon(filename); 
       //should to original dungeon file
     }
