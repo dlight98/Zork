@@ -18,6 +18,7 @@ public class Dungeon {
   public static String SECOND_LEVEL_DELIM = "---";
 
   // Variables relating to dungeon file (.zork) storage.
+  public static String ITEMS_MARKER = "Items:";
   public static String ROOMS_MARKER = "Rooms:";
   public static String EXITS_MARKER = "Exits:";
 
@@ -45,6 +46,8 @@ public class Dungeon {
         else{
                 Item item1 = new Item(read);
         }
+      //this = new Dungeon(filename); 
+      //should to original dungeon file
     }
     //TODO make if there is a save file
   }
