@@ -12,26 +12,32 @@ public class Item{
 
     Scanner in = new Scanner(System.in);  //Should we use the Scanner s thats given or this one?
     String name = "";
-    String temp;
+    String temp1 = "";
+    String temp2 = "";
     int weight;
+    int tempI;
 
     name = s.nextLine();
     this.primaryName = name;
-    //System.out.println(this.primaryName);  //FIXME debug
+    System.out.println(this.primaryName);  //FIXME debug
     //TODO needs to check other names
 
     weight = s.nextInt();
     this.weight = weight;
-    //System.out.println(this.weight);  //FIXME debug
+    System.out.println(this.weight);  //FIXME debug
 
     //FIXME should do commands
-    temp = s.nextLine();
-    while(!temp.equals("---")){
-      if(!temp.equals("---")){
-        String[] commandParts = temp.split(":");
-        messages.put(commandParts[0], commandParts[1]);
+    temp1 = s.nextLine();
+    while(!("---").equals(temp1)){
+      if(!("---").equals(temp1)){
+        System.out.println("temp is: " + temp1); //DEBUG
+        tempI = temp1.indexOf(":");
+        temp1 = temp1.substring(0,tempI);  //might just be tempI
+        temp2 = temp1.substring(tempI);
+        messages.put(temp1, temp2);
+        temp2 ="";
       }
-      temp = s.nextLine();
+      temp1 = s.nextLine();
     }
 
   }

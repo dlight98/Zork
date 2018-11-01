@@ -6,7 +6,7 @@ class TakeCommand extends Command {
     this.itemName = item;
   }
 
-String execute() throws NoItemException {
+  String execute() throws NoItemException {
 
     /* for (Item itemOnList : GameState.instance().getAdventurersCurrentRoom().getContents) {
     if (itemOnList = this.itemName) {
@@ -17,7 +17,7 @@ String execute() throws NoItemException {
 }*/
     String string = "";
     if(itemName.equals("")||itemName.equals(" ")){
-    return "Take what?";
+    return "Take what?\n";
     } else if(itemName.equals("all")){
     try{
       for(Item item : GameState.instance().getAdventurersCurrentRoom().getContents()){
@@ -38,7 +38,7 @@ String execute() throws NoItemException {
     } catch (Exception e) { /*item not in room*/ }
 
     try{
-      for (Item itemOnList : GameState.instance().inventory) {
+      for (Item itemOnList : GameState.instance().getInventory()) {
         if (itemOnList == GameState.instance().getDungeon().getItem(itemName)) {
           return "You already have the " + itemName + ".";
         }

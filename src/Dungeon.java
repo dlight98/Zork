@@ -36,6 +36,7 @@ public class Dungeon {
     //TODO not sure how to use this yet
     if(initState == true){  //no save file
       //make a new dungeon
+      init();
       Scanner read = new Scanner(new FileReader(filename));
       read.nextLine();
       read.nextLine();
@@ -44,16 +45,51 @@ public class Dungeon {
         throw new IllegalDungeonFormatException("Illegal Dungeon; Items not here");
       }
       else {
-        try {
-          Item item1 = new Item(read);
-          this.add(item1);
-        } catch(NoItemException e) { /*done with items*/ }
+        try{
+          while(true){
+            Item item1 = new Item(read);
+            items.put(item1.getPrimaryName(), item1);
+          }
+        } catch(Exception e){ }
       }
-      //this = new Dungeon(filename);
-      //should to original dungeon file
+      if(!read.nextLine().equals("Rooms:")){
+        System.out.println(read.nextLine());
+        throw new IllegalDungeonFormatException("Rooms not here");
+      }
+      try {
+        // Instantiate and add first room (the entry).
+        entry = new Room(read);
+        add(entry);
+
+        // Instantiate and add other rooms.
+        while (true) {
+          add(new Room(read));
+        }
+      } catch (Room.NoRoomException e) {  /* end of rooms */ }
+
+      // Throw away Exits starter.
+      if (!read.nextLine().equals(EXITS_MARKER)) {
+        throw new IllegalDungeonFormatException("No '" +
+        EXITS_MARKER + "' line where expected.");
+      }
+
+      try {
+        // Instantiate exits.
+        while (true) {
+          // (Note that the Exit constructor takes care of adding itself
+          // to its source room.)
+          Exit exit = new Exit(read, this);
+        }
+      } catch (Exit.NoExitException e) {  /* end of exits */ }
+
+      read.close();
     }
-    //TODO make if there is a save file
+
+    //this = new Dungeon(filename);
+    //should to original dungeon file
   }
+  //TODO make if there is a save file
+
 
   Dungeon(String name, Room entry) throws FileNotFoundException, IllegalDungeonFormatException {
     init();
@@ -67,8 +103,9 @@ public class Dungeon {
   * Read from the .zork filename passed, and instantiate a Dungeon object
   * based on it.
   */
-  public Dungeon(String filename) throws FileNotFoundException,IllegalDungeonFormatException {
+  public Dungeon(String filename) throws Exception,FileNotFoundException,IllegalDungeonFormatException {
 
+    Dungeon dungeon = new Dungeon(filename, true);
     init();
     this.filename = filename;
 
@@ -88,6 +125,7 @@ public class Dungeon {
       throw new IllegalDungeonFormatException("No '" +
       ROOMS_MARKER + "' line where expected.");
     }
+
 
     try {
       // Instantiate and add first room (the entry).
@@ -158,12 +196,12 @@ public class Dungeon {
   }
 
   public Item getItem(String primaryName) throws NoItemException {
-    return items.get(primaryName);
+    //TODO working on this
+    return null;
   }
 
   public void add(Item item) throws NoItemException {
-    String name = item.getPrimaryName();
-    items.put(name, item);
+    //TODO working on this too
   }
 
   public Room getEntry() { return entry; }

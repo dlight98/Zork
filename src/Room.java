@@ -50,6 +50,7 @@ public class Room {
         desc += lineOfDesc + "\n";
         lineOfDesc = s.nextLine();
       }
+      //TODO have contents
 
       // throw away delimiter
       if (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)) {
