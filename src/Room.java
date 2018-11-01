@@ -81,7 +81,6 @@ public class Room {
       w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
   }
-
   Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException, Dungeon.IllegalDungeonFormatException{
     if(initState == false){
       s.nextLine();
@@ -204,6 +203,7 @@ public class Room {
     catch(Dungeon.IllegalDungeonFormatException e){
     }
     catch(NoRoomException e){}
+
     try{
       UC = new Dungeon("UC", work);
     }
