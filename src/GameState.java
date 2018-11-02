@@ -1,5 +1,6 @@
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileReader;
@@ -14,14 +15,16 @@ public class GameState {
         }
     }
 
-    static String DEFAULT_SAVE_FILE = "zork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
-    static String SAVE_FILE_VERSION = "Zork II save data";
+    static String SAVE_FILE_VERSION = "Zork III save data";
 
+    static String ADVENTURER_MARKER = "Adventurer:";
     static String CURRENT_ROOM_LEADER = "Current room: ";
+    static String INVENTORY_LEADER = "Inventory: ";
 
     private static GameState theInstance;
     private Dungeon dungeon;
+    private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
 
     static synchronized GameState instance() {
@@ -32,6 +35,15 @@ public class GameState {
     }
 
     private GameState() {
+        inventory = new ArrayList<Item>();
+    }
+
+    int getAdventurersCurrentWeight() {
+        int total = 0;
+        for (Item item : inventory) {
+            total += item.getWeight();
+        }
+        return total;
     }
 
     void restore(String filename) throws FileNotFoundException,
@@ -52,16 +64,26 @@ public class GameState {
         }
 
         dungeon = new Dungeon(dungeonFileLine.substring(
-            Dungeon.FILENAME_LEADER.length()));
+            Dungeon.FILENAME_LEADER.length()), false);
         dungeon.restoreState(s);
 
+        s.nextLine();  // Throw away "Adventurer:".
         String currentRoomLine = s.nextLine();
         adventurersCurrentRoom = dungeon.getRoom(
             currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
-    }
-
-    void store() throws IOException {
-        store(DEFAULT_SAVE_FILE);
+        if (s.hasNext()) {
+            String inventoryList = s.nextLine().substring(
+                INVENTORY_LEADER.length());
+            String[] inventoryItems = inventoryList.split(",");
+            for (String itemName : inventoryItems) {
+                try {
+                    addToInventory(dungeon.getItem(itemName));
+                } catch (Item.NoItemException e) {
+                    throw new IllegalSaveFormatException("No such item '" +
+                        itemName + "'");
+                }
+            }
+        }
     }
 
     void store(String saveName) throws IOException {
@@ -69,14 +91,66 @@ public class GameState {
         PrintWriter w = new PrintWriter(new FileWriter(filename));
         w.println(SAVE_FILE_VERSION);
         dungeon.storeState(w);
-        w.println(CURRENT_ROOM_LEADER + 
-            getAdventurersCurrentRoom().getTitle());
+        w.println(ADVENTURER_MARKER);
+        w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
+        if (inventory.size() > 0) {
+            w.print(INVENTORY_LEADER);
+            for (int i=0; i<inventory.size()-1; i++) {
+                w.print(inventory.get(i).getPrimaryName() + ",");
+            }
+            w.println(inventory.get(inventory.size()-1).getPrimaryName());
+        }
         w.close();
     }
 
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
+    }
+
+    ArrayList<String> getInventoryNames() {
+        ArrayList<String> names = new ArrayList<String>();
+        for (Item item : inventory) {
+            names.add(item.getPrimaryName());
+        }
+        return names;
+    }
+
+    void addToInventory(Item item) /* throws TooHeavyException */ {
+        inventory.add(item);
+    }
+
+    void removeFromInventory(Item item) {
+        inventory.remove(item);
+    }
+
+    Item getItemInVicinityNamed(String name) throws Item.NoItemException {
+
+        // First, check inventory.
+        for (Item item : inventory) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        // Next, check room contents.
+        for (Item item : adventurersCurrentRoom.getContents()) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        throw new Item.NoItemException();
+    }
+
+    Item getItemFromInventoryNamed(String name) throws Item.NoItemException {
+
+        for (Item item : inventory) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+        throw new Item.NoItemException();
     }
 
     Room getAdventurersCurrentRoom() {
@@ -90,4 +164,5 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+
 }

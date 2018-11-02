@@ -21,6 +21,7 @@ public class Dungeon {
     // Variables relating to dungeon file (.zork) storage.
     public static String ROOMS_MARKER = "Rooms:";
     public static String EXITS_MARKER = "Exits:";
+    public static String ITEMS_MARKER = "Items:";
     
     // Variables relating to game state (.sav) storage.
     static String FILENAME_LEADER = "Dungeon file: ";
@@ -29,6 +30,7 @@ public class Dungeon {
     private String name;
     private Room entry;
     private Hashtable<String,Room> rooms;
+    private Hashtable<String,Item> items;
     private String filename;
 
     Dungeon(String name, Room entry) {
@@ -43,8 +45,18 @@ public class Dungeon {
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it.
      */
-    public Dungeon(String filename) throws FileNotFoundException,
+    public Dungeon(String filename) throws FileNotFoundException, 
         IllegalDungeonFormatException {
+
+        this(filename, true);
+    }
+
+    /**
+     * Read from the .zork filename passed, and instantiate a Dungeon object
+     * based on it, including (possibly) the items in their original locations.
+     */
+    public Dungeon(String filename, boolean initState) 
+        throws FileNotFoundException, IllegalDungeonFormatException {
 
         init();
         this.filename = filename;
@@ -60,21 +72,33 @@ public class Dungeon {
                 TOP_LEVEL_DELIM + "' after version indicator.");
         }
 
+        // Throw away Items starter.
+        if (!s.nextLine().equals(ITEMS_MARKER)) {
+            throw new IllegalDungeonFormatException("No '" +
+                ITEMS_MARKER + "' line where expected.");
+        }
+
+        try {
+            // Instantiate items.
+            while (true) {
+                add(new Item(s));
+            }
+        } catch (Item.NoItemException e) {  /* end of items */ }
+
         // Throw away Rooms starter.
         if (!s.nextLine().equals(ROOMS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                 ROOMS_MARKER + "' line where expected.");
         }
 
-
         try {
             // Instantiate and add first room (the entry).
-            entry = new Room(s);
+            entry = new Room(s, this, initState);
             add(entry);
 
             // Instantiate and add other rooms.
             while (true) {
-                add(new Room(s));
+                add(new Room(s, this, initState));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
 
@@ -87,8 +111,6 @@ public class Dungeon {
         try {
             // Instantiate exits.
             while (true) {
-                // (Note that the Exit constructor takes care of adding itself
-                // to its source room.)
                 Exit exit = new Exit(s, this);
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
@@ -100,6 +122,7 @@ public class Dungeon {
     // is used.
     private void init() {
         rooms = new Hashtable<String,Room>();
+        items = new Hashtable<String,Item>();
     }
 
     /*
@@ -130,7 +153,8 @@ public class Dungeon {
 
         String roomName = s.nextLine();
         while (!roomName.equals(TOP_LEVEL_DELIM)) {
-            getRoom(roomName.substring(0,roomName.length()-1)).restoreState(s);
+            getRoom(roomName.substring(0,roomName.length()-1)).
+                restoreState(s, this);
             roomName = s.nextLine();
         }
     }
@@ -139,8 +163,22 @@ public class Dungeon {
     public String getName() { return name; }
     public String getFilename() { return filename; }
     public void add(Room room) { rooms.put(room.getTitle(),room); }
+    public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
+    }
+
+    /**
+     * Get the Item object whose primary name is passed. This has nothing to
+     * do with where the Adventurer might be, or what's in his/her inventory,
+     * etc.
+     */
+    public Item getItem(String primaryItemName) throws Item.NoItemException {
+        
+        if (items.get(primaryItemName) == null) {
+            throw new Item.NoItemException();
+        }
+        return items.get(primaryItemName);
     }
 }

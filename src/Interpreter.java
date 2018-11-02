@@ -8,7 +8,7 @@ public class Interpreter {
                                     // singleton
 
     public static String USAGE_MSG = 
-        "Usage: Interpreter dungeonFile.zork|saveFile.sav.";
+        "Usage: Interpreter zorkFile.zork|saveFile.sav.";
 
     public static void main(String args[]) {
 
