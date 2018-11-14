@@ -1,0 +1,84 @@
+Asia
+Zork III
+===
+items:
+SamuraiSword
+6
+unsheathe: sword drawn
+sheathe: sword put away
+swing: cut
+---
+Sushi
+1
+eat: Delicious sushi eaten
+---
+kimnono
+2
+wear: traditional japanese garment equiped
+take: kimono taken
+----
+noodles
+1
+eat: noodles eaten
+----
+BuddhistStatue
+5
+rub: enchantment equiped
+take: Statue taken
+---
+tiger
+9
+pet: Tiger befriended
+ride: faster movement now enabled
+---
+panda
+10
+pet: panda is now happy
+feed: panda will now follow
+---
+bamboo
+7
+take: bamboo equiped
+hit: bamboo cut in half
+---
+ninjaStar
+3
+throw: ninja Stars thrown
+sheathe: ninja stars put away
+---
+FloatingLantern
+1
+light: lantern drifts upward towards the sky
+letgo: blessings enabled
+---
+ConfuciusPainting
+3
+touch: bad luck enabled!
+take: painting taken
+vandalize: painting destroyed
+---
+===
+Rooms:
+Japan
+Beautiful island with concentrated people. Vibrant culture and history await you
+---
+China
+Historical powerhouse with a large number of prominent cities. Amazing food and interesting people.
+---
+Vietnam
+Smaller place filled with rice feilds and a great natural environment
+---
+Kazahkstan
+Mountain filled regions with a very mixed population
+---
+Mongolia
+low population, land of the mongols;
+---
+India
+High population with a virbant culture await you
+---
+Thailand
+Home of bankok a city great for tourists and travelers
+---
+Indonesia
+Full of islands and beautiful coastal cities great for adventures
