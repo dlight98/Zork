@@ -1,4 +1,8 @@
-
+/**@author Benjamin Madren
+ * This class updates the state of the game whenver
+ * an event causes it to change in some way.
+ * Interacts with the ExternalClock, Room, Exit,
+ * Transform, Teleport, CommandFactory, and VerboseCommand classes.**/
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
@@ -164,5 +168,24 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+/** This method checks the current time of the given dungeon.
+ * @param time **/ 
+    checkTime(){
 
+    }
+/** This method changes the time of day from day to night and vice versa.
+ * @param day **/
+    timeOfDay(){
+
+    }
+/** This method implements a time limit into the current dungeon.
+ * @param limit **/
+    checkTimeLimit(){
+
+    }
+/** This method ends the day once the time limit is reached.
+ * @param day,limit **/
+    dayEnd(){
+
+    }
 }
