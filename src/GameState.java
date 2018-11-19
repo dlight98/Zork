@@ -1,8 +1,3 @@
-/**@author Benjamin Madren
- * This class updates the state of the game whenver
- * an event causes it to change in some way.
- * Interacts with the ExternalClock, Room, Exit,
- * Transform, Teleport, CommandFactory, and VerboseCommand classes.**/
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
@@ -10,7 +5,11 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
+/**@author Benjamin Madren
+ * This class updates the state of the game whenver
+ * an event causes it to change in some way.
+ * Interacts with the ExternalClock, Room, Exit,
+ * Transform, Teleport, CommandFactory, and VerboseCommand classes.**/
 public class GameState {
 
     public static class IllegalSaveFormatException extends Exception {
