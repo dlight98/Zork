@@ -170,22 +170,22 @@ public class GameState {
     }
 /** This method checks the current time of the given dungeon.
  * @param time **/ 
-    checkTime(){
+    void checkTime(){
 
     }
 /** This method changes the time of day from day to night and vice versa.
  * @param day **/
-    timeOfDay(){
+    void timeOfDay(){
 
     }
 /** This method implements a time limit into the current dungeon.
  * @param limit **/
-    checkTimeLimit(){
+    void checkTimeLimit(){
 
     }
 /** This method ends the day once the time limit is reached.
  * @param day,limit **/
-    dayEnd(){
+    void  dayEnd(){
 
     }
 }
