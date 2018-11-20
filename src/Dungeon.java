@@ -22,7 +22,7 @@ public class Dungeon {
     public static String ROOMS_MARKER = "Rooms:";
     public static String EXITS_MARKER = "Exits:";
     public static String ITEMS_MARKER = "Items:";
-    
+
     // Variables relating to game state (.sav) storage.
     static String FILENAME_LEADER = "Dungeon file: ";
     static String ROOM_STATES_MARKER = "Room states:";
@@ -33,6 +33,11 @@ public class Dungeon {
     private Hashtable<String,Item> items;
     private String filename;
 
+    /**
+     * [Dungeon description]
+     * @param name  [description]
+     * @param entry [description]
+     */
     Dungeon(String name, Room entry) {
         init();
         this.filename = null;    // null indicates not hydrated from file.
@@ -45,7 +50,7 @@ public class Dungeon {
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it.
      */
-    public Dungeon(String filename) throws FileNotFoundException, 
+    public Dungeon(String filename) throws FileNotFoundException,
         IllegalDungeonFormatException {
 
         this(filename, true);
@@ -55,7 +60,7 @@ public class Dungeon {
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it, including (possibly) the items in their original locations.
      */
-    public Dungeon(String filename, boolean initState) 
+    public Dungeon(String filename, boolean initState)
         throws FileNotFoundException, IllegalDungeonFormatException {
 
         init();
@@ -117,7 +122,7 @@ public class Dungeon {
 
         s.close();
     }
-    
+
     // Common object initialization tasks, regardless of which constructor
     // is used.
     private void init() {
@@ -145,7 +150,7 @@ public class Dungeon {
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
         // Note: the filename has already been read at this point.
-        
+
         if (!s.nextLine().equals(ROOM_STATES_MARKER)) {
             throw new GameState.IllegalSaveFormatException("No '" +
                 ROOM_STATES_MARKER + "' after dungeon filename in save file.");
@@ -175,7 +180,7 @@ public class Dungeon {
      * etc.
      */
     public Item getItem(String primaryItemName) throws Item.NoItemException {
-        
+
         if (items.get(primaryItemName) == null) {
             throw new Item.NoItemException();
         }

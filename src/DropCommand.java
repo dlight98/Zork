@@ -3,10 +3,18 @@ class DropCommand extends Command {
 
     private String itemName;
 
+    /**
+     * [DropCommand description]
+     * @param itemName [description]
+     */
     DropCommand(String itemName) {
         this.itemName = itemName;
     }
 
+    /**
+     * [execute description]
+     * @return [description]
+     */
     public String execute() {
         if (itemName == null || itemName.trim().length() == 0) {
             return "Drop what?\n";

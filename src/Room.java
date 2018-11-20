@@ -16,6 +16,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
 
+
     Room(String title) {
         init();
         this.title = title;
@@ -28,8 +29,8 @@ public class Room {
     }
 
     /** Given a Scanner object positioned at the beginning of a "room" file
-        entry, read and return a Room object representing it. 
-        @param d The containing {@link Dungeon} object, necessary to 
+        entry, read and return a Room object representing it.
+        @param d The containing {@link Dungeon} object, necessary to
         retrieve {@link Item} objects.
         @param initState should items listed for this room be added to it?
         @throws NoRoomException The reader object is not positioned at the
@@ -47,7 +48,7 @@ public class Room {
         if (title.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoRoomException();
         }
-        
+
         String lineOfDesc = s.nextLine();
         while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
                !lineOfDesc.equals(Dungeon.TOP_LEVEL_DELIM)) {
@@ -106,7 +107,7 @@ public class Room {
         w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
 
-    void restoreState(Scanner s, Dungeon d) throws 
+    void restoreState(Scanner s, Dungeon d) throws
         GameState.IllegalSaveFormatException {
 
         String line = s.nextLine();
@@ -131,10 +132,19 @@ public class Room {
         }
     }
 
+    /**
+     * [describe description]
+     * @return [description]
+     */
     public String describe() {
         return describe(false);
     }
 
+    /**
+     * [describe description]
+     * @param  fullDesc [description]
+     * @return          [description]
+     */
     public String describe(boolean fullDesc) {
         String description;
         if (beenHere && !fullDesc) {
@@ -154,7 +164,12 @@ public class Room {
         beenHere = true;
         return description;
     }
-    
+
+    /**
+     * [leaveBy description]
+     * @param  dir [description]
+     * @return     [description]
+     */
     public Room leaveBy(String dir) {
         for (Exit exit : exits) {
             if (exit.getDir().equals(dir)) {
@@ -164,18 +179,36 @@ public class Room {
         return null;
     }
 
+    /**
+     * [addExit description]
+     * @param exit [description]
+     */
     void addExit(Exit exit) {
         exits.add(exit);
     }
 
+    /**
+     * [add description]
+     * @param item [description]
+     */
     void add(Item item) {
         contents.add(item);
     }
 
+    /**
+     * [remove description]
+     * @param item [description]
+     */
     void remove(Item item) {
         contents.remove(item);
     }
 
+    /**
+     * [getItemNamed description]
+     * @param  name                 [description]
+     * @return                      [description]
+     * @throws Item.NoItemException [description]
+     */
     Item getItemNamed(String name) throws Item.NoItemException {
         for (Item item : contents) {
             if (item.goesBy(name)) {
@@ -185,6 +218,10 @@ public class Room {
         throw new Item.NoItemException();
     }
 
+    /**
+     * [getContents description]
+     * @return [description]
+     */
     ArrayList<Item> getContents() {
         return contents;
     }

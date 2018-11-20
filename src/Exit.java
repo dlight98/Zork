@@ -8,6 +8,12 @@ public class Exit {
     private String dir;
     private Room src, dest;
 
+    /**
+     * [Exit description]
+     * @param dir  [description]
+     * @param src  [description]
+     * @param dest [description]
+     */
     Exit(String dir, Room src, Room dest) {
         init();
         this.dir = dir;
@@ -17,8 +23,8 @@ public class Exit {
     }
 
     /** Given a Scanner object positioned at the beginning of an "exit" file
-        entry, read and return an Exit object representing it. 
-        @param d The dungeon that contains this exit (so that Room objects 
+        entry, read and return an Exit object representing it.
+        @param d The dungeon that contains this exit (so that Room objects
         may be obtained.)
         @throws NoExitException The reader object is not positioned at the
         start of an exit entry. A side effect of this is the reader's cursor
@@ -37,7 +43,7 @@ public class Exit {
         src = d.getRoom(srcTitle);
         dir = s.nextLine();
         dest = d.getRoom(s.nextLine());
-        
+
         // I'm an Exit object. Great. Add me as an exit to my source Room too,
         // though.
         src.addExit(this);
@@ -53,11 +59,29 @@ public class Exit {
     private void init() {
     }
 
+    /**
+     * [describe description]
+     * @return [description]
+     */
     String describe() {
         return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
 
+    /**
+     * [getDir description]
+     * @return [description]
+     */
     String getDir() { return dir; }
+
+    /**
+     * [getSrc description]
+     * @return [description]
+     */
     Room getSrc() { return src; }
+
+    /**
+     * [getDest description]
+     * @return [description]
+     */
     Room getDest() { return dest; }
 }
