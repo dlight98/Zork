@@ -4,8 +4,8 @@ class DropCommand extends Command {
     private String itemName;
 
     /**
-     * [DropCommand description]
-     * @param itemName [description]
+     * This is a basic setter for the itemName.
+     * @param itemName the name of the item being dropped
      */
     DropCommand(String itemName) {
         this.itemName = itemName;

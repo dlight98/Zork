@@ -2,10 +2,8 @@ import java.util.Scanner;
 
 /**
 * The <tt>Interpreter</tt> both creates a dungeon from a command-line argument,
-*   and gets  what is typed by the user, passing it to CommandFactory for parsing.
-* Only one Interpreter will ever be needed for the program to run.
-*
-*
+* and passes what is typed by the user to <tt>{@link CommandFactory}</tt> for parsing.
+* Only one Interpreter should ever be needed for the program to run.
 * @author Nicholas Turner
 */
 
@@ -17,7 +15,7 @@ public class Interpreter {
     public static String USAGE_MSG =
         "Usage: Interpreter zorkFile.zork|saveFile.sav.";
 
-    /**
+    /**TODO
      * [main description]
      * @param args[] [description]
      */
@@ -68,7 +66,7 @@ public class Interpreter {
 
     /**
     * The <tt>promptUser</tt> method prints "> " and takes the user input with a Scanner,
-    *   returning the input as a String.
+    * returning the input as a String.
     *
     * @param commandLine the scanner searching for user input.
     * @return the input of the user.

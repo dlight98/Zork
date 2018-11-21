@@ -6,8 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 
+/**TODO
+ * placeholder area
+ * @author Nicholas Turner
+ */
 public class Dungeon {
 
+    /**
+     *
+     */
     public static class IllegalDungeonFormatException extends Exception {
         public IllegalDungeonFormatException(String e) {
             super(e);
@@ -33,7 +40,7 @@ public class Dungeon {
     private Hashtable<String,Item> items;
     private String filename;
 
-    /**
+    /**TODO
      * [Dungeon description]
      * @param name  [description]
      * @param entry [description]
@@ -46,19 +53,25 @@ public class Dungeon {
         rooms = new Hashtable<String,Room>();
     }
 
-    /**
+    /**TODO
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it.
+     * @param  filename                      [description]
+     * @throws FileNotFoundException         [description]
+     * @throws IllegalDungeonFormatException [description]
      */
     public Dungeon(String filename) throws FileNotFoundException,
         IllegalDungeonFormatException {
-
         this(filename, true);
     }
 
-    /**
+    /**TODO
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it, including (possibly) the items in their original locations.
+     * @param  filename                      [description]
+     * @param  initState                     [description]
+     * @throws FileNotFoundException         [description]
+     * @throws IllegalDungeonFormatException [description]
      */
     public Dungeon(String filename, boolean initState)
         throws FileNotFoundException, IllegalDungeonFormatException {
@@ -123,16 +136,20 @@ public class Dungeon {
         s.close();
     }
 
-    // Common object initialization tasks, regardless of which constructor
-    // is used.
+    /**TODO
+     * Common object initialization tasks, regardless of which constructor
+     * is used.
+     */
     private void init() {
         rooms = new Hashtable<String,Room>();
         items = new Hashtable<String,Item>();
     }
 
-    /*
+    /**TODO
      * Store the current (changeable) state of this dungeon to the writer
      * passed.
+     * @param  w           [description]
+     * @throws IOException [description]
      */
     void storeState(PrintWriter w) throws IOException {
         w.println(FILENAME_LEADER + getFilename());
@@ -143,9 +160,11 @@ public class Dungeon {
         w.println(TOP_LEVEL_DELIM);
     }
 
-    /*
+    /**TODO
      * Restore the (changeable) state of this dungeon to that reflected in the
      * reader passed.
+     * @param  s                                    the scanner used to read through the file.
+     * @throws GameState.IllegalSaveFormatException [description]
      */
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
@@ -164,20 +183,56 @@ public class Dungeon {
         }
     }
 
+    /**
+     * Getter for the room the adventurer starts his or here
+     * adventure in.
+     * @return the room the adventurer starts in.
+     */
     public Room getEntry() { return entry; }
+    /**
+     * Getter for the name of a {@link Room}.
+     * Meant to be used any time the name of a room is needed.
+     * @return the name of the room.
+     */
     public String getName() { return name; }
+    /**
+     * Getter for the name of either the save or dungeon file.
+     * @return the name of the dungeon file.
+     */
     public String getFilename() { return filename; }
+    /**
+     * Adds a room to the Dungeon.
+     * Normally meant to be used in conjunction with
+     * the {@link Dungeon#Dungeon} creator.
+     * @param room the room to be added to the dungeon.
+     */
     public void add(Room room) { rooms.put(room.getTitle(),room); }
+    /**
+     * Adds an item to the Dungeon's list of items.
+     * This does NOT add this item to any room or the
+     * inventory, just the list of items.
+     * Normally meant to be used in conjunction with
+     * the {@link Dungeon#Dungeon} creator.
+     * @param item the item to be added.
+     */
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
-
+    /**
+     * Getter for the Room specified in the parameter.
+     * @param  roomTitle the name of the room meant to be returned.
+     * @return           the room with the name given in the parameter.
+     */
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
 
     /**
-     * Get the Item object whose primary name is passed. This has nothing to
-     * do with where the Adventurer might be, or what's in his/her inventory,
-     * etc.
+     * Gets the Item object whose primary name is passed.
+     * The name passed should be the primary name and not an alias.
+     * This has nothing to do with where the Adventurer might be,
+     * or what's in his/her inventory, etc.
+     * @param  primaryItemName      the primary name of the item.
+     * @return                      the item being searched for.
+     * @throws Item.NoItemException if this is thrown then there is no item with primaryItemName.
      */
     public Item getItem(String primaryItemName) throws Item.NoItemException {
 
