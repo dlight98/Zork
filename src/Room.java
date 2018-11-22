@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**TODO
+/**
  * A <tt>Room</tt> is the area between <tt>{@link Exit}s</tt> that
  * holds <tt>{@link Item}s</tt> and the adventurer can be in. There is
  * always at least one per {@link Dungeon}. A room does not require an
