@@ -1,4 +1,3 @@
-
 import java.util.Hashtable;
 import java.util.Scanner;
 import java.io.IOException;
