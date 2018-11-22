@@ -5,9 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 
-/**TODO
- * A <tt>Dungeon</tt> holds all of the {@link Room}s, {@link Item}s,
- * and {@link Exit}s that the player interacts with. There must be
+/**
+ * A <tt>Dungeon</tt> holds all of the <tt>{@link Room}s</tt>, <tt>{@link Item}s</tt>,
+ * and <tt>{@link Exit}s</tt> that the player interacts with. There must be
  * at least one <tt>Room</tt> in each dungeon.
  * There should only need to be one dugenon instantiated.
  *
@@ -15,8 +15,9 @@ import java.io.PrintWriter;
  */
 public class Dungeon {
 
-    /**TODO
-     * 
+    /**
+     * <tt>IllegalDungeonFormatException</tt> is thrown when the format of the
+     * dungeon file is formed incorrectly.
      */
     public static class IllegalDungeonFormatException extends Exception {
         public IllegalDungeonFormatException(String e) {
@@ -59,6 +60,7 @@ public class Dungeon {
     }
 
     /**
+     * This is used if the <tt>Dungeon</tt> is made by itself, without a save file.
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it. This is passes to the other Dungeon constructor if it is a
      * .zork file. This is done so a dungeon can be built without needing a
@@ -72,13 +74,13 @@ public class Dungeon {
         this(filename, true);
     }
 
-    /**TODO
+    /**
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it, including (possibly) the items in their original locations.
      * @param  filename                      the name of the file being read from.
-     * @param  initState                     [description]
-     * @throws FileNotFoundException         [description]
-     * @throws IllegalDungeonFormatException [description]
+     * @param  initState                     determines if the dungeon needs the item layout
+     * @throws FileNotFoundException         if the file specified in the commandline is not found this will be thrown.
+     * @throws IllegalDungeonFormatException if the format of the file is done incorrectly this will be thrown.
      */
     public Dungeon(String filename, boolean initState)
         throws FileNotFoundException, IllegalDungeonFormatException {
@@ -143,7 +145,7 @@ public class Dungeon {
         s.close();
     }
 
-    /**TODO
+    /**
      * Common object initialization tasks, regardless of which constructor
      * is used.
      */
@@ -152,11 +154,11 @@ public class Dungeon {
         items = new Hashtable<String,Item>();
     }
 
-    /**TODO
-     * Store the current (changeable) state of this dungeon to the writer
-     * passed.
-     * @param  w           [description]
-     * @throws IOException [description]
+    /**
+     * Store the current (changeable) state of this dungeon to the writer passed.
+     *
+     * @param  w           the writer meant to write to the file.
+     * @throws IOException if the I/O writing has a problem
      */
     void storeState(PrintWriter w) throws IOException {
         w.println(FILENAME_LEADER + getFilename());
@@ -167,7 +169,8 @@ public class Dungeon {
         w.println(TOP_LEVEL_DELIM);
     }
 
-    /**TODO
+    /** 
+     * Loads the dungeon's layout from the save file.
      * Restore the (changeable) state of this dungeon to that reflected in the
      * reader passed.
      * @param  s                                    the scanner used to read through the file.
