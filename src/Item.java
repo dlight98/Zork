@@ -4,8 +4,16 @@ import java.util.Hashtable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**TODO
+ *
+ * @author Nicholas Turner
+ */
 public class Item {
 
+    /**TODO
+     *
+     * @author Nicholas Turner
+     */
     static class NoItemException extends Exception {}
 
     private String primaryName;
@@ -13,7 +21,7 @@ public class Item {
     private Hashtable<String,String> messages;
     private Set<String> aliases;
 
-    /**
+    /**TODO
      * [Item description]
      * @param  s                                     [description]
      * @throws NoItemException                       [description]
@@ -52,7 +60,7 @@ public class Item {
         }
     }
 
-    /**
+    /**TODO
      * [getWeight description]
      * @return [description]
      */
@@ -60,7 +68,7 @@ public class Item {
         return weight;
     }
 
-    /**
+    /**TODO
      * [goesBy description]
      * @param  name [description]
      * @return      [description]
@@ -77,13 +85,13 @@ public class Item {
         return false;
     }
 
-    /**
+    /**TODO
      * [getPrimaryName description]
      * @return [description]
      */
     String getPrimaryName() { return primaryName; }
 
-    /**
+    /**TODO
      * [getMessageForVerb description]
      * @param  verb [description]
      * @return      [description]
@@ -92,7 +100,7 @@ public class Item {
         return messages.get(verb);
     }
 
-    /**
+    /**TODO
      * [toString description]
      * @return [description]
      */

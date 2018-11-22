@@ -4,8 +4,16 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**TODO
+ *
+ * @author Nicholas Turner
+ */
 public class Room {
 
+    /**TODO
+     *
+     * @author Nicholas Turner
+     */
     class NoRoomException extends Exception {}
 
     static String CONTENTS_STARTER = "Contents: ";
@@ -16,12 +24,22 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
 
-
+    /**TODO
+     * [Room description]
+     * @param title [description]
+     */
     Room(String title) {
         init();
         this.title = title;
     }
 
+    /**TODO
+     * [Room description]
+     * @param  s                                     [description]
+     * @param  d                                     [description]
+     * @throws NoRoomException                       [description]
+     * @throws Dungeon.IllegalDungeonFormatException [description]
+     */
     Room(Scanner s, Dungeon d) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {
 
@@ -79,20 +97,30 @@ public class Room {
         }
     }
 
-    // Common object initialization tasks.
+    /** Common object initialization tasks. */
     private void init() {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
     }
 
+    /**TODO
+     * [getTitle description]
+     * @return [description]
+     */
     String getTitle() { return title; }
 
+    /**TODO
+     * [setDesc description]
+     * @param desc [description]
+     */
     void setDesc(String desc) { this.desc = desc; }
 
-    /*
+    /**TODO
      * Store the current (changeable) state of this room to the writer
      * passed.
+     * @param  w           [description]
+     * @throws IOException [description]
      */
     void storeState(PrintWriter w) throws IOException {
         w.println(title + ":");
@@ -107,6 +135,12 @@ public class Room {
         w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
 
+    /**TODO
+     * [restoreState description]
+     * @param  s                                    [description]
+     * @param  d                                    [description]
+     * @throws GameState.IllegalSaveFormatException [description]
+     */
     void restoreState(Scanner s, Dungeon d) throws
         GameState.IllegalSaveFormatException {
 
@@ -132,7 +166,7 @@ public class Room {
         }
     }
 
-    /**
+    /**TODO
      * [describe description]
      * @return [description]
      */
@@ -140,7 +174,7 @@ public class Room {
         return describe(false);
     }
 
-    /**
+    /**TODO
      * [describe description]
      * @param  fullDesc [description]
      * @return          [description]
@@ -165,7 +199,7 @@ public class Room {
         return description;
     }
 
-    /**
+    /**TODO
      * [leaveBy description]
      * @param  dir [description]
      * @return     [description]
@@ -179,7 +213,7 @@ public class Room {
         return null;
     }
 
-    /**
+    /**TODO
      * [addExit description]
      * @param exit [description]
      */
@@ -187,7 +221,7 @@ public class Room {
         exits.add(exit);
     }
 
-    /**
+    /**TODO
      * [add description]
      * @param item [description]
      */
@@ -195,7 +229,7 @@ public class Room {
         contents.add(item);
     }
 
-    /**
+    /**TODO
      * [remove description]
      * @param item [description]
      */
@@ -203,7 +237,7 @@ public class Room {
         contents.remove(item);
     }
 
-    /**
+    /**TODO
      * [getItemNamed description]
      * @param  name                 [description]
      * @return                      [description]
@@ -218,7 +252,7 @@ public class Room {
         throw new Item.NoItemException();
     }
 
-    /**
+    /**TODO
      * [getContents description]
      * @return [description]
      */
