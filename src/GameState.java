@@ -173,7 +173,7 @@ public class GameState {
  *
  */
     int checkTime(){
-      return null;
+      return 0;
     }
 /** This method changes the time of day from day to night and vice versa.
  * @param day
@@ -185,7 +185,7 @@ public class GameState {
  * @param limit
  */
     int checkTimeLimit(){
-
+	return 0;
     }
 /** This method ends the day once the time limit is reached.
  * @param day,limit

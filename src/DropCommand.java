@@ -1,4 +1,5 @@
-
+/** This type of command will remove an item from the adventurues inventory 
+ */
 class DropCommand extends Command {
 
     private String itemName;
@@ -15,6 +16,7 @@ class DropCommand extends Command {
      * [execute description]
      * @return [description]
      */
+
     public String execute() {
         if (itemName == null || itemName.trim().length() == 0) {
             return "Drop what?\n";
