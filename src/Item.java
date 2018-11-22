@@ -42,7 +42,7 @@ public class Item {
      * and aliases of each item from the dungeon file. The Scanner is passed to
      * read the item from file. If there are no items left to read a
      * <tt>{@link NoItemException}</tt> is thrown. If the format
-     * itself is incorrect an <tt>{@link IllegalDungeonFormatException}</tt>
+     * itself is incorrect an <tt>IllegalDungeonFormatException</tt>
      * is thrown.
      *
      * @param  s                                     meant to read the lines of the file.
