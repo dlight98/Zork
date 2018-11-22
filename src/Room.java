@@ -28,7 +28,9 @@ public class Room {
     private ArrayList<Exit> exits;
 
     /**TODO
-     * [Room description]
+     * Creates a room with the String given.The String becomes
+     * the title of the room, which will be called
+     * when referencing the room.
      * @param title the title of the room.
      */
     Room(String title) {
