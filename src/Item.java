@@ -13,7 +13,12 @@ public class Item {
     private Hashtable<String,String> messages;
     private Set<String> aliases;
 
-
+    /**
+     * [Item description]
+     * @param  s                                     [description]
+     * @throws NoItemException                       [description]
+     * @throws Dungeon.IllegalDungeonFormatException [description]
+     */
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
@@ -42,15 +47,24 @@ public class Item {
             }
             String[] verbParts = verbLine.split(":");
             messages.put(verbParts[0],verbParts[1]);
-            
+
             verbLine = s.nextLine();
         }
     }
 
+    /**
+     * [getWeight description]
+     * @return [description]
+     */
     int getWeight() {
         return weight;
     }
 
+    /**
+     * [goesBy description]
+     * @param  name [description]
+     * @return      [description]
+     */
     boolean goesBy(String name) {
         if (this.primaryName.equals(name)) {
             return true;
@@ -63,12 +77,25 @@ public class Item {
         return false;
     }
 
+    /**
+     * [getPrimaryName description]
+     * @return [description]
+     */
     String getPrimaryName() { return primaryName; }
 
+    /**
+     * [getMessageForVerb description]
+     * @param  verb [description]
+     * @return      [description]
+     */
     public String getMessageForVerb(String verb) {
         return messages.get(verb);
     }
 
+    /**
+     * [toString description]
+     * @return [description]
+     */
     public String toString() {
         return primaryName;
     }

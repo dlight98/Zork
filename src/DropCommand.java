@@ -3,17 +3,20 @@
 class DropCommand extends Command {
 
     private String itemName;
-/** Contrsucter which sets the itemName instance variable to the itemName
- */
+
+    /**
+     * This is a basic setter for the itemName.
+     * @param itemName the name of the item being dropped
+     */
     DropCommand(String itemName) {
         this.itemName = itemName;
     }
-/** This method first checks if an item to drop was even specified
- * and if not, asks the user what he wants to drop
- * Or it will return a string indicating that the item was dropped
- * and if the item is not in the adventurer's inventory it will return a string saying 
- * the item is not there
- */
+
+    /**
+     * [execute description]
+     * @return [description]
+     */
+
     public String execute() {
         if (itemName == null || itemName.trim().length() == 0) {
             return "Drop what?\n";

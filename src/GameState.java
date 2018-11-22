@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
@@ -6,7 +5,13 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-
+/**
+ * The <tt>GameState</tt> class updates the state of the game whenver
+ * an event causes it to change in some way.
+ * Interacts with the ExternalClock, Room, Exit,
+ * Transform, Teleport, CommandFactory, and VerboseCommand classes.
+ * @author Benjamin Madren
+ */
 public class GameState {
 
     public static class IllegalSaveFormatException extends Exception {
@@ -59,7 +64,7 @@ public class GameState {
 
         if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
             throw new IllegalSaveFormatException("No '" +
-                Dungeon.FILENAME_LEADER + 
+                Dungeon.FILENAME_LEADER +
                 "' after version indicator.");
         }
 
@@ -164,5 +169,28 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+/** This method checks the current time of the given dungeon.
+ *
+ */
+    int checkTime(){
+      return 0;
+    }
+/** This method changes the time of day from day to night and vice versa.
+ * @param day
+ */
+    void timeOfDay(){
 
+    }
+/** This method implements a time limit into the current dungeon.
+ * @param limit
+ */
+    int checkTimeLimit(){
+	return 0;
+    }
+/** This method ends the day once the time limit is reached.
+ * @param day,limit
+ */
+    void dayEnd(){
+
+    }
 }
