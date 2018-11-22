@@ -1,7 +1,18 @@
 
 import java.util.List;
 import java.util.Arrays;
-
+/** creates command objects based on the type of command they are
+ * and will also stores boolean verbose (dictates if the room description will be displayed after it has already been visited
+ * varaible move wich changes the adventurues current room
+ * varaible Light which can light up the room with a luminating object if the room is dark
+ * External Clock which will keep track of time outside the rooms and is affected by actions 
+ * Score which adds points to players after they preform actions
+ * Health which will keep tracks of player's health
+ * transform which changes one item to another 
+ * Teleport which moves the adventurer to a different room
+ *
+ * @author Alexander Loceland
+ */
 public class CommandFactory {
 
     private static CommandFactory theInstance;
@@ -14,7 +25,8 @@ public class CommandFactory {
         }
         return theInstance;
     }
-
+/** creates command objects
+ */
     private CommandFactory() {
     }
 

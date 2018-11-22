@@ -1,5 +1,7 @@
 /** A class that is made when passed command doesnt fall into any
  * of the appropriate preset categories for commands
+ *
+ * @author Alecander Lvoeland
  */
 class UnknownCommand extends Command {
 

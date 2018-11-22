@@ -1,5 +1,7 @@
 /** this class will add an item that is taken by the user
  * to the user's inventory
+ *
+ * @author Alexander Loveland
  */
 class TakeCommand extends Command {
 

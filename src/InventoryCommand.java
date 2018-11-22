@@ -1,4 +1,6 @@
 /**this command lists all the items in the adventurer's inventory
+ *
+ * @author
  */
 import java.util.ArrayList;
 

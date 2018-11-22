@@ -1,4 +1,6 @@
-/**This command changes the adventurues current room
+/**This command changes the adventurues current roo
+ *
+ * @authorm Alexander Loveland
  */
 class MovementCommand extends Command {
 
@@ -6,6 +8,8 @@ class MovementCommand extends Command {
                        
 /**Contructor that just sets the direction instance varaible to the direction
  * direction listed as the paramater passed
+ *
+ * @param dir direction to move
  */
     MovementCommand(String dir) {
         this.dir = dir;

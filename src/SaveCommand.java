@@ -3,6 +3,8 @@
  * including inventory items, current room, and setting 
  * all the beenHere varaibles for the rooms to true or 
  * false
+ *
+ * @author Alexander Loveland
  * **/
 class SaveCommand extends Command {
 
@@ -12,6 +14,7 @@ class SaveCommand extends Command {
 /** will check if the sav file has been giving a name 
  * and if it has not it will give the file a default name
  * then it sets the saveFilgename instance varable to file's name 
+ * @param saveFilename name of the file that the game is going to save to
  */
     SaveCommand(String saveFilename) {
         if (saveFilename == null || saveFilename.length() == 0) {

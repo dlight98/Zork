@@ -1,11 +1,16 @@
-/** This command will preform an action specific to that command
+/** This command will preform an action specific to that comman
+ *
+ * @author Alecander Lovelandd
  */
 class ItemSpecificCommand extends Command {
 
     private String verb;
     private String noun;
                         
-/**Conrustor which verb and noun instance varaibles to the paramaters passed
+/**Conrustor which verb and noun instance varaibles to the paramaters passe
+ *
+ * @param verb specific action preformed by object
+ * @param noun noun that describes what the object isd
  */
     ItemSpecificCommand(String verb, String noun) {
         this.verb = verb;
