@@ -17,7 +17,7 @@ public class Interpreter {
 
     /**TODO
      * [main description]
-     * @param args[] [description]
+     * @param args[] the commandline argument passed to initialize the dungeon or the save file.
      */
     public static void main(String args[]) {
 

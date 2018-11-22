@@ -7,13 +7,17 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 
 /**TODO
- * placeholder area
+ * A <tt>Dungeon</tt> holds all of the {@link Room}s, {@link Item}s,
+ * and {@link Exit}s that the player interacts with. There must be
+ * at least one <tt>Room</tt> in each dungeon.
+ * There should only need to be one dugenon instantiated.
+ *
  * @author Nicholas Turner
  */
 public class Dungeon {
 
-    /**
-     *
+    /**TODO
+     * 
      */
     public static class IllegalDungeonFormatException extends Exception {
         public IllegalDungeonFormatException(String e) {
@@ -40,10 +44,12 @@ public class Dungeon {
     private Hashtable<String,Item> items;
     private String filename;
 
-    /**TODO
-     * [Dungeon description]
-     * @param name  [description]
-     * @param entry [description]
+    /**
+     * A <tt>Dungeon</tt> holds all of the rooms, items, and exits that the
+     * player interacts with. This constructor makes the Dungeon not hydrated
+     * from a file.
+     * @param name  the name of the dungeon.
+     * @param entry the first room the adventurer is placed in.
      */
     Dungeon(String name, Room entry) {
         init();
@@ -53,12 +59,14 @@ public class Dungeon {
         rooms = new Hashtable<String,Room>();
     }
 
-    /**TODO
+    /**
      * Read from the .zork filename passed, and instantiate a Dungeon object
-     * based on it.
-     * @param  filename                      [description]
-     * @throws FileNotFoundException         [description]
-     * @throws IllegalDungeonFormatException [description]
+     * based on it. This is passes to the other Dungeon constructor if it is a
+     * .zork file. This is done so a dungeon can be built without needing a
+     * boolean to specify if it needs to initialized.
+     * @param  filename                      the name of the file being read from.
+     * @throws FileNotFoundException         if the file specified in the commandline is not found this will be thrown.
+     * @throws IllegalDungeonFormatException if the format of the file is done incorrectly this will be thrown.
      */
     public Dungeon(String filename) throws FileNotFoundException,
         IllegalDungeonFormatException {
@@ -68,7 +76,7 @@ public class Dungeon {
     /**TODO
      * Read from the .zork filename passed, and instantiate a Dungeon object
      * based on it, including (possibly) the items in their original locations.
-     * @param  filename                      [description]
+     * @param  filename                      the name of the file being read from.
      * @param  initState                     [description]
      * @throws FileNotFoundException         [description]
      * @throws IllegalDungeonFormatException [description]
@@ -164,7 +172,7 @@ public class Dungeon {
      * Restore the (changeable) state of this dungeon to that reflected in the
      * reader passed.
      * @param  s                                    the scanner used to read through the file.
-     * @throws GameState.IllegalSaveFormatException [description]
+     * @throws GameState.IllegalSaveFormatException if at any point the file does not conform to the save file format.
      */
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
