@@ -1,18 +1,30 @@
 
 import java.util.Scanner;
 
+/** TODO
+ * An <tt>Exit</tt> has a source <tt>{@link Room}</tt>, a destination
+ * <tt>{@link Room}</tt>, and a direction connecting the two.
+ *
+ *
+ * @author Nicholas Turner
+ */
 public class Exit {
 
+    /**
+     * <tt>NoExitException</tt> extends <tt>Exception</tt> and is
+     * thrown when there is no <tt>Exit</tt> found.
+     * @author Nicholas Turner
+     */
     class NoExitException extends Exception {}
 
     private String dir;
     private Room src, dest;
 
-    /**
-     * [Exit description]
-     * @param dir  [description]
-     * @param src  [description]
-     * @param dest [description]
+    /**TODO
+     * An <tt>Exit</tt> 
+     * @param dir  the direction the exit is going in; north, south, east, or west.
+     * @param src  the source room of the exit.
+     * @param dest the destination of the exit.
      */
     Exit(String dir, Room src, Room dest) {
         init();
@@ -55,33 +67,36 @@ public class Exit {
         }
     }
 
-    // Common object initialization tasks.
+    /** Common object initialization tasks. */
     private void init() {
     }
 
-    /**
+    /** TODO
      * [describe description]
-     * @return [description]
+     * @return the direction and destination of the exit.
      */
     String describe() {
         return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
 
-    /**
-     * [getDir description]
+    /** TODO
+     * This returns the direction the exit is going in.
+     * The exit goes
      * @return [description]
      */
     String getDir() { return dir; }
 
     /**
-     * [getSrc description]
-     * @return [description]
+     * This returns the source <tt>{@link Room}</tt> that
+     * the exit is coming from.
+     * @return the source room; the room the <tt>Exit</tt> is going from.
      */
     Room getSrc() { return src; }
 
     /**
-     * [getDest description]
-     * @return [description]
+     * This returns the destination <tt>{@link Room}</tt> that
+     * the exit is leading to.
+     * @return the destination; the room the <tt>Exit</tt> is leading to.
      */
     Room getDest() { return dest; }
 }

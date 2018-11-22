@@ -3,10 +3,13 @@ import java.util.Scanner;
 /**
 * The <tt>Interpreter</tt> both creates a dungeon from a command-line argument,
 * and passes what is typed by the user to <tt>{@link CommandFactory}</tt> for parsing.
+* It is the <b>ONLY</b> way for the player to send anything typed to
+* the game. Anything typed will be sent to the <tt>{@link CommandFactory}</tt> to
+* be <tt>{@link CommandFactory#parse}d</tt>.
 * Only one Interpreter should ever be needed for the program to run.
+*
 * @author Nicholas Turner
 */
-
 public class Interpreter {
 
     private static GameState state; // not strictly necessary; GameState is
@@ -15,8 +18,9 @@ public class Interpreter {
     public static String USAGE_MSG =
         "Usage: Interpreter zorkFile.zork|saveFile.sav.";
 
-    /**TODO
-     * [main description]
+    /**
+     * This is the command block activated while starting the program.
+     * It sends everything typed by the player to the {@link CommandFactory}.
      * @param args[] the commandline argument passed to initialize the dungeon or the save file.
      */
     public static void main(String args[]) {
@@ -71,7 +75,6 @@ public class Interpreter {
     * @param commandLine the scanner searching for user input.
     * @return the input of the user.
     */
-
     private static String promptUser(Scanner commandLine) {
 
         System.out.print("> ");
