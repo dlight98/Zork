@@ -1,4 +1,7 @@
-/** This type of command will remove an item from the adventurues inventory 
+/**
+ * This type of command will remove an item from the adventurues inventory
+ * and place it in the room they are in.
+ * @author Alexander Loveland
  */
 class DropCommand extends Command {
 

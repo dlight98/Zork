@@ -10,10 +10,13 @@ import java.io.PrintWriter;
  */
 public class Room {
 
-    /**TODO
-     *
-     * @author Nicholas Turner
-     */
+  /**
+   * <tt>NoRoomException</tt> extends <tt>{@link Exception}</tt>
+   * and is meant to be used for saying when the <tt>{@link Room}</tt>
+   * specified does not exist.
+   *
+   * @author Nicholas Turner
+   */
     class NoRoomException extends Exception {}
 
     static String CONTENTS_STARTER = "Contents: ";
@@ -26,7 +29,7 @@ public class Room {
 
     /**TODO
      * [Room description]
-     * @param title [description]
+     * @param title the title of the room.
      */
     Room(String title) {
         init();

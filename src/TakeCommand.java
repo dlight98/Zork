@@ -1,5 +1,6 @@
-/** this class will add an item that is taken by the user
- * to the user's inventory
+/** This class will add an item that is taken by the user
+ * to the user's inventory.
+ * @author Alexander Loveland
  */
 class TakeCommand extends Command {
 
@@ -9,8 +10,8 @@ class TakeCommand extends Command {
     TakeCommand(String itemName) {
         this.itemName = itemName;
     }
-/** exectute returns a string which indicates if the item was taken, 
- * if the item could not be taken because it execedes the adventurues allowed weight 
+/** exectute returns a string which indicates if the item was taken,
+ * if the item could not be taken because it execedes the adventurues allowed weight
  * or if the item does not exist in the current room
  */
     public String execute() {
@@ -18,10 +19,10 @@ class TakeCommand extends Command {
             return "Take what?\n";
         }
         try {
-            Room currentRoom = 
+            Room currentRoom =
                 GameState.instance().getAdventurersCurrentRoom();
             Item theItem = currentRoom.getItemNamed(itemName);
-            if (theItem.getWeight() + 
+            if (theItem.getWeight() +
                 GameState.instance().getAdventurersCurrentWeight() > 40) {
                 return "Your load is too heavy.\n";
             }
