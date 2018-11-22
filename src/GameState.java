@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 /**
- * The <tt>GameState</tt> class updates the state of the game whenver
+ * The <tt>GameState</tt> class updates the state of the game whenever
  * an event causes it to change in some way.
  * Interacts with the ExternalClock, Room, Exit,
  * Transform, Teleport, CommandFactory, and VerboseCommand classes.
