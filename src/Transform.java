@@ -1,8 +1,10 @@
-/** @author Benjamin Madren 
+/**  
   * When this class is triggered, the corresponding item will disappear 
   * and be replaced by another item whose name is in parentheses. 
   * This item will not have existed previously. 
-  * This class also interacts with the GameState class. **/
+  * This class also interacts with the GameState class. 
+  *@author Benjamin Madren
+  */
 	public class Transform{ 
 	/**This method removes the selected item from the user's inventory. 
 	 * @param Item1 **/ 
