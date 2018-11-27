@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/*<<<<<<< HEAD
 /** This type of command will remove an item from the adventurues inventory
  *
  * @author Alexander Loveland 
