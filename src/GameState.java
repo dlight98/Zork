@@ -169,28 +169,30 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
-/** This method checks the current time of the given dungeon.
- *
+/** This method sets the current time of day for the given dungeon.
+ * (0 for day, 1 for night).
  */
     int checkTime(){
       return 0;
     }
-/** This method changes the time of day from day to night and vice versa.
+/** This method changes the time of day from day to night and vice versa
+ * whenever the player has made five moves.
  * @param day
  */
     void timeOfDay(){
 
     }
-/** This method implements a time limit into the current dungeon.
+/** This method implements a time limit of ten days 
+ * with which the player has to complete the current dungeon.
  * @param limit
  */
     int checkTimeLimit(){
-	return 0;
+	
     }
-/** This method ends the day once the time limit is reached.
+/** This method ends the game once the time limit is reached.
  * @param day,limit
  */
-    void dayEnd(){
+    void gameEnd(){
 
     }
 }

@@ -1,6 +1,11 @@
 /**
+ * This class will first list the description of the class
+ * then the command will list all the items that can be found in the room by cycling through the
+ * room's Hashtable..
+ *
  * @author Alexander Loveland
  */
+
 class LookCommand extends Command {
 /**
  * This class will first list the description of the class

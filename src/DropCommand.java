@@ -1,13 +1,16 @@
+<<<<<<< HEAD
 /*<<<<<<< HEAD
 /** This type of command will remove an item from the adventurues inventory
  *
  * @author Alexander Loveland 
 =======
+=======
+
+>>>>>>> 18718ab26a9deba61d89aacaea05b85b09dcf9ae
 /**
  * This type of command will remove an item from the adventurues inventory
  * and place it in the room they are in.
  * @author Alexander Loveland
->>>>>>> 6a971dc2bd0c8a147c84a64c93b3b04f3c7c2ea7
  */
 class DropCommand extends Command {
 
