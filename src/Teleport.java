@@ -5,17 +5,20 @@
  * This class will interact with the GameState and Command classes. 
  *@author Benjamin Madren
  */
-	public class Teleport extends Command{ 
+	abstract class Teleport extends Command{ 
+        public GameState room;	
+	public GameState destination;	
+		/**This method will check what room the user
+		 * is currently in.
+		 * @param room **/
+		GameState getAdventurersCurrentRoom(GameState room){
+		     return room;
+		}	     
 		/**This method will set the user's current room 
 		 * to their desired destination. 
 		 * @param destination **/ 
-		GameState setAdventurersCurrentRoom(){ 
-		
-		} 
-	        /**This method executes the teleport command.**/
-	        execute(){
-
+		GameState setAdventurersCurrentRoom(GameState destination){ 
+	             return destination;	
 		}	
-		/**The class reutrns the user's destination. 
-		 * @return destination **/
+		
 	}

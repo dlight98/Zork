@@ -187,7 +187,7 @@ public class GameState {
  * @param limit
  */
     int checkTimeLimit(){
-	
+      return 0;
     }
 /** This method ends the game once the time limit is reached.
  * @param day,limit
