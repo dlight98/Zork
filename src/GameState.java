@@ -31,6 +31,7 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
+    private int currentHealth;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -192,5 +193,13 @@ public class GameState {
  */
     void dayEnd(){
 
+    }
+
+    void setHealth(int health){
+      currentHealth = health;
+    }
+
+    int getHealth(){
+      return currentHealth;
     }
 }

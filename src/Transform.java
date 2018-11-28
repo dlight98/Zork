@@ -9,12 +9,12 @@
 	/**This method removes the selected item from the user's inventory. 
 	 * @param Item1 **/ 
 	Item removeFromInventory(){ 
-	
+	return null; //FIXME this is temporary to have it compile
 	} 
 	/**This method adds a new item to the user's inventory. 
 	 * @param Item2 **/ 
 	Item addToInventory(){ 
-	
+	  return null; //FIXME this is temporary to compile
 	} 
 	/**The class returns the new item. 
 	 * @return Item2 **/

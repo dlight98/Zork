@@ -10,7 +10,7 @@
 		 * to their destination. 
 		 * @param destination **/ 
 		GameState setAdventurersCurrentRoom(){ 
-		
+		  return null;
 		} 
 		/**The class reutrns the user's destination. 
 		 * @return destination **/
