@@ -31,7 +31,8 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-
+    private int currentHealth;
+    /**This method creates a new instance of the GameState class.**/
     static synchronized GameState instance() {
         if (theInstance == null) {
             theInstance = new GameState();
@@ -42,7 +43,8 @@ public class GameState {
     private GameState() {
         inventory = new ArrayList<Item>();
     }
-
+    /**This method returns the adventurer's current weight
+     * based on the items in their inventory.**/
     int getAdventurersCurrentWeight() {
         int total = 0;
         for (Item item : inventory) {
@@ -50,7 +52,8 @@ public class GameState {
         }
         return total;
     }
-
+    /**This method restores the player's game 
+     * from a save file when the game restarts.**/
     void restore(String filename) throws FileNotFoundException,
         IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
@@ -90,7 +93,8 @@ public class GameState {
             }
         }
     }
-
+    /**This method stores the player's information
+     * into a save file.**/
     void store(String saveName) throws IOException {
         String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
@@ -107,12 +111,14 @@ public class GameState {
         }
         w.close();
     }
-
+    /**This method creates a new dungeon
+     * and sets the player in the entry room.**/
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
     }
-
+    /**This method returns the names of each item
+     * in the player's inventory from an array list.**/
     ArrayList<String> getInventoryNames() {
         ArrayList<String> names = new ArrayList<String>();
         for (Item item : inventory) {
@@ -120,15 +126,18 @@ public class GameState {
         }
         return names;
     }
-    /**This method adds a new item to the user's inventory.**/
+    /**This method adds a new item to the player's inventory.**/
     void addToInventory(Item item) /* throws TooHeavyException */ {
         inventory.add(item);
     }
-
+    /**This method removes the selected item from the player's inventory.**/
     void removeFromInventory(Item item) {
         inventory.remove(item);
     }
-
+    /**This method returns the names of the items
+     * in the player's inventory
+     * and the room the player is currently in,
+     * throwing a no item exception as necessary.**/
     Item getItemInVicinityNamed(String name) throws Item.NoItemException {
 
         // First, check inventory.
@@ -194,5 +203,13 @@ public class GameState {
  */
     void gameEnd(){
       
+    }
+/**This method sets the player's current health.**/
+    void setHealth(int health){
+      currentHealth = health;
+    }
+/**This method returns the player's current health.**/
+    int getHealth(){
+      return currentHealth;
     }
 }

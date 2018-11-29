@@ -18,4 +18,4 @@
 	void addToInventory(Item item2){ 
 		GameState.instance().addToInventory(item2);	
 	} 	
-	}
+}

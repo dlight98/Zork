@@ -16,7 +16,7 @@
 		}	     
 		/**This method will set the user's current room 
 		 * to their desired destination. 
-		 * @param destination **/ 
+		 * @param destination **/
 		GameState setAdventurersCurrentRoom(GameState destination){ 
 	             return destination;	
 		}	
