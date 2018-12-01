@@ -8,7 +8,7 @@ class HealthCommand extends Command {
   private int health;
 
   /**
-
+  Default constructor for <tt>HealthCommand</tt>.
   */
   HealthCommand(){
 

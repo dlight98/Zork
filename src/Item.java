@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 import java.util.Hashtable;
+import java.util.Hashtable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -78,10 +79,20 @@ public class Item {
           Dungeon.SECOND_LEVEL_DELIM + "' after item.");
         }
         String[] verbParts = verbLine.split(":");
-        if(verbParts[0].contains("[")){ //if there is an event related to it
+
+
+        if(verbParts[0].contains("[")){ //TODO if there is an event related to it
           String eventPieces = verbParts[0];
           String[] eventParts = eventPieces.split("\\[");
           events.put(eventParts[0], eventParts[1].substring(0, eventParts[1].length() - 1));
+          //System.out.println(eventParts[1]); //DEBUG
+
+          /*
+          TODO
+          make the events split if there are multiple events
+          */
+
+          messages.put(eventParts[0],verbParts[1]);
         } else {
           messages.put(verbParts[0],verbParts[1]);
         }
@@ -138,6 +149,12 @@ public class Item {
       return messages.get(verb);
     }
 
+    public String getEventForVerb(String verb) { //TODO
+
+      return events.get(verb);
+
+    }
+
     /**
     * Takes the item and returns its primary name.
     * This would be used to get a String name instead
@@ -146,5 +163,14 @@ public class Item {
     */
     public String toString() {
       return primaryName;
+    }
+
+    public boolean hasEvent(String word){
+
+      if(events.get(word) != null){
+        return true;
+      } else {
+        return false;
+      }
     }
   }
