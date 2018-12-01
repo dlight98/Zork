@@ -5,10 +5,10 @@ import java.util.Arrays;
  * and will also stores boolean verbose (dictates if the room description will be displayed after it has already been visited
  * varaible move wich changes the adventurues current room
  * varaible Light which can light up the room with a luminating object if the room is dark
- * External Clock which will keep track of time outside the rooms and is affected by actions 
+ * External Clock which will keep track of time outside the rooms and is affected by actions
  * Score which adds points to players after they preform actions
  * Health which will keep tracks of player's health
- * transform which changes one item to another 
+ * transform which changes one item to another
  * Teleport which moves the adventurer to a different room
  *
  * @author Alexander Loceland
@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class CommandFactory {
 
     private static CommandFactory theInstance;
-    public static List<String> MOVEMENT_COMMANDS = 
+    public static List<String> MOVEMENT_COMMANDS =
         Arrays.asList("n","w","e","s","u","d" );
 
     public static synchronized CommandFactory instance() {
@@ -48,6 +48,9 @@ public class CommandFactory {
         }
         if (verb.equals("i") || verb.equals("inventory")) {
             return new InventoryCommand();
+        }
+        if (verb.equals("health")) {
+          return new HealthCommand();
         }
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);

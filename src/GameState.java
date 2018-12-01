@@ -31,7 +31,10 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-    private int currentHealth;
+    private int currentHealth=25; //FIXME this is temporary for now
+    private int score=0;  //FIXME temporary for testing.
+
+
     /**This method creates a new instance of the GameState class.**/
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -52,8 +55,9 @@ public class GameState {
         }
         return total;
     }
-    /**This method restores the player's game 
-     * from a save file when the game restarts.**/
+    /**This method restores the player's game
+     * from a save file when the game restarts.
+     * @param filename **/
     void restore(String filename) throws FileNotFoundException,
         IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
@@ -94,7 +98,8 @@ public class GameState {
         }
     }
     /**This method stores the player's information
-     * into a save file.**/
+     * into a save file.
+     * @param saveName **/
     void store(String saveName) throws IOException {
         String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
@@ -112,7 +117,8 @@ public class GameState {
         w.close();
     }
     /**This method creates a new dungeon
-     * and sets the player in the entry room.**/
+     * and sets the player in the entry room.
+     * @param dungeon **/
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
@@ -126,7 +132,8 @@ public class GameState {
         }
         return names;
     }
-    /**This method adds a new item to the player's inventory.**/
+    /**This method adds a new item to the player's inventory.
+     * @param item **/
     void addToInventory(Item item) /* throws TooHeavyException */ {
         inventory.add(item);
     }
@@ -137,7 +144,8 @@ public class GameState {
     /**This method returns the names of the items
      * in the player's inventory
      * and the room the player is currently in,
-     * throwing a no item exception as necessary.**/
+     * throwing a no item exception as necessary.
+     * @param name **/
     Item getItemInVicinityNamed(String name) throws Item.NoItemException {
 
         // First, check inventory.
@@ -182,34 +190,42 @@ public class GameState {
  * (0 for day, 1 for night).
  */
     void checkTime(){
-     
+
     }
 /** This method changes the time of day from day to night and vice versa
  * whenever the player has made five moves.
  * @param day
  */
     void timeOfDay(){
-      
+
     }
-/** This method implements a time limit of ten days 
+/** This method implements a time limit of ten days
  * with which the player has to complete the current dungeon.
  * @param limit
  */
     void checkTimeLimit(){
-        
+
     }
 /** This method ends the game once the time limit is reached.
  * @param day,limit
  */
     void gameEnd(){
-      
+
     }
 /**This method sets the player's current health.**/
     void setHealth(int health){
-      currentHealth = health;
+      this.currentHealth = health;
     }
 /**This method returns the player's current health.**/
     int getHealth(){
       return currentHealth;
+    }
+
+    int getScore(){
+      return score;
+    }
+
+    void setScore(int score){
+      this.score=score;
     }
 }
