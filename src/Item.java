@@ -84,9 +84,18 @@ public class Item {
         if(verbParts[0].contains("[")){ //TODO if there is an event related to it
           String eventPieces = verbParts[0];
           String[] eventParts = eventPieces.split("\\[");
+          if(eventParts[1].contains(",")) { //FIXME might need to do more than once
+            String[] multipleEvents = eventParts[1].split(",");
+            events.put(eventParts[0], multipleEvents[0]);
+            events.put(eventParts[0], multipleEvents[1].substring(0, multipleEvents[1].length()-1));
+            /*DEBUG
+            System.out.println("Part: " + eventParts[0] + "| event: " +multipleEvents[0]);
+            DEBUG
+            System.out.println("Part: " + eventParts[0] + "| event: " + multipleEvents[1].substring(0, multipleEvents[1].length()-1));*/
+          } else {
           events.put(eventParts[0], eventParts[1].substring(0, eventParts[1].length() - 1));
           //System.out.println(eventParts[1]); //DEBUG
-
+        }
           /*
           TODO
           make the events split if there are multiple events
@@ -166,7 +175,6 @@ public class Item {
     }
 
     public boolean hasEvent(String word){
-
       if(events.get(word) != null){
         return true;
       } else {

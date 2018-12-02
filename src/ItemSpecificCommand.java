@@ -25,21 +25,21 @@ class ItemSpecificCommand extends Command {
     try {
       itemReferredTo = GameState.instance().getItemInVicinityNamed(noun);
     } catch (Item.NoItemException e) {
-      return "There's no " + noun + " here.";
+      return "There's no " + this.noun + " here.";
     }
 
-    String msg = itemReferredTo.getMessageForVerb(verb);
+    String msg = itemReferredTo.getMessageForVerb(this.verb);
 
     if (msg == null) {
       return "Sorry, you can't " + verb + " the " + noun + ".\n";
-    //} else if () { //TODO for events
+    } else if (itemReferredTo.hasEvent(this.verb) == true) { //TODO for events
 
 
 
-      //return msg + ".\n"; //at the end
+      return msg + ".\n" + "DEBUG This is from hasEvent!\n"; //DEBUG at the end
 
-  } else {
-    return msg + ".\n";
+    } else {
+      return msg + ".\n";
+    }
   }
-}
 }
