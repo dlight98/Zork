@@ -34,6 +34,18 @@ class ItemSpecificCommand extends Command {
       return "Sorry, you can't " + verb + " the " + noun + ".\n";
     } else if (itemReferredTo.hasEvent(this.verb) == true) { //TODO for events
 
+      /*TODO
+      0. Drop
+      1. Wound/heal events
+        1b. Die event
+      2. Score events
+        2b. Win events
+      3.Transform
+      4. Teleport
+
+      Will need to continue running even if 1 thing already happened.
+        Not else if.
+       */
 
 
       return msg + ".\n"; //DEBUG This is from hasEvent!\n";

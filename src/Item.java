@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 import java.util.Hashtable;
-import java.util.Hashtable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +36,8 @@ public class Item {
     private String primaryName;
     private int weight;
     private Hashtable<String,String> messages;
-    private Hashtable<String,String> events;
+    private Hashtable<String,ArrayList<String>> events;
+    private ArrayList<String> eventOnCommand;
     private Set<String> aliases;
 
     /**
@@ -55,8 +56,10 @@ public class Item {
     Dungeon.IllegalDungeonFormatException {
 
       messages = new Hashtable<String,String>();
-      events = new Hashtable<String,String>();
+      events = new Hashtable<String,ArrayList<String>>();
+      eventOnCommand = new ArrayList<String>();
       aliases = new HashSet<String>();
+
 
       // Read item name.
       String names[] = s.nextLine().split(",");
@@ -86,14 +89,23 @@ public class Item {
           String[] eventParts = eventPieces.split("\\[");
           if(eventParts[1].contains(",")) { //FIXME might need to do more than once
             String[] multipleEvents = eventParts[1].split(",");
-            events.put(eventParts[0], multipleEvents[0]);
-            events.put(eventParts[0], multipleEvents[1].substring(0, multipleEvents[1].length()-1));
+
+            eventOnCommand.add(multipleEvents[0]);
+            eventOnCommand.add(multipleEvents[1].substring(0, multipleEvents[1].length()-1));
+
+            events.put(eventParts[0], eventOnCommand);
+          //events.put(eventParts[0], multipleEvents[0]);
+            //events.put(eventParts[0], multipleEvents[1].substring(0, multipleEvents[1].length()-1));
+
             /*DEBUG
             System.out.println("Part: " + eventParts[0] + "| event: " +multipleEvents[0]);
             DEBUG
+
             System.out.println("Part: " + eventParts[0] + "| event: " + multipleEvents[1].substring(0, multipleEvents[1].length()-1));*/
           } else {
-            events.put(eventParts[0], eventParts[1].substring(0, eventParts[1].length() - 1));
+
+            eventOnCommand.add(eventParts[1].substring(0, eventParts[1].length() - 1));
+            events.put(eventParts[0], eventOnCommand);
             //System.out.println(eventParts[1]); //DEBUG
           }
           messages.put(eventParts[0],verbParts[1]);
@@ -153,7 +165,7 @@ public class Item {
       return messages.get(verb);
     }
 
-    public String getEventForVerb(String verb) { //TODO
+    public ArrayList getEventForVerb(String verb) { //TODO
 
       return events.get(verb);
 
