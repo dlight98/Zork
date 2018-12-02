@@ -93,14 +93,9 @@ public class Item {
             DEBUG
             System.out.println("Part: " + eventParts[0] + "| event: " + multipleEvents[1].substring(0, multipleEvents[1].length()-1));*/
           } else {
-          events.put(eventParts[0], eventParts[1].substring(0, eventParts[1].length() - 1));
-          //System.out.println(eventParts[1]); //DEBUG
-        }
-          /*
-          TODO
-          make the events split if there are multiple events
-          */
-
+            events.put(eventParts[0], eventParts[1].substring(0, eventParts[1].length() - 1));
+            //System.out.println(eventParts[1]); //DEBUG
+          }
           messages.put(eventParts[0],verbParts[1]);
         } else {
           messages.put(verbParts[0],verbParts[1]);

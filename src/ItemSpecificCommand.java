@@ -36,7 +36,7 @@ class ItemSpecificCommand extends Command {
 
 
 
-      return msg + ".\n" + "DEBUG This is from hasEvent!\n"; //DEBUG at the end
+      return msg + ".\n"; //DEBUG This is from hasEvent!\n";
 
     } else {
       return msg + ".\n";
