@@ -28,7 +28,7 @@ class ItemSpecificCommand extends Command {
     try {
       itemReferredTo = GameState.instance().getItemInVicinityNamed(noun);
     } catch (Item.NoItemException e) {
-      return "There's no " + this.noun + " here.";
+      return "There's no " + this.noun + " here.\n";
     }
 
     String msg = itemReferredTo.getMessageForVerb(this.verb);
@@ -61,7 +61,7 @@ class ItemSpecificCommand extends Command {
           new DropCommand(itemReferredTo.toString()).execute();  //maybe wrong
         } else if (action.contains("Disappear")) {
           System.out.println("Contains Disappear."); //DEBUG
-          new Disappear(itemReferredTo);
+          new Disappear(itemReferredTo).removeFromInventory(itemReferredTo);
         } else if (action.contains("Wound")) {
           String[] number = action.split("\\(");
           int wound = Integer.parseInt(number[1].substring(0, number[1].length()-1));

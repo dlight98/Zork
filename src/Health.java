@@ -36,7 +36,7 @@ public class Health {
       //System.exit(0); //maybe?
     }
 
-    return "didnt die"; //DEBUG
+    //return "didnt die"; //DEBUG
   }
 
   /**
