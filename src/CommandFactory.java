@@ -11,7 +11,7 @@ import java.util.Arrays;
  * transform which changes one item to another
  * Teleport which moves the adventurer to a different room
  *
- * @author Alexander Loceland
+ * @author Alexander Loveland
  */
 public class CommandFactory {
 

@@ -10,12 +10,9 @@ class HealthCommand extends Command {
   /**
   Default constructor for <tt>HealthCommand</tt>.
   */
-  HealthCommand(){
+  HealthCommand() { }
 
-
-  }
-
-  public String execute(){
+  public String execute() {
     this.health = GameState.instance().getHealth();
     //System.out.println("Health: " + GameState.instance().getHealth() +"\n");  //DEBUG
     if(health >= 25) {

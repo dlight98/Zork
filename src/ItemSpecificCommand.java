@@ -51,15 +51,18 @@ class ItemSpecificCommand extends Command {
       */
 
       ArrayList<String> actions = new ArrayList(itemReferredTo.getEventForVerb(verb));
+
       for (String action : actions) {
         //System.out.println(action + "DEBUG.\n"); //DEBUG
 
 
         if (action.contains("Drop")) {
           System.out.println("Contains Drop."); //DEBUG
+          new DropCommand(itemReferredTo.toString()).execute();  //maybe wrong
         } else if (action.contains("Disappear")) {
           System.out.println("Contains Disappear."); //DEBUG
-        } else if (action.contains("Wound")){
+          new Disappear(itemReferredTo);
+        } else if (action.contains("Wound")) {
           String[] number = action.split("\\(");
           int wound = Integer.parseInt(number[1].substring(0, number[1].length()-1));
           returnVal = Health.wound(wound) + "\n";
