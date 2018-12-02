@@ -1,0 +1,34 @@
+Funny Room Name
+nZork++ save data
+Dungeon file:A/good/location/UniqueAndFunny.zork++
+day=2
+time=15
+verbose=true
+===
+Item States:
+Flashlight
+fuel=27
+on=true
+---
+===
+Room States:
+Funny Room Name:
+beenHere=true
+Contents: FunToy
+---
+Good Room Name:
+beenHere=true
+---
+===
+Exit States:
+
+Good Room Name
+open
+---
+===
+Adventurer:
+Current room: Good Room Name
+Inventory: Flashlight
+Health: 
+Score: 
+
