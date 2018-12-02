@@ -45,7 +45,7 @@ public class Health {
   */
   public static String Die() {  //FIXME maybe not static
     return ("Oh dear, you died!\nYour score is "
-      + GameState.instance().getScore());
+      + GameState.instance().getScore() + ".");
       //System.exit(0);
       //return "";
   }

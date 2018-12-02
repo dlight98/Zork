@@ -17,19 +17,19 @@ class HealthCommand extends Command {
 
   public String execute(){
     this.health = GameState.instance().getHealth();
-    System.out.println("Health: " + GameState.instance().getHealth() +"\n");  //DEBUG
+    //System.out.println("Health: " + GameState.instance().getHealth() +"\n");  //DEBUG
     if(health >= 25) {
-      return "You are in perfectly good health.";
+      return "You are in perfectly good health.\n";
     } else if(health >= 20) {
-      return "You feel fine.";
+      return "You feel fine.\n";
     } else if(health >= 15) {
-      return "You have a slight headache and are feeling a bit queezy.";
+      return "You have a slight headache and are feeling a bit queezy.\n";
     } else if(health >= 10) {
-      return "You have a pounding headache.";
+      return "You have a pounding headache.\n";
     } else if(health >= 5) {
-      return "Your breathing is ragged. You are unsure how much longer you can go on.";
+      return "Your breathing is ragged. You are unsure how much longer you can go on.\n";
     } else if(health > 0) {
-      return "You are about to die.";
+      return "You are about to die.\n";
     } else {
       return "If you're getting this message I must've messed something up.\n-Nick Turner\n";
     }
