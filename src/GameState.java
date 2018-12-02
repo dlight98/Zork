@@ -31,7 +31,7 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-    private int currentHealth=25; //FIXME this is temporary for now
+    private int currentHealth=10; //FIXME this is temporary for now
     private int score=0;  //FIXME temporary for testing.
 
 

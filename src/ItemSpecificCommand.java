@@ -22,6 +22,7 @@ class ItemSpecificCommand extends Command {
   * item does not exist it will  catch an exception and return that the item does not exist
   */
   public String execute() {
+    String returnVal = "";  //value returned
 
     Item itemReferredTo = null;
     try {
@@ -38,48 +39,58 @@ class ItemSpecificCommand extends Command {
 
       /*TODO
       0. Drop -- Ben
-        0b. Disappear -- Ben
+      0b. Disappear -- Ben
       1. Wound/heal events -- Nick
-        1b. Die event -- Nick
+      1b. Die event -- Nick
       2. Score events -- Alex
-        2b. Win events -- Alex
+      2b. Win events -- Alex
       3.Transform -- Ben
       4. Teleport -- Ben
 
       Should be a for each loop thru the command arraylist
-       */
+      */
 
-       ArrayList<String> actions = new ArrayList(itemReferredTo.getEventForVerb(verb));
-       for (String action : actions) {
-         //System.out.println(action + "DEBUG.\n"); //DEBUG
-
-         if (action.contains("Drop")) {
-           System.out.println("Contains Drop."); //DEBUG
-         } else if (action.contains("Disappear")) {
-           System.out.println("Contains Disappear."); //DEBUG
-         } else if (action.contains("Wound")){
-           System.out.println("Contains Wound."); //DEBUG
-         } else if (action.contains("Die")) {
-           System.out.println("Contains Die."); //DEBUG
-         } else if (action.contains("Score")) {
-           System.out.println("Contains Score."); //DEBUG
-         } else if (action.contains("Win")) {
-           System.out.println("Contains Win."); //DEBUG
-         } else if (action.contains("Transform")) {
-           System.out.println("Contains Transform."); //DEBUG
-         } else if (action.contains("Teleport")) {
-           System.out.println("Contains Teleport.");  //DEBUG
-         } else {
-           System.out.println("contains something else idk. if you make it here I messed up bad.\n"); //DEBUG
-         }
-
-       }
+      ArrayList<String> actions = new ArrayList(itemReferredTo.getEventForVerb(verb));
+      for (String action : actions) {
+        //System.out.println(action + "DEBUG.\n"); //DEBUG
 
 
-      return msg + ".\n"; //This is from hasEvent!\n";  //DEBUG
+        if (action.contains("Drop")) {
+          System.out.println("Contains Drop."); //DEBUG
+        } else if (action.contains("Disappear")) {
+          System.out.println("Contains Disappear."); //DEBUG
+        } else if (action.contains("Wound")){
+          String[] number = action.split("\\(");
+          int wound = Integer.parseInt(number[1].substring(0, number[1].length()-1));
+          returnVal = Health.wound(wound) + "\n";
+          //System.out.println("Contains Wound. Took " + wound + " damage."); //DEBUG
+        } else if (action.contains("Die")) {
+          returnVal = Health.wound(10000000) + "\n"; //Maybe not the most elegant way, but it works!
+          //System.out.println("Contains Die."); //DEBUG
+        } else if (action.contains("Score")) {
+          System.out.println("Contains Score."); //DEBUG
+        } else if (action.contains("Win")) {
+          System.out.println("Contains Win."); //DEBUG
+        } else if (action.contains("Transform")) {
+          System.out.println("Contains Transform."); //DEBUG
+        } else if (action.contains("Teleport")) {
+          System.out.println("Contains Teleport.");  //DEBUG
+        } else {
+          System.out.println("contains something else idk. if you make it here I messed up bad.\n"); //DEBUG
+        }
 
+      }
+
+
+      if(returnVal.contains("Oh dear,")){
+        System.out.println(msg + "\n" + returnVal);
+        System.exit(0);
+        return null;  //required return value
+      } else {
+        return msg + ".\n" + returnVal; //This is from hasEvent!\n";  //DEBUG
+      }
     } else {
-      return msg + ".\n";
+      return msg + ".\n" + returnVal;
     }
   }
 }

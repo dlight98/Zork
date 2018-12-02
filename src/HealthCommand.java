@@ -17,7 +17,7 @@ class HealthCommand extends Command {
 
   public String execute(){
     this.health = GameState.instance().getHealth();
-
+    System.out.println("Health: " + GameState.instance().getHealth() +"\n");  //DEBUG
     if(health >= 25) {
       return "You are in perfectly good health.";
     } else if(health >= 20) {
@@ -31,7 +31,7 @@ class HealthCommand extends Command {
     } else if(health > 0) {
       return "You are about to die.";
     } else {
-      return "If you're getting this message I must've messed something up.\n-Nick Turner";
+      return "If you're getting this message I must've messed something up.\n-Nick Turner\n";
     }
 
   }

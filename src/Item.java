@@ -105,12 +105,12 @@ public class Item {
           //events.put(eventParts[0], multipleEvents[0]);
             //events.put(eventParts[0], multipleEvents[1].substring(0, multipleEvents[1].length()-1));
 
-
+            /*
             //DEBUG
             System.out.println("Part: " + eventParts[0] + "| event: " +multipleEvents[0]);
             //DEBUG
             System.out.println("Part: " + eventParts[0] + "| event: " + multipleEvents[1].substring(0, multipleEvents[1].length()-1));
-
+            */
 
             //tempEventOnCommand.clear(); //This removes all items so it doesn't start full
 
@@ -119,7 +119,7 @@ public class Item {
             tempEventOnCommand.add(eventParts[1].substring(0, eventParts[1].length() - 1));
             events.put(eventParts[0], tempEventOnCommand);
 
-            System.out.println("Part: " + eventParts[0] + "| event: " +(eventParts[1].substring(0, eventParts[1].length() - 1))); //DEBUG
+            //System.out.println("Part: " + eventParts[0] + "| event: " +(eventParts[1].substring(0, eventParts[1].length() - 1))); //DEBUG
             //tempEventOnCommand.clear(); //This removes all items so it doesn't start full
           }
           messages.put(eventParts[0],verbParts[1]);
