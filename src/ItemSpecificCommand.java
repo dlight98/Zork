@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+//import java.io.NoItemException;
 
 /** This command will preform an action specific to that comman
 *
@@ -21,7 +22,7 @@ class ItemSpecificCommand extends Command {
   /** This method returns a string whcih contains the verb from the item which has a specific command, and if the
   * item does not exist it will  catch an exception and return that the item does not exist
   */
-  public String execute() {
+  public String execute() throws NoItemException {
     String returnVal = "";  //value returned
 
     Item itemReferredTo = null;
@@ -38,16 +39,10 @@ class ItemSpecificCommand extends Command {
     } else if (itemReferredTo.hasEvent(this.verb) == true) {
 
       /*TODO
-      0. Drop -- Ben
-      0b. Disappear -- Ben
-      1. Wound/heal events -- Nick
-      1b. Die event -- Nick
       2. Score events -- Alex
       2b. Win events -- Alex
-      3.Transform -- Ben
       4. Teleport -- Ben
 
-      Should be a for each loop thru the command arraylist
       */
 
       ArrayList<String> actions = new ArrayList(itemReferredTo.getEventForVerb(verb));
@@ -57,10 +52,10 @@ class ItemSpecificCommand extends Command {
 
 
         if (action.contains("Drop")) {
-          System.out.println("Contains Drop."); //DEBUG
+          //System.out.println("Contains Drop."); //DEBUG
           new DropCommand(itemReferredTo.toString()).execute();  //maybe wrong
         } else if (action.contains("Disappear")) {
-          System.out.println("Contains Disappear."); //DEBUG
+          //System.out.println("Contains Disappear."); //DEBUG
           new Disappear(itemReferredTo).removeFromInventory(itemReferredTo);
         } else if (action.contains("Wound")) {
           String[] number = action.split("\\(");
@@ -75,7 +70,15 @@ class ItemSpecificCommand extends Command {
         } else if (action.contains("Win")) {
           System.out.println("Contains Win."); //DEBUG
         } else if (action.contains("Transform")) {
-          System.out.println("Contains Transform."); //DEBUG
+          //System.out.println("Contains Transform."); //DEBUG
+          try {
+            String[] parts = action.split("\\(");
+            String itemName = parts[1].substring(0, parts[1].length()-1);
+            Item itemTo = GameState.instance().getDungeon().getItem(itemName); //FIXME
+            new Transform(itemReferredTo, itemTo).execute();
+          }catch (Item.NoItemException e) {
+            throw new NoItemException("This item doesnt exits");
+          }
         } else if (action.contains("Teleport")) {
           System.out.println("Contains Teleport.");  //DEBUG
         } else {

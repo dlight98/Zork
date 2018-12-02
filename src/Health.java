@@ -37,6 +37,7 @@ public class Health {
     }
 
     //return "didnt die"; //DEBUG
+    return ""; //required to remove
   }
 
   /**
