@@ -83,30 +83,44 @@ public class Item {
         }
         String[] verbParts = verbLine.split(":");
 
-
-        if(verbParts[0].contains("[")){ //TODO if there is an event related to it
+        //FIXME
+        if(verbParts[0].contains("[")){ //if there is an event related to it
           String eventPieces = verbParts[0];
           String[] eventParts = eventPieces.split("\\[");
+          ArrayList<String> tempEventOnCommand = new ArrayList<String>();
+
           if(eventParts[1].contains(",")) { //FIXME might need to do more than once
             String[] multipleEvents = eventParts[1].split(",");
 
-            eventOnCommand.add(multipleEvents[0]);
-            eventOnCommand.add(multipleEvents[1].substring(0, multipleEvents[1].length()-1));
+            /*  FIXME
+            So the problem is that it doesn't clear the eventParts ArrayList after Each
+            verb. how can I fix thant?
+             */
 
-            events.put(eventParts[0], eventOnCommand);
+            tempEventOnCommand.add(multipleEvents[0]);
+            tempEventOnCommand.add(multipleEvents[1].substring(0, multipleEvents[1].length()-1));
+
+            eventOnCommand = tempEventOnCommand;
+            events.put(eventParts[0], eventOnCommand);  //FIXME
           //events.put(eventParts[0], multipleEvents[0]);
             //events.put(eventParts[0], multipleEvents[1].substring(0, multipleEvents[1].length()-1));
 
-            /*DEBUG
-            System.out.println("Part: " + eventParts[0] + "| event: " +multipleEvents[0]);
-            DEBUG
 
-            System.out.println("Part: " + eventParts[0] + "| event: " + multipleEvents[1].substring(0, multipleEvents[1].length()-1));*/
+            //DEBUG
+            System.out.println("Part: " + eventParts[0] + "| event: " +multipleEvents[0]);
+            //DEBUG
+            System.out.println("Part: " + eventParts[0] + "| event: " + multipleEvents[1].substring(0, multipleEvents[1].length()-1));
+
+
+            //tempEventOnCommand.clear(); //This removes all items so it doesn't start full
+
           } else {
 
-            eventOnCommand.add(eventParts[1].substring(0, eventParts[1].length() - 1));
-            events.put(eventParts[0], eventOnCommand);
-            //System.out.println(eventParts[1]); //DEBUG
+            tempEventOnCommand.add(eventParts[1].substring(0, eventParts[1].length() - 1));
+            events.put(eventParts[0], tempEventOnCommand);
+
+            System.out.println("Part: " + eventParts[0] + "| event: " +(eventParts[1].substring(0, eventParts[1].length() - 1))); //DEBUG
+            //tempEventOnCommand.clear(); //This removes all items so it doesn't start full
           }
           messages.put(eventParts[0],verbParts[1]);
         } else {
@@ -166,7 +180,6 @@ public class Item {
     }
 
     public ArrayList getEventForVerb(String verb) { //TODO
-
       return events.get(verb);
 
     }
