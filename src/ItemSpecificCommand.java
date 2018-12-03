@@ -41,7 +41,7 @@ class ItemSpecificCommand extends Command {
       /*TODO
       2. Score events -- Alex
       2b. Win events -- Alex
-      4. Teleport -- Ben
+      4. Teleport
 
       */
 
@@ -49,8 +49,6 @@ class ItemSpecificCommand extends Command {
 
       for (String action : actions) {
         //System.out.println(action + "DEBUG.\n"); //DEBUG
-
-
         if (action.contains("Drop")) {
           //System.out.println("Contains Drop."); //DEBUG
           new DropCommand(itemReferredTo.toString()).execute();  //maybe wrong
@@ -67,8 +65,16 @@ class ItemSpecificCommand extends Command {
           //System.out.println("Contains Die."); //DEBUG
         } else if (action.contains("Score")) {
           System.out.println("Contains Score."); //DEBUG
+          String[] number = action.split("\\(");
+          int points = Integer.parseInt(number[1].substring(0, number[1].length()-1));
+          GameState.instance().addToScore(points);
+          System.out.println("points: " +points);  //DEBUG
+          System.out.println("Total points: " +GameState.instance().getScore());
+
         } else if (action.contains("Win")) {
           System.out.println("Contains Win."); //DEBUG
+
+
         } else if (action.contains("Transform")) {
           //System.out.println("Contains Transform."); //DEBUG
           try {

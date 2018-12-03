@@ -52,6 +52,9 @@ public class CommandFactory {
         if (verb.equals("health")) {
           return new HealthCommand();
         }
+        if (verb.equals("score")){
+          return new ScoreCommand();
+        }
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }
