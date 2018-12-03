@@ -6,8 +6,8 @@
  *@author Benjamin Madren
  */
 	public class Teleport extends Command{ 
-        public GameState room;	
-	public GameState destination;	
+        public Room room;	
+	public Room destination;	
 		/**This method will check what room the user
 		 * is currently in.
 		 * @param room **/
@@ -22,6 +22,6 @@
 		}
 
 		String execute(){
-			return destination.getDesc();
+			return destination.describe();
 	}
 	}
