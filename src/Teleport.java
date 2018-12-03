@@ -7,10 +7,15 @@
  */
 	public class Teleport extends Command{ 
         public Room room;	
-	public Room destination;	
+	public Room destination;
+	public String going;	
 		/**This method will check what room the user
 		 * is currently in.
 		 * @param room **/
+	public Teleport(String room){
+		this.going = room;
+	}
+
 		GameState getAdventurersCurrentRoom(GameState room){
 		     return room;
 		}	     
@@ -22,6 +27,7 @@
 		}
 
 		String execute(){
-			return destination.describe();
+			GameState.instance().setAdventurersCurrentRoom(GameState.instance().getDungeon().Look(going));
+			return GameState.instance().getAdventurersCurrentRoom().describe();
 	}
 	}

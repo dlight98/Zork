@@ -58,6 +58,10 @@ public class Dungeon {
         this.entry = entry;
         rooms = new Hashtable<String,Room>();
     }
+    public Room Look(String find){
+	    return rooms.get(find);
+
+    }
 
     /**
      * This is used if the <tt>Dungeon</tt> is made by itself, without a save file.

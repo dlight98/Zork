@@ -59,8 +59,11 @@ public class CommandFactory {
             return new ItemSpecificCommand(verb, noun);
         }
 	if(verb.equals("Teleport")){
-		return new Teleport();
+		if (MOVEMENT_COMMANDS.contains(verb)) {
+		return new Teleport(verb);
 	}
-        return new UnknownCommand(command);
-    }
+	}
+       	return new UnknownCommand(command);
+
+}
 }
