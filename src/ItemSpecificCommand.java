@@ -68,12 +68,12 @@ class ItemSpecificCommand extends Command {
           String[] number = action.split("\\(");
           int points = Integer.parseInt(number[1].substring(0, number[1].length()-1));
           GameState.instance().addToScore(points);
-          System.out.println("points: " +points);  //DEBUG
-          System.out.println("Total points: " +GameState.instance().getScore());
+          //System.out.println("points: " +points);  //DEBUG
+          //System.out.println("Total points: " +GameState.instance().getScore());  //DEBUG
 
         } else if (action.contains("Win")) {
           System.out.println("Contains Win."); //DEBUG
-
+          returnVal = Score.Win();
 
         } else if (action.contains("Transform")) {
           //System.out.println("Contains Transform."); //DEBUG
@@ -95,6 +95,10 @@ class ItemSpecificCommand extends Command {
 
 
       if(returnVal.contains("Oh dear,")){
+        System.out.println(msg + "\n" + returnVal);
+        System.exit(0);
+        return null;  //required return value
+      } else if (returnVal.contains("Congr")){
         System.out.println(msg + "\n" + returnVal);
         System.exit(0);
         return null;  //required return value
