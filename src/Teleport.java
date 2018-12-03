@@ -5,7 +5,7 @@
  * This class will interact with the GameState and Command classes. 
  *@author Benjamin Madren
  */
-	abstract class Teleport extends Command{ 
+	public class Teleport extends Command{ 
         public GameState room;	
 	public GameState destination;	
 		/**This method will check what room the user
@@ -19,6 +19,9 @@
 		 * @param destination **/
 		GameState setAdventurersCurrentRoom(GameState destination){ 
 	             return destination;	
-		}	
-		
+		}
+
+		String execute(){
+			return destination.getDesc();
+	}
 	}
