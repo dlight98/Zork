@@ -33,6 +33,7 @@ public class GameState {
   private Room adventurersCurrentRoom;
   private int currentHealth=25; //FIXME this is temporary for now
   private int score=0;  //FIXME temporary for testing.
+  static String[] ranks = {"Apprentice", "Knight", "Earl", "Duke", "Prince", "King", "Emperor"};
 
 
   /**This method creates a new instance of the GameState class.**/
@@ -104,8 +105,15 @@ public class GameState {
       int health = Integer.parseInt(healthParts[1]);
       GameState.instance().setHealth(health);
     }
+    if(s.hasNext()){
+	    String ScoreS = s.nextLine();
+	    String[] ScoreParts = ScoreS.split(":");
+	    int Score = Integer.parseInt(ScoreParts[1]);
+	    GameState.instance().setScore(Score);
+
     //TODO add score here
   }
+ }
   /**This method stores the player's information
   * into a save file.
   * @param saveName **/
@@ -125,9 +133,14 @@ public class GameState {
     }
 
     w.println("Health:" + this.currentHealth);
+    w.println("Score:" + this.score);
     //TODO add score here
     w.close();
   }
+  void setScore(int Score){
+	  Score = score;
+  }
+	  
   /**This method creates a new dungeon
   * and sets the player in the entry room.
   * @param dungeon **/
@@ -236,8 +249,36 @@ public class GameState {
   int getScore(){
     return score;
   }
-
-  void setScore(int score){
-    this.score=score;
+  void addToScore(){
+	  score = score + 1;
+  }
+  void addToScore(int amount){
+	  score = score + amount;
+  }
+  String getRank(){
+	 if(score <= 5){
+                return ranks[0];
+        }
+        if(score > 5 && score <= 10){
+                return ranks[1];
+        }
+        if(score > 10 && score >= 15){
+                return ranks[2];
+        }
+        if(score > 15 && score >= 20){
+                return ranks[3];
+        }
+        if(score > 25 && score >= 30){
+                return ranks[4];
+        }
+        if(score > 30 && score >= 35){
+                return ranks[5];
+        }
+        if(score > 35 && score >= 40){
+                return ranks[6];
+        }
+        else{
+                return ranks[0];
+        }
   }
 }
