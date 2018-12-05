@@ -59,6 +59,7 @@ public class Dungeon {
         rooms = new Hashtable<String,Room>();
     }
     public Room Look(String find){
+	    System.out.println("test");
 	    return rooms.get(find);
 
     }
