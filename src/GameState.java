@@ -33,6 +33,8 @@ public class GameState {
   private Room adventurersCurrentRoom;
   private int currentHealth=25; //FIXME this is temporary for now
   private int score=0;  //FIXME temporary for testing.
+  private int movesClock=0;  //moves for Clock
+  private int day=0;  //Day
   static String[] ranks = {"Apprentice", "Knight", "Earl", "Duke", "Prince", "King", "Emperor"};
 
 
