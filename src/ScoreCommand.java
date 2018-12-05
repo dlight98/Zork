@@ -9,7 +9,7 @@ class ScoreCommand extends Command {
     this.rank = GameState.instance().getRank();
 
     //return rank + " | " + score + "\n";  //DEBUG score only debugging
-    return rank;
+    return rank + "\n";
   }
 
 }
