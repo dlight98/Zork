@@ -1,14 +1,29 @@
 Hyrule Dungeon
 Welcome to the land of Hyrule.
-There are many puzzels to solve and monsters to fight.
+There are many puzzles to solve and monsters to fight.
 You must defeat the boss at the end of the dungeon to win.
 ===
 Rooms:
 Block
+A room full of blocks that need to be pushed.
+Push them into the correct positions to continue.
+---
 Flame
+A room full of burning, hot lava.
+You need heat resistance to continue.
+---
 Ice
+A room so cold, there are icicles hanging from the ceiling.
+You need freeze resistance to continue.
+---
 Water
+A room completely filled with water.
+I hope you can swim.
+---
 Electricity
+A room filled with electrical sparks and hazards.
+You need shock resistance to continue.
+---
 Wind
 Grass
 Fairy
@@ -30,6 +45,7 @@ Sword
 Spear
 Axe
 Boomerang
+Torch
 Food
 Drink
 Pig
