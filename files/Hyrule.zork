@@ -25,10 +25,25 @@ A room filled with electrical sparks and hazards.
 You need shock resistance to continue.
 ---
 Wind
+A room filled with gusts of wind.
+You can catch an updraft to ride through this room.
+---
 Grass
+A room with a wide, open pasture.
+There are also a few items and monsters.
+---
 Fairy
+A room that features a pond full of fairies.
+They will automatically heal you if you touch one.
+---
 Dark
+A pitch black room where you cannot see.
+You need a light source in order to progress.
+---
 Psychic
+A room that features enemies that can read your mind.
+They will counterattack you if you attack them.
+---
 Fighting
 Maze
 Slide
@@ -41,16 +56,28 @@ Shop
 Rest
 ===
 Items:
-Sword
-Spear
-Axe
-Boomerang
-Torch
-Food
-Drink
-Pig
-Bear
-Robot
-Lizard
-Cyclops
+Sword: examine, pickup, swing
+---
+Spear: examine, pickup, throw
+---
+Axe: examine, pickup, throw
+---
+Boomerang: examine, pickup, throw
+---
+Torch: examine, pickup, light
+---
+Food: examine, pickup, eat, heal
+---
+Drink: examine, pickup, drink, heal
+---
+Pig: examine, wound
+---
+Bear: examine, wound
+---
+Robot: examine, wound
+---
+Lizard: examine, wound
+---
+Cyclops: examine, wound
+---
 ===
