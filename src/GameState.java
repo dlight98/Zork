@@ -33,8 +33,9 @@ public class GameState {
   private Room adventurersCurrentRoom;
   private int currentHealth=25; //FIXME this is temporary for now
   private int score=0;  //FIXME temporary for testing.
-  private int clock=0;  //moves for Clock
-  private int day=0;  //Day
+  //private int clock=0;  //moves for Clock
+  //private int daysPassed=0;  /* what day it is.*/
+  //private boolean night; /** false is day true is night. */
   static String[] ranks = {"Apprentice", "Knight", "Earl", "Duke", "Prince", "King", "Emperor"};
 
 
@@ -215,26 +216,26 @@ public class GameState {
   Dungeon getDungeon() {
     return dungeon;
   }
-  /** This method sets the current time of day for the given dungeon.
-  * (0 for day, 1 for night).
-  */
-  void checkTime(){
 
-  }
-  /** This method changes the time of day from day to night and vice versa
-  * whenever the player has made five moves.
-  * @param day
-  */
-  void timeOfDay(){
-
-  }
-  /** This method implements a time limit of ten days
-  * with which the player has to complete the current dungeon.
-  * @param limit
-  */
-  void checkTimeLimit(){
-
-  }
+  // /** This method sets the current time of day for the given dungeon.
+  // * (0 for day, 1 for night).
+  // */
+  // int checkTime() {
+  //   return clock;
+  // }
+  //
+  // /** This method changes the time of day from day to night and vice versa
+  // * whenever the player has made five moves.
+  // */
+  // boolean timeOfDay(){
+  //   return night;
+  // }
+  // /** This method implements a time limit of ten days
+  // * with which the player has to complete the current dungeon.
+  // */
+  // void checkTimeLimit() {
+  //
+  // }
   /** This method ends the game once the time limit is reached.
   * @param day,limit
   */
@@ -286,18 +287,17 @@ public class GameState {
       return ranks[0];
     }
   }
-
+/*
   void setClock() {
     clock += 1;
   }
-  int getClock() {
-    return clock;
-  }
+
 
   int getDay() {
     return day;
-  } 
+  }
   void setDay() {
     day += 1;
   }
+  */
 }
