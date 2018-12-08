@@ -1,6 +1,7 @@
 /**This class will allow the player to pick up and use light sources.
  * There are many dark rooms throughout the dungeon. The player needs a
- * light source to progress through these rooms.**/
+ * light source to progress through these rooms.
+ * @author Benjamin Madren **/
 public class Light{
   public Item light;
   public boolean power = true;

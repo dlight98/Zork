@@ -1,0 +1,6 @@
+Welcome to Hyrule. This dungeon features many clever puzzles and enemies.
+To progress through each room, you must either solve a puzzle or defeat
+some monsters. The puzzles have varying elements, like wind and electricity,
+and the mosnters have many different fighting styles, like Psychic and Fighting.
+Your ultimate goal is to defeat the final boss at the end of the dungeon.
+Once you have done so, you will be declared the winner.
