@@ -33,7 +33,7 @@ public class GameState {
   private Room adventurersCurrentRoom;
   private int currentHealth=25; //FIXME this is temporary for now
   private int score=0;  //FIXME temporary for testing.
-  private int movesClock=0;  //moves for Clock
+  private int clock=0;  //moves for Clock
   private int day=0;  //Day
   static String[] ranks = {"Apprentice", "Knight", "Earl", "Duke", "Prince", "King", "Emperor"};
 
@@ -49,6 +49,7 @@ public class GameState {
   private GameState() {
     inventory = new ArrayList<Item>();
   }
+
   /**This method returns the adventurer's current weight
   * based on the items in their inventory.**/
   int getAdventurersCurrentWeight() {
@@ -284,5 +285,19 @@ public class GameState {
     else{
       return ranks[0];
     }
+  }
+
+  void setClock() {
+    clock += 1;
+  }
+  int getClock() {
+    return clock;
+  }
+
+  int getDay() {
+    return day;
+  } 
+  void setDay() {
+    day += 1;
   }
 }

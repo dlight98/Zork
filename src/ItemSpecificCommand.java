@@ -64,7 +64,7 @@ class ItemSpecificCommand extends Command {
           returnVal = Health.wound(10000000) + "\n"; //Maybe not the most elegant way, but it works!
           //System.out.println("Contains Die."); //DEBUG
         } else if (action.contains("Score")) {
-          System.out.println("Contains Score."); //DEBUG
+          //System.out.println("Contains Score."); //DEBUG
           String[] number = action.split("\\(");
           int points = Integer.parseInt(number[1].substring(0, number[1].length()-1));
           GameState.instance().addToScore(points);
@@ -72,7 +72,7 @@ class ItemSpecificCommand extends Command {
           //System.out.println("Total points: " +GameState.instance().getScore());  //DEBUG
 
         } else if (action.contains("Win")) {
-          System.out.println("Contains Win."); //DEBUG
+          //System.out.println("Contains Win."); //DEBUG
           returnVal = Score.Win();
 
         } else if (action.contains("Transform")) {
@@ -86,7 +86,7 @@ class ItemSpecificCommand extends Command {
             throw new NoItemException("This item doesnt exits");
           }
         } else if (action.contains("Teleport")) {
-          System.out.println("Contains Teleport.");  //DEBUG
+          //System.out.println("Contains Teleport.");  //DEBUG
         } else {
           System.out.println("contains something else idk. if you make it here I messed up bad.\n"); //DEBUG
         }
