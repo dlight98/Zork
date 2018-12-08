@@ -48,6 +48,13 @@ donut
 eat[Disappear,Wound(-2)]:You feel mildly guilt-ridden.
 stomp:The donut is now smooshed.
 ---
+torch
+5
+light[Power]:Your torch is lit rather dimly.
+---
+flashlight
+10
+light[Power]:Your flashlight shines brightly.
 ===
 Rooms:
 Rotunda
@@ -72,6 +79,11 @@ Contents: chainsaw,magicWand
 You stand on a circular white balcony overlooking an entry hall.
 Columnar bannisters in ancient Grecian style stand between you and the
 precipice.
+---
+Pitch Black
+Contents: torch
+This room is completely filled with darkness.
+You need a light source in order to progress through it.
 ---
 ===
 Exits:
@@ -106,5 +118,9 @@ Stephen's office
 Stephen's office
 e
 Basement hallway
+---
+Basement hallway
+u
+Pitch Black
 ---
 ===
