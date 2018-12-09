@@ -14,7 +14,9 @@ public class Transform extends Command {
 		this.item2 = item2;
 
 	}
-
+        /**This method interacts with the GameState class
+	 * to remove an item from the player's inventory
+	 * and add a new item.**/
 	String execute() {
 		GameState.instance().removeFromInventory(item1);
 		GameState.instance().addToInventory(item2);

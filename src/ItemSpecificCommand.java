@@ -81,7 +81,10 @@ class ItemSpecificCommand extends Command {
           }
         } else if (action.contains("Teleport")) {
           //System.out.println("Contains Teleport.");  //DEBUG
-        } else {
+        } else if (action.contains("Power")) {
+	  //System.out.println("Contains Power.");  //DEBUG     	
+        }	
+	else {
           System.out.println("contains something else idk. if you make it here I messed up bad.\n"); //DEBUG
         }
 
