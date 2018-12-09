@@ -63,7 +63,21 @@ public class Dungeon {
 	    return rooms.get(find);
 
     }
-
+    public void VerboseExecute(boolean value){
+	    if(value == true){
+		    for(String room: rooms.keySet()){
+			    rooms.get(room).setBeenHere(false);
+			    rooms.get(room).setVerbose(true);
+		    }
+	}
+		else{
+			for(String room: rooms.keySet()){
+                            rooms.get(room).setBeenHere(true);
+                            rooms.get(room).setVerbose(false); 
+		}
+	
+    }
+    }
     /**
      * This is used if the <tt>Dungeon</tt> is made by itself, without a save file.
      * Read from the .zork filename passed, and instantiate a Dungeon object

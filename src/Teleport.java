@@ -27,7 +27,12 @@
 		}
 
 		String execute(){
+			if(GameState.instance().getDungeon().Look(going) != null){
 			GameState.instance().setAdventurersCurrentRoom(GameState.instance().getDungeon().Look(going));
 			return GameState.instance().getAdventurersCurrentRoom().describe();
+			}
+			else{
+				return "Null room, you can not go there." + going;
+			}
 	}
 	}

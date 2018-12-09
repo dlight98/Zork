@@ -30,10 +30,11 @@ public class CommandFactory {
     private CommandFactory() {
     }
 
-    public Command parse(String command) {
-        String parts[] = command.split(" ");
-        String verb = parts[0];
-        String noun = parts.length >= 2 ? parts[1] : "";
+    public Command parse(String command){
+       		 String parts[] = command.split(" ");
+       		 String verb = parts[0];
+       		 String noun = parts.length >= 2 ? parts[1] : "";
+		
         if (verb.equals("look")) {
             return new LookCommand();
         }
@@ -55,15 +56,38 @@ public class CommandFactory {
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }
-        if (parts.length == 2) {
+        if (parts.length == 2 && !command.contains("Verbose") && !command.contains("Teleport")) {
             return new ItemSpecificCommand(verb, noun);
         }
 	if(verb.contains("Teleport")){
+		String destinationRoom = "";
+                String fullCommand[] = command.split(" ");
+                String teleport = fullCommand[0];
+                if(fullCommand.length > 2)
+                {
+                         destinationRoom = fullCommand[1] + " " + fullCommand[2];
+                }
+        	
 		if( parts.length == 2){
-		return new Teleport(noun);
+		return new Teleport(parts[1]);
 		}
 		else{
-			return new Teleport(parts[1] + parts[2]);
+			return new Teleport(destinationRoom);
+		}
+	}
+	if(verb.contains("Verbose")){
+		String fullCommand[] = command.split(" ");
+		if(fullCommand.length < 2)
+		{
+			System.out.println("No boolean value pass.");
+			return new UnknownCommand(command);
+		}
+		if(fullCommand[1].equalsIgnoreCase("on")){
+			return new VerboseCommand(true);
+
+		}
+		if(fullCommand[1].equalsIgnoreCase("Off")){
+			return new VerboseCommand(false);
 		}
 	}
        	return new UnknownCommand(command);
