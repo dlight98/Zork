@@ -21,7 +21,7 @@ public class GameState {
   }
 
   static String SAVE_FILE_EXTENSION = ".sav";
-  static String SAVE_FILE_VERSION = "Zork III save data";
+  static String SAVE_FILE_VERSION = "Zork++ save data";
 
   static String ADVENTURER_MARKER = "Adventurer:";
   static String CURRENT_ROOM_LEADER = "Current room: ";
@@ -115,9 +115,12 @@ public class GameState {
       String[] ScoreParts = ScoreS.split(":");
       int score = Integer.parseInt(ScoreParts[1]);
       GameState.instance().setScore(score);
-
+    }
+    if(s.hasNext()){
+      Clock.instance().restoreState(s);
     }
   }
+
   /**This method stores the player's information
   * into a save file.
   * @param saveName **/
@@ -138,6 +141,7 @@ public class GameState {
 
     w.println("Health:" + this.currentHealth);
     w.println("Score:" + this.score);
+    Clock.instance().storeState(w);
 
     w.close();
   }

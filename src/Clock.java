@@ -1,6 +1,10 @@
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.io.IOException;
+
 /**
-This class runs the external time keeping system. It is a singleton
-that keeps track of the time and adds it to the <tt>{@link GameState}</tt>.
+The <tt>Clock</tt> is a singleton that runs the external time keeping system.
+It keeps track of the time, the days passed, the time limit, and if it is night.
 @author Nick Turner
 */
 public class Clock {
@@ -31,6 +35,18 @@ public class Clock {
     }
   }
 
+  int getCurrentTime() {
+    return currentTime;
+  }
+
+  int getDaysPassed() {
+    return daysPassed;
+  }
+
+  boolean checkNight() {
+    return night;
+  }
+
   String changeTimeOfDay() {
     night = !night;
     if(night==false) {
@@ -44,8 +60,46 @@ public class Clock {
         +"There are " + (this.timeLimit - this.daysPassed) + " days left.";
     }
   }
+
   void outOfTime() {
     System.out.println("You hear a bell toll. You are out of time");
     Health.Die();
+  }
+
+  void storeState(PrintWriter w) throws IOException {
+    w.println("DaysPassed:" + this.daysPassed);
+    w.println("Time:" + this.currentTime);
+    w.println("Night:" + this.night);
+  }
+
+  void restoreState(Scanner s) throws
+    GameState.IllegalSaveFormatException {
+
+    String line = s.nextLine();
+    int number; //the number after the :
+    boolean n;  //chacks for night
+    if (!line.startsWith("DaysPassed")) {
+      throw new GameState.IllegalSaveFormatException("No daysPassed.");
+    } else {
+      String[] lineParts = line.split(":");
+      number = Integer.parseInt(lineParts[1]);
+      this.daysPassed = number;
+    }
+    line = s.nextLine();
+    if (!line.startsWith("Time")) {
+      throw new GameState.IllegalSaveFormatException("No time.");
+    } else {
+      String[] lineParts = line.split(":");
+      number = Integer.parseInt(lineParts[1]);
+      this.currentTime = number;
+    }
+    line = s.nextLine();
+    if (!line.startsWith("Night")) {
+      throw new GameState.IllegalSaveFormatException("No night.");
+    } else {
+      String[] lineParts = line.split(":");
+      n = Boolean.parseBoolean(lineParts[1]);
+      this.night = n;
+    }
   }
 }
