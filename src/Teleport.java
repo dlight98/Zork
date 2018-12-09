@@ -20,7 +20,8 @@
 		GameState setAdventurersCurrentRoom(GameState destination){
 	             return destination;
 		}
-
+                /**This method will return the description of
+		 * the player's destination room.**/
 		String execute(){
 			return destination.describe();
 	}

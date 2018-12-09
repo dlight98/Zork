@@ -139,7 +139,7 @@ public class GameState {
 
     w.close();
   }
-
+  /**This method sets the player's current score.**/
   void setScore(int score){
     this.score = score;
   }
@@ -248,17 +248,19 @@ public class GameState {
   int getHealth(){
     return currentHealth;
   }
-
+  /**This method checks the player's current score.**/
   int getScore(){
     return score;
   }
+  /**This method adds 1 point to the player's score.**/ 
   void addToScore(){
     score = score + 1;
   }
+  /**This method updates amount with the player's current score.**/ 
   void addToScore(int amount){
     score = score + amount;
   }
-
+  /**This method returns the player's rank depending on their score.**/
   String getRank(){
     if(score <= 5){
       return ranks[0];
