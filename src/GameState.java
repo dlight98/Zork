@@ -31,8 +31,8 @@ public class GameState {
   private Dungeon dungeon;
   private ArrayList<Item> inventory;
   private Room adventurersCurrentRoom;
-  private int currentHealth=25; //FIXME this is temporary for now
-  private int score=0;  //FIXME temporary for testing.
+  private int currentHealth=5; //FIXME this is temporary for now
+  private int score=0;
   //private int clock=0;  //moves for Clock
   //private int daysPassed=0;  /* what day it is.*/
   //private boolean night; /** false is day true is night. */

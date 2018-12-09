@@ -23,6 +23,7 @@ class ItemSpecificCommand extends Command {
   * item does not exist it will  catch an exception and return that the item does not exist
   */
   public String execute() throws NoItemException {
+
     String returnVal = "";  //value returned
 
     Item itemReferredTo = null;
@@ -37,13 +38,6 @@ class ItemSpecificCommand extends Command {
     if (msg == null) {
       return "Sorry, you can't " + verb + " the " + noun + ".\n";
     } else if (itemReferredTo.hasEvent(this.verb) == true) {
-
-      /*TODO
-      2. Score events -- Alex
-      2b. Win events -- Alex
-      4. Teleport
-
-      */
 
       ArrayList<String> actions = new ArrayList(itemReferredTo.getEventForVerb(verb));
 
@@ -103,10 +97,10 @@ class ItemSpecificCommand extends Command {
         System.exit(0);
         return null;  //required return value
       } else {
-        return msg + ".\n" + returnVal; //This is from hasEvent!\n";  //DEBUG
+        return Clock.instance().addTime() + msg + ".\n" + returnVal; //This is from hasEvent!\n";  //DEBUG
       }
     } else {
-      return msg + ".\n" + returnVal;
+      return Clock.instance().addTime() + msg + ".\n" + returnVal;
     }
   }
 }

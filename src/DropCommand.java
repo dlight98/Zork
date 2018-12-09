@@ -21,6 +21,7 @@ class DropCommand extends Command {
      */
 
     public String execute() {
+
         if (itemName == null || itemName.trim().length() == 0) {
             return "Drop what?\n";
         }
@@ -29,7 +30,7 @@ class DropCommand extends Command {
                 itemName);
             GameState.instance().removeFromInventory(theItem);
             GameState.instance().getAdventurersCurrentRoom().add(theItem);
-            return theItem.getPrimaryName() + " dropped.\n";
+            return Clock.instance().addTime() + theItem.getPrimaryName() + " dropped.\n";
         } catch (Item.NoItemException e) {
             return "You don't have a " + itemName + ".\n";
         }

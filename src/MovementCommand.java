@@ -19,11 +19,14 @@ class MovementCommand extends Command {
  * direction the string indicares that the player cannot move there
  */
     public String execute() {
+
+      //String time = Clock.instance().addTime();
+
         Room currentRoom = GameState.instance().getAdventurersCurrentRoom();
         Room nextRoom = currentRoom.leaveBy(dir);
         if (nextRoom != null) {  // could try/catch here.
             GameState.instance().setAdventurersCurrentRoom(nextRoom);
-            return "\n" + nextRoom.describe() + "\n";
+            return Clock.instance().addTime() + "\n" + nextRoom.describe() + "\n";
         } else {
             return "You can't go " + dir + ".\n";
         }

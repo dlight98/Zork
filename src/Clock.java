@@ -9,7 +9,7 @@ It keeps track of the time, the days passed, the time limit, and if it is night.
 */
 public class Clock {
   private static Clock theInstance;
-  private int timePerDay=25;  /*says how many moves make up a day*/
+  private int timePerDay=5; //FIXME /*says how many moves make up a day*/
   private int timeLimit=-1;  /**the number of days before the game ends.*/
   private int daysPassed=0; /** how many days have passed.*/
   private int currentTime=0;  /** the current time.*/
@@ -28,10 +28,27 @@ public class Clock {
     this.night=false;
   }
 
-  void addTime() {
+  String addTime() {
     this.currentTime++;
     if (this.currentTime >= this.timePerDay) {
-      Clock.instance().changeTimeOfDay();
+      currentTime = 0;
+      return Clock.instance().changeTimeOfDay();
+    } else {
+      return "";
+    }
+  }
+
+  void init(Scanner s) throws
+  Dungeon.IllegalDungeonFormatException {
+
+    String line = s.nextLine();
+    if(line.startsWith("TimeLimit")){
+      String[] lineParts = line.split(":");
+      int number = Integer.parseInt(lineParts[1]);
+      this.timeLimit = number;
+      //System.out.println("You have " + number + " days to win.");
+    } else {
+      //TODO maybe something here?
     }
   }
 
@@ -43,27 +60,40 @@ public class Clock {
     return daysPassed;
   }
 
+  int getTimeLimit() {
+    return timeLimit;
+  }
+
   boolean checkNight() {
     return night;
   }
 
   String changeTimeOfDay() {
+    String retVal = "";
     night = !night;
-    if(night==false) {
-      this.daysPassed++;
-      if (this.daysPassed==this.timeLimit) {
-        Clock.instance().outOfTime();
-      }
-      return "The sun has set. It is now night.";
+    if(night==true) {
+      return "\nThe sun has set. It is now night.\n";
     } else {
-      return "Good morning! The " + this.daysPassed + " day has dawned.\n"
-        +"There are " + (this.timeLimit - this.daysPassed) + " days left.";
+      this.daysPassed++;
+      if (daysPassed>timeLimit && timeLimit>0) {
+        return Clock.instance().outOfTime();
+      }
+      if(daysPassed+1 >= timeLimit){
+        return "Dawn of the Final Day.";
+      }else{
+        return "\nGood morning! A new day has dawned\n"
+        + this.daysPassed + " day(s) have passed.\n" +
+        "There are " + (this.timeLimit - this.daysPassed +1) + " days left.\n";
+      }
     }
+
   }
 
-  void outOfTime() {
-    System.out.println("You hear a bell toll. You are out of time");
-    Health.Die();
+  String outOfTime() {
+    System.out.println("\nYou hear a bell toll. You are out of time.\n");
+    System.out.println(Health.Die());
+    System.exit(0);
+    return "";
   }
 
   void storeState(PrintWriter w) throws IOException {
@@ -73,7 +103,7 @@ public class Clock {
   }
 
   void restoreState(Scanner s) throws
-    GameState.IllegalSaveFormatException {
+  GameState.IllegalSaveFormatException {
 
     String line = s.nextLine();
     int number; //the number after the :
@@ -102,4 +132,5 @@ public class Clock {
       this.night = n;
     }
   }
+
 }
