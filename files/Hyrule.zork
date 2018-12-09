@@ -1,0 +1,122 @@
+Hyrule Dungeon
+Welcome to the land of Hyrule.
+There are many puzzles to solve and monsters to fight.
+You must defeat the boss at the end of the dungeon within
+an hour to win.
+===
+Rooms:
+Block(Entry Room)
+A room full of blocks that need to be pushed.
+Push them into the correct positions to continue.
+---
+Flame
+A room full of burning, hot lava.
+You need heat resistance to continue.
+---
+Ice
+A room so cold, there are icicles hanging from the ceiling.
+You need freeze resistance to continue.
+---
+Water
+A room completely filled with water.
+I hope you can swim.
+---
+Electricity
+A room filled with electrical sparks and hazards.
+You need shock resistance to continue.
+---
+Wind
+A room filled with gusts of wind.
+You can catch an updraft to ride through this room.
+---
+Grass
+A room with a wide, open pasture.
+There are also a few items and monsters.
+---
+Fairy
+A room that features a pond full of fairies.
+They will automatically heal you if you touch one.
+---
+Dark
+A pitch black room where you cannot see.
+You need a light source in order to progress.
+---
+Psychic
+A room that features enemies that can read your mind.
+They will counterattack you if you attack them.
+---
+Fighting
+The enemies in this room are very aggressive.
+They will constantly attack you.
+---
+Maze
+This room is filled with tricks, traps, and dead ends.
+You must reach the end of the maze to proceed.
+---
+Slide
+Wheee! This room features a gigantic windy, curvy slide.
+Have fun!
+---
+Golf
+This room is set up like a golf course.
+You must put the ball into the hole in five strokes
+or less to proceed.
+---
+Baseball
+This room is set up like a baseball field.
+You must hit a home run to proceed.
+---
+Basketball
+This room is set up like a basketball court.
+You must shoot a basket in three attempts or less
+to proceed.
+---
+Archery
+This room is set up like an archery range.
+You have ten arrows. Shoot a bullseye to proceed.
+---
+Wrestling
+This room is set up like a wrestling ring.
+It also features the final boss.
+You must defeat him to win.
+---
+Shop
+This room features a grocery store.
+Here, you can stock up on food and drinks
+in order to replenish your health.
+---
+Rest
+This room is set up like a hotel bedroom.
+If you're feeling weary,
+you can rest here to change the time
+and replenish your health.
+---
+===
+Items:
+Sword: examine, pickup, swing
+---
+Spear: examine, pickup, throw
+---
+Axe: examine, pickup, throw
+---
+Boomerang: examine, pickup, throw
+---
+Torch: examine, pickup, light
+---
+Food: examine, pickup, eat, heal
+---
+Drink: examine, pickup, drink, heal
+---
+Pig: examine, wound
+---
+Bear: examine, wound
+---
+Robot: examine, wound
+---
+Lizard: examine, wound
+---
+Cyclops: examine, wound
+---
+Clock: examine, time
+---
+===

@@ -29,7 +29,7 @@ recycle[Score(5),Disappear]:Boom-ya, helped save the environment.
 magicWand
 5
 break[Wound(10),Disappear]:The wand snaps in half. Strange magic fills the air, making you feel suddenly ill.
-wave[Score(5),Teleport]:An angelic form briefly appears, smiles, and just as quickly fades away. 
+wave[Score(5),Teleport]:An angelic form briefly appears, smiles, and just as quickly fades away.
 ---
 StarWarsToy
 5
@@ -47,6 +47,14 @@ donut
 7
 eat[Disappear,Wound(-2)]:You feel mildly guilt-ridden.
 stomp:The donut is now smooshed.
+---
+torch
+5
+light[Power]:Your torch is lit rather dimly.
+---
+flashlight
+10
+light[Power]:Your flashlight shines brightly.
 ---
 ===
 Rooms:
@@ -72,6 +80,11 @@ Contents: chainsaw,magicWand
 You stand on a circular white balcony overlooking an entry hall.
 Columnar bannisters in ancient Grecian style stand between you and the
 precipice.
+---
+Pitch black
+Contents: torch
+This room is completely filled with darkness.
+You need a light source in order to progress through it.
 ---
 ===
 Exits:
@@ -105,6 +118,14 @@ Stephen's office
 ---
 Stephen's office
 e
+Basement hallway
+---
+Basement hallway
+n
+Pitch black
+---
+Pitch black
+s
 Basement hallway
 ---
 ===

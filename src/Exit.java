@@ -115,6 +115,5 @@ public class Exit {
     */
     boolean getisClosed(){
 	    return isClosed;
-      //FIXME needs to be written
-    }
   }
+}

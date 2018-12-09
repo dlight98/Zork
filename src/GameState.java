@@ -21,7 +21,7 @@ public class GameState {
   }
 
   static String SAVE_FILE_EXTENSION = ".sav";
-  static String SAVE_FILE_VERSION = "Zork III save data";
+  static String SAVE_FILE_VERSION = "Zork++ save data";
 
   static String ADVENTURER_MARKER = "Adventurer:";
   static String CURRENT_ROOM_LEADER = "Current room: ";
@@ -31,8 +31,11 @@ public class GameState {
   private Dungeon dungeon;
   private ArrayList<Item> inventory;
   private Room adventurersCurrentRoom;
-  private int currentHealth=25; //FIXME this is temporary for now
-  private int score=0;  //FIXME temporary for testing.
+  private int currentHealth=5; //FIXME this is temporary for now
+  private int score=0;
+  //private int clock=0;  //moves for Clock
+  //private int daysPassed=0;  /* what day it is.*/
+  //private boolean night; /** false is day true is night. */
   static String[] ranks = {"Apprentice", "Knight", "Earl", "Duke", "Prince", "King", "Emperor"};
 
 
@@ -47,6 +50,7 @@ public class GameState {
   private GameState() {
     inventory = new ArrayList<Item>();
   }
+
   /**This method returns the adventurer's current weight
   * based on the items in their inventory.**/
   int getAdventurersCurrentWeight() {
@@ -111,9 +115,12 @@ public class GameState {
       String[] ScoreParts = ScoreS.split(":");
       int score = Integer.parseInt(ScoreParts[1]);
       GameState.instance().setScore(score);
-
+    }
+    if(s.hasNext()){
+      Clock.instance().restoreState(s);
     }
   }
+
   /**This method stores the player's information
   * into a save file.
   * @param saveName **/
@@ -134,10 +141,11 @@ public class GameState {
 
     w.println("Health:" + this.currentHealth);
     w.println("Score:" + this.score);
+    Clock.instance().storeState(w);
 
     w.close();
   }
-
+  /**This method sets the player's current score.**/
   void setScore(int score){
     this.score = score;
   }
@@ -212,26 +220,26 @@ public class GameState {
   Dungeon getDungeon() {
     return dungeon;
   }
-  /** This method sets the current time of day for the given dungeon.
-  * (0 for day, 1 for night).
-  */
-  void checkTime(){
 
-  }
-  /** This method changes the time of day from day to night and vice versa
-  * whenever the player has made five moves.
-  * @param day
-  */
-  void timeOfDay(){
-
-  }
-  /** This method implements a time limit of ten days
-  * with which the player has to complete the current dungeon.
-  * @param limit
-  */
-  void checkTimeLimit(){
-
-  }
+  // /** This method sets the current time of day for the given dungeon.
+  // * (0 for day, 1 for night).
+  // */
+  // int checkTime() {
+  //   return clock;
+  // }
+  //
+  // /** This method changes the time of day from day to night and vice versa
+  // * whenever the player has made five moves.
+  // */
+  // boolean timeOfDay(){
+  //   return night;
+  // }
+  // /** This method implements a time limit of ten days
+  // * with which the player has to complete the current dungeon.
+  // */
+  // void checkTimeLimit() {
+  //
+  // }
   /** This method ends the game once the time limit is reached.
   * @param day,limit
   */
@@ -246,17 +254,19 @@ public class GameState {
   int getHealth(){
     return currentHealth;
   }
-
+  /**This method checks the player's current score.**/
   int getScore(){
     return score;
   }
+  /**This method adds 1 point to the player's score.**/ 
   void addToScore(){
     score = score + 1;
   }
+  /**This method updates amount with the player's current score.**/ 
   void addToScore(int amount){
     score = score + amount;
   }
-
+  /**This method returns the player's rank depending on their score.**/
   String getRank(){
     if(score <= 5){
       return ranks[0];
@@ -283,4 +293,17 @@ public class GameState {
       return ranks[0];
     }
   }
+/*
+  void setClock() {
+    clock += 1;
+  }
+
+
+  int getDay() {
+    return day;
+  }
+  void setDay() {
+    day += 1;
+  }
+  */
 }

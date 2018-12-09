@@ -1,0 +1,6 @@
+Light(+20 XP): Light sources are availble in many rooms throughout the dungeon.
+Some rooms are completely dark, and the player needs to have a light source turned
+on in order to progress through it.
+
+You can test Light by grabbing a torch or flashlight item from the Pitch Black room
+and turning it on using the Power event.

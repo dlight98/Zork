@@ -22,6 +22,8 @@ class LookCommand extends Command {
  * This method prints the response for the user to see
  */
     public String execute() {
+      Clock.instance().addTime();
+
         Room currRoom = GameState.instance().getAdventurersCurrentRoom();
         return "\n" + currRoom.describe(true) + "\n";
     }

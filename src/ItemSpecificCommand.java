@@ -23,6 +23,7 @@ class ItemSpecificCommand extends Command {
   * item does not exist it will  catch an exception and return that the item does not exist
   */
   public String execute() throws NoItemException {
+
     String returnVal = "";  //value returned
 
     Item itemReferredTo = null;
@@ -37,13 +38,6 @@ class ItemSpecificCommand extends Command {
     if (msg == null) {
       return "Sorry, you can't " + verb + " the " + noun + ".\n";
     } else if (itemReferredTo.hasEvent(this.verb) == true) {
-
-      /*TODO
-      2. Score events -- Alex
-      2b. Win events -- Alex
-      4. Teleport
-
-      */
 
       ArrayList<String> actions = new ArrayList(itemReferredTo.getEventForVerb(verb));
 
@@ -64,16 +58,16 @@ class ItemSpecificCommand extends Command {
           returnVal = Health.wound(10000000) + "\n"; //Maybe not the most elegant way, but it works!
           //System.out.println("Contains Die."); //DEBUG
         } else if (action.contains("Score")) {
-          System.out.println("Contains Score."); //DEBUG
+          //System.out.println("Contains Score."); //DEBUG
           String[] number = action.split("\\(");
           int points = Integer.parseInt(number[1].substring(0, number[1].length()-1));
           GameState.instance().addToScore(points);
-          System.out.println("points: " +points);  //DEBUG
-          System.out.println("Total points: " +GameState.instance().getScore());
+          //System.out.println("points: " +points);  //DEBUG
+          //System.out.println("Total points: " +GameState.instance().getScore());  //DEBUG
 
         } else if (action.contains("Win")) {
-          System.out.println("Contains Win."); //DEBUG
-
+          //System.out.println("Contains Win."); //DEBUG
+          returnVal = Score.Win();
 
         } else if (action.contains("Transform")) {
           //System.out.println("Contains Transform."); //DEBUG
@@ -86,8 +80,12 @@ class ItemSpecificCommand extends Command {
             throw new NoItemException("This item doesnt exits");
           }
         } else if (action.contains("Teleport")) {
-          System.out.println("Contains Teleport.");  //DEBUG
-        } else {
+          //System.out.println("Contains Teleport.");  //DEBUG
+          
+        } else if (action.contains("Power")) {
+          //System.out.println("Contains Power.");  //DEBUG
+        }
+        else {
           System.out.println("contains something else idk. if you make it here I messed up bad.\n"); //DEBUG
         }
 
@@ -98,11 +96,15 @@ class ItemSpecificCommand extends Command {
         System.out.println(msg + "\n" + returnVal);
         System.exit(0);
         return null;  //required return value
+      } else if (returnVal.contains("Congr")){
+        System.out.println(msg + "\n" + returnVal);
+        System.exit(0);
+        return null;  //required return value
       } else {
-        return msg + ".\n" + returnVal; //This is from hasEvent!\n";  //DEBUG
+        return Clock.instance().addTime() + msg + ".\n" + returnVal; //This is from hasEvent!\n";  //DEBUG
       }
     } else {
-      return msg + ".\n" + returnVal;
+      return Clock.instance().addTime() + msg + ".\n" + returnVal;
     }
   }
 }
