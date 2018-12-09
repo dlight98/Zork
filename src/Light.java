@@ -2,7 +2,8 @@
  * There are many dark rooms throughout the dungeon. The player needs a
  * light source to progress through these rooms.
  * @author Benjamin Madren **/
-abstract class Light extends Command{
+
+abstract class Light extends Command {
   public Item light;
   public boolean power = true;
   public boolean dark = true;
