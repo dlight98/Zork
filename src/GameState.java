@@ -88,7 +88,10 @@ public class GameState {
     String currentRoomLine = s.nextLine();
     adventurersCurrentRoom = dungeon.getRoom(
     currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
-    if (s.hasNext()) {
+
+    String line = s.nextLine(); //holds the next line
+
+    if (line.contains("Inventory")) {
       String inventoryList = s.nextLine().substring(
       INVENTORY_LEADER.length());
       String[] inventoryItems = inventoryList.split(",");
@@ -100,11 +103,14 @@ public class GameState {
           itemName + "'");
         }
       }
-
+      line = s.nextLine();
     }
     //TODO this is restoring health
+
     if (s.hasNext()) {
-      String healthS = s.nextLine();
+      //line = s.nextLine();
+
+      String healthS = line;
       String[] healthParts = healthS.split(":");
       int health = Integer.parseInt(healthParts[1]);
       GameState.instance().setHealth(health);
@@ -258,11 +264,11 @@ public class GameState {
   int getScore(){
     return score;
   }
-  /**This method adds 1 point to the player's score.**/ 
+  /**This method adds 1 point to the player's score.**/
   void addToScore(){
     score = score + 1;
   }
-  /**This method updates amount with the player's current score.**/ 
+  /**This method updates amount with the player's current score.**/
   void addToScore(int amount){
     score = score + amount;
   }
