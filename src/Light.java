@@ -5,7 +5,7 @@
 
 abstract class Light extends Command {
   public Item light;
-  public boolean power = true;
+  public boolean power = false;
   public boolean dark = true;
   /**This method allows the player to turn the light source on and off.*/
   boolean onAndOff(boolean power){
@@ -20,7 +20,7 @@ abstract class Light extends Command {
    * to close off dark rooms from the player unless they have
    * a light source turned on.*/
   void darkRoom(boolean dark) {
-    if(dark == true && power == true){
+    if(dark == true && power == false){
       Exit isClosed;
     }
   }
