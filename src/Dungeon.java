@@ -253,4 +253,23 @@ public class Dungeon {
     }
     return items.get(primaryItemName);
   }
+      public void VerboseExecute(boolean value){
+            if(value == true){
+                    for(String room: rooms.keySet()){
+                            rooms.get(room).setBeenHere(false);
+                            rooms.get(room).setVerbose(true);
+                    }
+        }
+                else{
+                        for(String room: rooms.keySet()){
+                            rooms.get(room).setBeenHere(true);
+                            rooms.get(room).setVerbose(false);
+                }
+    }
+    }
+        public Room Look(String find){
+            System.out.println("test");
+            return rooms.get(find);
+    }
+
 }

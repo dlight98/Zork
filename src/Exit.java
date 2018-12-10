@@ -113,8 +113,7 @@ public class Exit {
     * This checks if an exit is open or closed.
     * @return if the exit is open or closed
     */
-    boolean isClosed() {
-	    return false;
-      //FIXME needs to be written
-    }
+    boolean getisClosed(){
+	    return isClosed;
   }
+}

@@ -32,6 +32,7 @@ public class Room {
     private boolean beenHere;
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
+    private boolean Verbose = false;
 
     /**
      * Creates a room with the String given.The String becomes
@@ -218,7 +219,9 @@ public class Room {
                 description += "\n" + exit.describe();
             }
         }
-        beenHere = true;
+	if(this.Verbose == false){
+	       	beenHere = true;
+	}
         return description;
     }
 
@@ -288,5 +291,11 @@ public class Room {
      */
     ArrayList<Item> getContents() {
         return contents;
+    }
+    void setBeenHere(boolean value){
+	    this.beenHere = value;
+    }
+    void setVerbose(boolean value){
+	    this.Verbose = value;
     }
 }
