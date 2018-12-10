@@ -24,7 +24,10 @@ class MovementCommand extends Command {
 
         Room currentRoom = GameState.instance().getAdventurersCurrentRoom();
         Room nextRoom = currentRoom.leaveBy(dir);
-        if (nextRoom != null) {  // could try/catch here.
+	if(currentRoom.ExitState(dir) == true){
+		return "This exit is closed you cannot leave this way";
+	}
+       	else if (nextRoom != null) {  // could try/catch here.
             GameState.instance().setAdventurersCurrentRoom(nextRoom);
             return Clock.instance().addTime() + "\n" + nextRoom.describe() + "\n";
         } else {

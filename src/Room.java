@@ -239,7 +239,17 @@ public class Room {
         }
         return null;
     }
-
+    public boolean ExitState(String dir){
+	     for (Exit exit : exits) {
+            if (exit.getDir().equals(dir)) {
+		if(exit.getisClosed() == true){
+                return true;
+            }
+        }
+	     }
+        return false;
+	}
+	 
     /**
      * Adds an {@link Exit} the the room. This exit
      * is added to the source room, not the destination.

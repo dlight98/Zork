@@ -28,8 +28,6 @@ public class CommandFactory {
   /** creates command objects
    */
   private CommandFactory() { }
-
-<<<<<<< HEAD
     public Command parse(String command){
        		 String parts[] = command.split(" ");
        		 String verb = parts[0];
@@ -93,50 +91,4 @@ public class CommandFactory {
        	return new UnknownCommand(command);
 
 }
-=======
-  public Command parse(String command) {
-    String parts[] = command.split(" ");
-    String verb = parts[0];
-    String noun = parts.length >= 2 ? parts[1] : "";
-    if (verb.equals("look")) {
-    
-      return new LookCommand();
-    }
-    if (verb.equals("save")) {
-      return new SaveCommand(noun);
-    }
-    if (verb.equals("take")) {
-      //GameState.instance().setClock();
-      //Clock.instance().addTime();
-      return new TakeCommand(noun);
-    }
-    if (verb.equals("drop")) {
-      //GameState.instance().setClock();
-      //Clock.instance().addTime();
-      return new DropCommand(noun);
-    }
-    if (verb.equals("i") || verb.equals("inventory")) {
-      return new InventoryCommand();
-    }
-    if (verb.equals("health")) {
-      return new HealthCommand();
-    }
-    if (MOVEMENT_COMMANDS.contains(verb)) {
-      //Clock.instance().addTime();
-      return new MovementCommand(verb);
-    }
-    if (verb.equals("score")) {
-      return new ScoreCommand();
-    }
-    if (parts.length == 2) {
-      //GameState.instance().setClock();
-      //Clock.instance().addTime();
-      return new ItemSpecificCommand(verb, noun);
-    }
-    if(verb.equals("Teleport")){
-      return new Teleport();
-    }
-    return new UnknownCommand(command);
-  }
->>>>>>> a143ca5b6149b9b63a1efc87fa4629781f3fa23c
 }

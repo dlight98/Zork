@@ -40,6 +40,7 @@ public class Exit {
       this.dir = dir;
       this.src = src;
       this.dest = dest;
+      this.isClosed = false;
       src.addExit(this);
     }
 
