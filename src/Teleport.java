@@ -4,18 +4,17 @@
  * have previously visited. 
  * This class will interact with the GameState and Command classes. 
  *@author Benjamin Madren
- */
-	public class Teleport extends Command{ 
-        public Room room;	
+ **/
+public class Teleport extends Command{
+	public Room room;
 	public Room destination;
-	public String going;	
-		/**This method will check what room the user
-		 * is currently in.
-		 * @param room **/
+	public String going;
+	/**This method will check what room the user
+	* is currently in.
+	* @param room **/
 	public Teleport(String room){
 		this.going = room;
 	}
-
 		GameState getAdventurersCurrentRoom(GameState room){
 		     return room;
 		}	     
@@ -36,3 +35,4 @@
 			}
 		}
 	}
+	
