@@ -3,17 +3,16 @@
  * light source to progress through these rooms.
  * @author Benjamin Madren **/
 
-abstract class Light extends Command {
+public class Light{
   public Item light;
   public boolean power = false;
-  public boolean dark = true;
   /**This method allows the player to turn the light source on and off.*/
-  boolean onAndOff(boolean power){
+  void setPower(boolean power){
     if(power == true){
-      return false;
+      power = true;
     }
     else{
-      return true;
+    	power = false;
     }
   }
   /**This method works with closed exits in the Exit class

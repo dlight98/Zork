@@ -83,6 +83,7 @@ class ItemSpecificCommand extends Command {
           //System.out.println("Contains Teleport.");  //DEBUG
           
         } else if (action.contains("Power")) {
+		GameState.instance().setLit(true);
           //System.out.println("Contains Power.");  //DEBUG
         }
         else {
