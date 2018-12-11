@@ -2,7 +2,7 @@ Light(+20 XP): Light sources are availble in many rooms throughout the dungeon.
 Some rooms are completely dark, and the player needs to have a light source turned
 on in order to progress through it.
 
-You can test Light by grabbing a torch or flashlight item from the Pitch Black room
+You can test Light by grabbing a torch or flashlight item from the first room
 and turning it on using the Power event.
 
 ------------------------------------------
@@ -30,4 +30,13 @@ You can see how the time limit is in effect by repeatedly moving up and down ("u
 or in any other direction until the days run out. The game will then end.
 
 ------------------------
+Verbose(+10xp): Verbose is typed and passsed with either "On" or "Off" which will then make
+all the rooms display their descriptions on entry, no matter how many times they are entered. 
 
+-----------------------
+Closed Exits(+20xp): Closed exits do not allow the Adventurer to enter the next room if they room the 
+Exit leads to is Dark. The adventurer needs to pick up a Light source and turn it on to enter the next
+room. 
+
+You can see how closed exits works by trying to go down when you are in the first room  without picking up and turning on 
+the light source.
