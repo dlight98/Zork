@@ -4,3 +4,29 @@ on in order to progress through it.
 
 You can test Light by grabbing a torch or flashlight item from the Pitch Black room
 and turning it on using the Power event.
+
+------------------------------------------
+
+External Clock and Time Limit (+30 XP): The game has an internal day and night cycle, and
+a limited amount of time the player has to complete the game. 
+A message will be displayed to tell when it is evening and when it is morning.
+Each morning the number of days passed and days remaining are displayed.
+
+The clock only adds time to the counter when the player:
+1) sucessfully moves through an exit
+2) Successfully using an Item-Specific command
+3) Successfully picking up or dropping an item.
+4) Looks around the Room
+
+The clock will NOT add time when the player:
+1) Fails to move through an exit (typing "n" in a room with no north exit)
+2) Fails to use an item-specific command (types the command in wrong)
+3) Fails to pick up or drop an item. Typing in an item that doesn't exist, etc.
+4) Toggles verbose mode
+5) checks the inventory
+6) Saves the game
+
+You can see how the time limit is in effect by repeatedly moving up and down ("u" and "d")
+or in any other direction until the days run out. The game will then end.
+
+------------------------
