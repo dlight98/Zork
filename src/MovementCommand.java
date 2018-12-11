@@ -25,7 +25,7 @@ class MovementCommand extends Command {
         Room currentRoom = GameState.instance().getAdventurersCurrentRoom();
         Room nextRoom = currentRoom.leaveBy(dir);
 	if(currentRoom.leaveBy(dir).getisDark() == true && GameState.instance().getLit() == false){
-		return "This exit is closed because the room it leads to is Dark. Find a light source and turn it on to enter";
+		return "This exit is closed because the room it leads to is Dark. Find a light source and turn it on to enter.\n";
 	}
        	else if (nextRoom != null) {  // could try/catch here.
             GameState.instance().setAdventurersCurrentRoom(nextRoom);
