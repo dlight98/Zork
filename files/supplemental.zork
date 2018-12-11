@@ -60,6 +60,7 @@ light[Power]:Your flashlight shines brightly.
 ===
 Rooms:
 Rotunda[Light]
+Contents: flashlight
 You are in a beautiful round entry chamber, with tall white pillars that
 seemingly reach to the skies. There is an elevator here.
 ---
