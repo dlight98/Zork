@@ -59,30 +59,36 @@ light[Power]:Your flashlight shines brightly.
 ---
 ===
 Rooms:
-Rotunda[Light]
+Rotunda
+[Light]
 You are in a beautiful round entry chamber, with tall white pillars that
 seemingly reach to the skies. There is an elevator here.
 ---
-Basement hallway[Dark]
+Basement hallway
+[Dark]
 Contents: DrPepper
 A long, white hallway stretches to the east and west. It is cold here, and you
 can detect the faint smell of body odor. A vending machine hums softly in the
 corner.
 ---
-Stephen's office[Light]
+Stephen's office
+[Light]
 Contents: StarWarsToy,WawaTravelMug,donut
 This is a cluttered office, with many geeky toys sprawling on a desk.
 ---
-Room B6[Light]
+Room B6
+[Light]
 Sunlight streams through tall windows and illuminates a brilliant classroom.
 ---
-Rotunda balcony[Light]
+Rotunda balcony
+[Light]
 Contents: chainsaw,magicWand
 You stand on a circular white balcony overlooking an entry hall.
 Columnar bannisters in ancient Grecian style stand between you and the
 precipice.
 ---
-Pitch black[Dark]
+Pitch black
+[Dark]
 Contents: torch
 This room is completely filled with darkness.
 You need a light source in order to progress through it.
