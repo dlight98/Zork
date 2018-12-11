@@ -49,17 +49,7 @@ public class GameState {
   private GameState() {
     inventory = new ArrayList<Item>();
   }
-  public boolean getLit(){
-	  return isLit;
-  }
-  public void setLit(boolean light){
-	 if(light == true){
-		isLit = true;
-	 }
- 	else{
-       		isLit = false;
-	}
-  }	
+
   /**This method returns the adventurer's current weight
   * based on the items in their inventory.**/
   int getAdventurersCurrentWeight() {
@@ -101,7 +91,7 @@ public class GameState {
     String line = s.nextLine(); //holds the next line
 
     if (line.contains("Inventory")) {
-      String inventoryList = s.nextLine().substring(
+      String inventoryList = line.substring(
       INVENTORY_LEADER.length());
       String[] inventoryItems = inventoryList.split(",");
       for (String itemName : inventoryItems) {
@@ -290,6 +280,15 @@ public class GameState {
       return ranks[0];
     }
   }
+
+  boolean getLit() {
+    return isLit;
+  }
+
+  void setLit(boolean lit) {
+    isLit = lit;
+  }
+
   /*
   void setClock() {
   clock += 1;
