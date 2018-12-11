@@ -33,6 +33,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private boolean Verbose = false;
+    private boolean isDark;
 
     /**
      * Creates a room with the String given.The String becomes
@@ -258,6 +259,9 @@ public class Room {
     void addExit(Exit exit) {
         exits.add(exit);
     }
+    public boolean getisDark(){
+	return isDark();
+	}
 
     /**
      * Adds an {@link Item} to the room. This item
