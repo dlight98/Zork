@@ -42,7 +42,7 @@ class ItemSpecificCommand extends Command {
       ArrayList<String> actions = new ArrayList(itemReferredTo.getEventForVerb(verb));
 
       for (String action : actions) {
-        //System.out.println(action + "DEBUG.\n"); //DEBUG
+        //System.out.println(action + "debug.\n"); //DEBUG
         if (action.contains("Drop")) {
           //System.out.println("Contains Drop."); //DEBUG
           new DropCommand(itemReferredTo.toString()).execute();  //maybe wrong
@@ -74,14 +74,14 @@ class ItemSpecificCommand extends Command {
           try {
             String[] parts = action.split("\\(");
             String itemName = parts[1].substring(0, parts[1].length()-1);
-            Item itemTo = GameState.instance().getDungeon().getItem(itemName); //FIXME
+            Item itemTo = GameState.instance().getDungeon().getItem(itemName);
             new Transform(itemReferredTo, itemTo).execute();
           }catch (Item.NoItemException e) {
             throw new NoItemException("This item doesnt exits");
           }
         } else if (action.contains("Teleport")) {
           //System.out.println("Contains Teleport.");  //DEBUG
-          
+
         } else if (action.contains("Power")) {
           //System.out.println("Contains Power.");  //DEBUG
         }

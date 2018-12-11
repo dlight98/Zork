@@ -55,7 +55,7 @@ public class Exit {
     dungeon file itself, detected when trying to read this room.
     */
     Exit(Scanner s, Dungeon d) throws NoExitException,
-    Dungeon.IllegalDungeonFormatException {
+    Dungeon.IllegalDungeonFormatException, NullPointerException { //FIXME NPE
 
       init();
       String srcTitle = s.nextLine();

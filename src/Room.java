@@ -33,7 +33,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private boolean Verbose = false;
-    private boolean isDark;
+    private boolean isDark; //for room. isLit for adventurere
 
     /**
     * Creates a room with the String given.The String becomes
@@ -63,6 +63,7 @@ public class Room {
       this(s, d, true);
     }
 
+
     /** Given a Scanner object positioned at the beginning of a "room" file
     entry, read and return a Room object representing it.
     @param s the Scanner object reading from file.
@@ -79,11 +80,24 @@ public class Room {
     Dungeon.IllegalDungeonFormatException {
 
       init();
-      title = s.nextLine();
+      String line = s.nextLine();
       desc = "";
-      if (title.equals(Dungeon.TOP_LEVEL_DELIM)) {
+      if (line.equals(Dungeon.TOP_LEVEL_DELIM)) {
         throw new NoRoomException();
       }
+
+      String[] lineParts = line.split("\\[");
+      String lighting = lineParts[1].substring(0, lineParts[1].length()-1);
+      if(lighting.equals("Dark")) {
+        isDark = true;
+      } else if(lighting.equals("Light")) {
+        isDark = false;
+      } else {
+        throw new Dungeon.IllegalDungeonFormatException("There is no lighting.");
+      }
+
+      title = lineParts[0];
+      //System.out.println(title);  //DEBUG
 
       String lineOfDesc = s.nextLine();
       while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
