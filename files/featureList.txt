@@ -30,3 +30,4 @@ You can see how the time limit is in effect by repeatedly moving up and down ("u
 or in any other direction until the days run out. The game will then end.
 
 ------------------------
+
