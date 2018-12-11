@@ -37,6 +37,8 @@ public class GameState {
   //private int daysPassed=0;  /* what day it is.*/
   //private boolean night; /** false is day true is night. */
   static String[] ranks = {"Apprentice", "Knight", "Earl", "Duke", "Prince", "King", "Emperor"};
+  private boolean isLit;
+
 
 
   /**This method creates a new instance of the GameState class.**/
