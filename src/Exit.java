@@ -42,7 +42,7 @@ public class Exit {
       this.dest = dest;
       this.isClosed = false;
       src.addExit(this);
-    }
+    }	
 
     /** Given a Scanner object positioned at the beginning of an "exit" file
     entry, read and return an Exit object representing it.

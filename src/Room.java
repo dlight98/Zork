@@ -260,7 +260,7 @@ public class Room {
         exits.add(exit);
     }
     public boolean getisDark(){
-	return isDark();
+	return isDark;
 	}
 
     /**

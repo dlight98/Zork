@@ -52,7 +52,17 @@ public class GameState {
   private GameState() {
     inventory = new ArrayList<Item>();
   }
-
+  public boolean getLit(){
+	  return isLit;
+  }
+  public void setLit(boolean light){
+	 if(light == true){
+		isLit = true;
+	 }
+ 	else{
+       		isLit = false;
+	}
+  }	
   /**This method returns the adventurer's current weight
   * based on the items in their inventory.**/
   int getAdventurersCurrentWeight() {
