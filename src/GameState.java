@@ -33,11 +33,8 @@ public class GameState {
   private Room adventurersCurrentRoom;
   private int currentHealth=5; //FIXME this is temporary for now
   private int score=0;
-  //private int clock=0;  //moves for Clock
-  //private int daysPassed=0;  /* what day it is.*/
-  //private boolean night; /** false is day true is night. */
   static String[] ranks = {"Apprentice", "Knight", "Earl", "Duke", "Prince", "King", "Emperor"};
-  private boolean isLit;
+  private boolean isLit = false;
 
 
 
@@ -124,6 +121,11 @@ public class GameState {
       int score = Integer.parseInt(ScoreParts[1]);
       GameState.instance().setScore(score);
     }
+    line = s.nextLine();
+    if(line.contains("Lit")){
+      String[] lineParts = line.split(":");
+      this.isLit=Boolean.parseBoolean(lineParts[1]);
+    }
     if(s.hasNext()){
       Clock.instance().restoreState(s);
     }
@@ -149,6 +151,7 @@ public class GameState {
 
     w.println("Health:" + this.currentHealth);
     w.println("Score:" + this.score);
+    w.println("Lit:" + this.isLit);
     Clock.instance().storeState(w);
 
     w.close();
@@ -229,31 +232,7 @@ public class GameState {
     return dungeon;
   }
 
-  // /** This method sets the current time of day for the given dungeon.
-  // * (0 for day, 1 for night).
-  // */
-  // int checkTime() {
-  //   return clock;
-  // }
-  //
-  // /** This method changes the time of day from day to night and vice versa
-  // * whenever the player has made five moves.
-  // */
-  // boolean timeOfDay(){
-  //   return night;
-  // }
-  // /** This method implements a time limit of ten days
-  // * with which the player has to complete the current dungeon.
-  // */
-  // void checkTimeLimit() {
-  //
-  // }
-  /** This method ends the game once the time limit is reached.
-  * @param day,limit
-  */
-  void gameEnd(){
 
-  }
   /**This method sets the player's current health.**/
   void setHealth(int health){
     this.currentHealth = health;
@@ -301,17 +280,17 @@ public class GameState {
       return ranks[0];
     }
   }
-/*
+  /*
   void setClock() {
-    clock += 1;
-  }
+  clock += 1;
+}
 
 
-  int getDay() {
-    return day;
-  }
-  void setDay() {
-    day += 1;
-  }
-  */
+int getDay() {
+return day;
+}
+void setDay() {
+day += 1;
+}
+*/
 }
