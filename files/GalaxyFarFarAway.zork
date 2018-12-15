@@ -1,6 +1,6 @@
 A Galaxy Far Far Away
 Zork++
-TimeLimit:7
+TimeLimit:14
 ===
 Items:
 blueMilk,bm
@@ -13,6 +13,49 @@ deathStick,ds
 examine:One of your neighbor’s leftover deathSticks. Are you sure you want to smoke this?
 smoke[Disappear,Wound(3)]:*cough cough* That definitely wasn’t a good idea! They're called deathSticks for a reason
 ---
+mysteriousOrb,mo
+5
+examine:Its a perfect sphere with a button. What happens if you push the button?
+push[Power,Transform(glowingOrb)]:The Orb flashes brightly, blinding you. It begins to hover over your head, shedding its light every direction.
+---
+glowingOrb,go
+0
+examine:Its levitating above your head. It looks just the right size to work as a helmet. Trying to wear it.
+wear[disappear,Score(10)]:You put it on your head. You feel a little silly, but you can’t actually take it off. It’s stuck, and now you’re blinding everyone you look at.
+---
+flyer,f
+1
+examine:After reading it you learn there are blasters in the northern stall, clothes in the eastern stall, and relics in the west stall
+---
+lightsaber,ls
+4
+examine:An authentic lightsaber! Not really, its really just a replica. You want to see if it turns it on. Try to ignite it
+ignite[Transform(litLightsaber),Score(5)]:*vwooom* Wow, it actually turns on!
+---
+litLightsaber,lls
+4
+examine:It looks pretty dangerous, better turn it off! Try to sheathe it
+sheathe[Transform(burntOutLightsaber),Score(10)]:You turned it off. It looks kinda broken now though
+---
+burntOutLightsaber,bols
+4
+examine:Its busted. It was only a replica after all
+---
+robe,r
+3
+examine:An authentic jedi robe! Well, not really. Its only a replica. It looks well-made though! Why don’t you try to wear it?
+wear[Score(2),Disappear]:its very comfy. You don’t want to take it off!
+---
+blaster,bl
+5
+examine:a completely authentic blaster. Don’t shoot anyone with it.
+shoot[Score(5),Drop]:Everyone is glaring at you. You slowly put the blaster on the ground and whistle, pretending it wasn’t you.
+---
+bomb,bm
+2
+examine:its the only way to blow the reactor and stop Alderaan’s destruction. You need to light it.
+light[Score(10),Win):You light the bomb. As its timer ticks down you manage to get your teleporter working and warp out of there just in the nick of time. You’ve done it. You’ve saved the planet!
+---
 ===
 Rooms:
 Home[Light]
@@ -23,16 +66,18 @@ until something blocks out the sky.
 Is it a moon…? That’s no moon!
 It’s the Death Star, and its charging it’s beam to attack!
 
-Escape within 1 week (7 days) or be obliterated.
+Escape within 2 weeks (14 days) or be obliterated.
 ---
 Yard[Light]
-EXAMPLE TEXT
+Its your yard. Its nothing special, but its yours.
 ---
 Path[Light]
-EXAMPLE TEXT
+This is the path through your neighborhood.
+It leads from your house to the town square
 ---
 Neighbor yard[Light]
-EXAMPLE TEXT
+Your neighbor’s yard is covered in trash and litter.
+You assume he doesn’t care much for his appearance.
 ---
 Neighbor house[Light]
 Contents: deathStick
@@ -40,6 +85,57 @@ The door opens easily. You know he never locks his door.
 Its so the buyers of his Death Sticks can get in.
 Seems as though he stopped selling recently though.
 He came back home one day and decided to rethink his life.
+---
+Town square[Light]
+TEMP
+---
+Road - West[Light]
+TEMP
+---
+Back alley[Light]
+Contents: mysteriousOrb
+TEMP
+---
+Market[Light]
+Contents: flyer
+TEMP
+---
+N Stall[Light]
+Contents: blaster
+TEMP
+---
+W Stall[Light]
+Contents: lightsaber
+TEMP
+---
+E Stall[Light]
+Contents: robe
+TEMP
+---
+Road - East[Light]
+TEMP
+---
+Palace[Light]
+TEMP
+---
+Stairs[Light]
+TEMP
+---
+Balcony[Light]
+TEMP
+---
+Basement[Light]
+TEMP
+---
+Teleporter[Dark]
+TEMP
+---
+DeathStar[Light]
+TEMP
+---
+Reactor[Light]
+Contents: bomb
+TEMP
 ---
 ===
 Exits:
@@ -74,5 +170,121 @@ Neighbor house
 Neighbor house
 n
 Neighbor yard
+---
+Path
+n
+Town square
+---
+Town square
+s
+Path
+---
+Town square
+n
+Market
+---
+Town square
+e
+Road - East
+---
+Town square
+w
+Road - West
+---
+Road - West
+w
+Back alley
+---
+Road - West
+e
+Town square
+---
+Back alley
+e
+Road - West
+---
+Market
+n
+N Stall
+---
+N Stall
+s
+Market
+---
+Market
+e
+E Stall
+---
+E Stall
+w
+Market
+---
+Market
+w
+W Stall
+---
+W Stall
+e
+Market
+---
+Market
+s
+Town square
+---
+Road - East
+w
+Town square
+---
+Road - East
+e
+Palace
+---
+Palace
+w
+Road - East
+---
+Palace
+u
+Stairs
+---
+Palace
+d
+Basement
+---
+Stairs
+d
+Palace
+---
+Stairs
+w
+Balcony
+---
+Balcony
+e
+Stairs
+---
+Basement
+u
+Palace
+---
+Basement
+n
+Teleporter
+---
+Teleporter
+s
+Basement
+---
+Teleporter
+u
+DeathStar
+---
+DeathStar
+e
+Reactor
+---
+Reactor
+w
+DeathStar
 ---
 ===
