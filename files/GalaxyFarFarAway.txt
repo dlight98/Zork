@@ -19,13 +19,16 @@
                         Nick Turner
  ---------------------------------------------------------------
 
-One note before you start: Please save often! I messed up with calculating the
+One note before you start: PLEASE SAVE OFTEN! I messed up with calculating the
 passage of time, and moving in a direction with no exit WILL crash the game. Save
 often just in case!!!
 Another note: Please play with "Verbose on". It allows you to read all descriptions
 as well as see the exits, which is very important because of the aforementioned bug.
 
 ANYTHING AFTER THIS POINT WAS WRITTEN AFTER THE ASSIGNMENT WAS TURNED IN
+
+This isn't in either guide, but please do check out the neighbor's house
+I'd like to think that was one of my best areas
 
 To complete the game as FAST as possible:
 ---
@@ -89,5 +92,3 @@ light bomb
 
 There is more to explore out there, like the neighbor's house and the upstairs in the Palace
 but those are not necesarry for completion points so I left it out of the walkthrough.
-Please do check out the neighbor's house if you haven't yet, I'd like to think that was
-one of my best areas
