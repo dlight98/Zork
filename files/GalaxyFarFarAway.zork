@@ -87,55 +87,62 @@ Seems as though he stopped selling recently though.
 He came back home one day and decided to rethink his life.
 ---
 Town square[Light]
-TEMP
+A bustling town center. Everyone is shocked at the size of the DeathStar!
 ---
 Road - West[Light]
-TEMP
+The road leading toward the bad part of town.
+There are some things you can only get over there though.
 ---
 Back alley[Light]
 Contents: mysteriousOrb
-TEMP
+It's your neighbor! He seems to be in a disagreement with some of his old clients
+about giving up deathSticks. Best to leave him to it.
 ---
 Market[Light]
 Contents: flyer
-TEMP
+The central commercial area of the city. A lot of worried faces looking around here.
 ---
 N Stall[Light]
 Contents: blaster
-TEMP
+A blaster store. The owner looks suspeciously at you. He says "Don't try anything, bub!"
 ---
 W Stall[Light]
 Contents: lightsaber
-TEMP
+Its a store with replicas of old technology. They have older droids and even lightsabers!
 ---
 E Stall[Light]
 Contents: robe
-TEMP
+A clothing store. There are robes, tunics, and leggings.
 ---
 Road - East[Light]
-TEMP
+A nice road leading towards the Palace. Its mostly used by nobles.
 ---
 Palace[Light]
-TEMP
+A bright palace. There are many people here worriedly asking the Governor what to do.
+He says "Don't worry, we have a way to the DeathStar in the Basement!
+We just need a light source to use it."
 ---
 Stairs[Light]
-TEMP
+Some stairs leading up to the balcony. You're not entirely sure why they're letting you up here.
+Perhaps its because the world may end soon and they have bigger problems.
 ---
 Balcony[Light]
-TEMP
+You stand on the balcony overlooking the entire city. You can see your house from here!
 ---
 Basement[Light]
-TEMP
+Its dark and dusty. You see the teleporter the Governor was talking about.
+You wonder where you might get a light source.
 ---
 Teleporter[Dark]
-TEMP
+Now that you have a light source, you enter. You know that once you beam yourself up,
+there's likely no coming back. Make sure you're ready for that
 ---
 DeathStar[Light]
-TEMP
+Its bright and noisy. Pristine corridores line everywhere. You muster up your courage and press onwards.
 ---
 Reactor[Light]
 Contents: bomb
-TEMP
+The reactor is big and humms loudly. Theres the bomb. Its the only way to end this.
 ---
 ===
 Exits:
