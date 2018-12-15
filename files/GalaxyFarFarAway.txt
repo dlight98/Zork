@@ -16,5 +16,8 @@
 
  ---------------------------------------------------------------
 
-
- 
+One note before you start: Please save often! I messed up with calculating the
+passage of time and moving in a direction with no exit WILL crash the game. Save
+often just in case!!!
+Another note: Please play with "Verbose on". It allows you to read all descriptions
+as well as see the exits, which is very important because of the aforementioned bug.
