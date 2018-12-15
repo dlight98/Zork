@@ -1,0 +1,78 @@
+A Galaxy Far Far Away
+Zork++
+TimeLimit:7
+===
+Items:
+blueMilk,bm
+2
+examine:It looks and smells weird, but its nutritions. Drink up!
+drink[Disappear,Score(2)]:It tastes only a bit better than it smells...
+---
+deathStick,ds
+1
+examine:One of your neighbor’s leftover deathSticks. Are you sure you want to smoke this?
+smoke[Disappear,Wound(3)]:*cough cough* That definitely wasn’t a good idea! They're called deathSticks for a reason
+---
+===
+Rooms:
+Home[Light]
+Contents: blueMilk
+You wake up in your bedroom.
+It’s a sunny morning on Alderaan,
+until something blocks out the sky.
+Is it a moon…? That’s no moon!
+It’s the Death Star, and its charging it’s beam to attack!
+
+Escape within 1 week (7 days) or be obliterated.
+---
+Yard[Light]
+EXAMPLE TEXT
+---
+Path[Light]
+EXAMPLE TEXT
+---
+Neighbor yard[Light]
+EXAMPLE TEXT
+---
+Neighbor house[Light]
+Contents: deathStick
+The door opens easily. You know he never locks his door.
+Its so the buyers of his Death Sticks can get in.
+Seems as though he stopped selling recently though.
+He came back home one day and decided to rethink his life.
+---
+===
+Exits:
+Home
+n
+Yard
+---
+Yard
+s
+Home
+---
+Yard
+e
+Neighbor yard
+---
+Neighbor yard
+w
+Yard
+---
+Yard
+n
+Path
+---
+Path
+s
+Yard
+---
+Neighbor yard
+s
+Neighbor house
+---
+Neighbor house
+n
+Neighbor yard
+---
+===
