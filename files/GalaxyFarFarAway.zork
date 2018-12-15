@@ -21,7 +21,7 @@ push[Power,Transform(glowingOrb)]:The Orb flashes brightly, blinding you. It beg
 glowingOrb,go
 0
 examine:Its levitating above your head. It looks just the right size to work as a helmet. Trying to wear it.
-wear[disappear,Score(10)]:You put it on your head. You feel a little silly, but you can’t actually take it off. It’s stuck, and now you’re blinding everyone you look at.
+wear[Disappear,Score(10)]:You put it on your head. You feel a little silly, but you can’t actually take it off. It’s stuck, and now you’re blinding everyone you look at.
 ---
 flyer,f
 1
