@@ -14,10 +14,80 @@
                                                           __/ |
                                                          |___/
 
+                            by
+
+                        Nick Turner
  ---------------------------------------------------------------
 
 One note before you start: Please save often! I messed up with calculating the
-passage of time and moving in a direction with no exit WILL crash the game. Save
+passage of time, and moving in a direction with no exit WILL crash the game. Save
 often just in case!!!
 Another note: Please play with "Verbose on". It allows you to read all descriptions
 as well as see the exits, which is very important because of the aforementioned bug.
+
+ANYTHING AFTER THIS POINT WAS WRITTEN AFTER THE ASSIGNMENT WAS TURNED IN
+
+To complete the game as FAST as possible:
+---
+You will start in your house.
+n to the Yard
+n again to the Path
+n once more to the town square
+w to Road - w
+w again to the back alley
+take the mysteriousOrb
+push mysteriousOrb (technically the button on it)
+e to road - w
+e to town square
+e to road -e
+e to Palace
+d to Basement
+n to Teleporter
+u to DeathStar
+e to reactor
+take Bomb
+light bomb
+
+To complete the game for MOST POINTS:
+---
+You will start in your house.
+take and drink blueMilk
+n to Yard
+n to Path
+n to town square
+n to Market
+w to w Stall
+take lightsaber
+ignite lightsaber
+sheathe litLightsaber
+e to Market
+n to n Stall
+take blaster
+shoot blaster (you can actually take and shoot forever for points, but please don't abuse this)
+s to town
+e to e Stall
+take robe
+wear robe
+w to Market
+s to town square
+w to Road - w
+w again to the back alley
+take the mysteriousOrb
+push mysteriousOrb (technically the button on it)
+wear glowingOrb
+e to road - w
+e to town square
+e to road -e
+e to Palace
+d to Basement
+n to Teleporter
+u to DeathStar
+e to reactor
+take Bomb
+light bomb
+-----
+
+There is more to explore out there, like the neighbor's house and the upstairs in the Palace
+but those are not necesarry for completion points so I left it out of the walkthrough.
+Please do check out the neighbor's house if you haven't yet, I'd like to think that was
+one of my best areas
