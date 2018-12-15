@@ -36,6 +36,9 @@ public class CommandFactory {
     if (verb.equals("look")) {
       return new LookCommand();
     }
+    if (verb.equals("score")){
+      return new ScoreCommand();
+    }
     if (verb.equals("save")) {
       return new SaveCommand(noun);
     }

@@ -3,12 +3,12 @@ Some rooms are completely dark, and the player needs to have a light source turn
 on in order to progress through it.
 
 You can test Light by grabbing a torch or flashlight item from the first room
-and turning it on using the Power event.
+and turning it on using the light command.
 
 ------------------------------------------
 
 External Clock and Time Limit (+30 XP): The game has an internal day and night cycle, and
-a limited amount of time the player has to complete the game. 
+a limited amount of time the player has to complete the game.
 A message will be displayed to tell when it is evening and when it is morning.
 Each morning the number of days passed and days remaining are displayed.
 
@@ -31,12 +31,12 @@ or in any other direction until the days run out. The game will then end.
 
 ------------------------
 Verbose(+10xp): Verbose is typed and passsed with either "On" or "Off" which will then make
-all the rooms display their descriptions on entry, no matter how many times they are entered. 
+all the rooms display their descriptions on entry, no matter how many times they are entered.
 
 -----------------------
-Closed Exits(+20xp): Closed exits do not allow the Adventurer to enter the next room if they room the 
+Closed Exits(+20xp): Closed exits do not allow the Adventurer to enter the next room if they room the
 Exit leads to is Dark. The adventurer needs to pick up a Light source and turn it on to enter the next
-room. 
+room.
 
-You can see how closed exits works by trying to go down when you are in the first room  without picking up and turning on 
+You can see how closed exits works by trying to go down when you are in the first room  without picking up and turning on
 the light source.
